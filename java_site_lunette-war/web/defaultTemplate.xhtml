@@ -6,23 +6,41 @@
 
     <h:head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-        <link href="./resources/css/default.css" rel="stylesheet" type="text/css" />
+        <link href="./resources/css/style.css" rel="stylesheet" type="text/css" />
         <link href="./resources/css/cssLayout.css" rel="stylesheet" type="text/css" />
-        <title>Facelets Template</title>
+        <title>Have a Look</title>
     </h:head>
 
     <h:body>
-
-        <div id="top">
-            <ui:insert name="top">Top</ui:insert>
-        </div>
-
+        <!-- Header -->
+        <header>
+            <div id="logo">
+                <ui:insert name="top">
+                    <h:graphicImage value="resources/images/logo.jpg" />
+                </ui:insert>
+            </div>
+        </header>    
+        
+        
+        
+        <!-- Navbar -->
+        <nav class="navbar">               
+              <li> <a href="#">Accueil</a> </li>
+              <li> <a href="#">Categorie</a> </li>
+              <li> <a href="#">Promotions</a> </li>
+              <li> <a href="#">Contact</a> </li>
+              <li> <a href="#">A propos</a> </li>
+        </nav>
+        
+        <!-- Content -->
         <div id="content" class="center_content">
             <ui:insert name="content">Content</ui:insert>
         </div>
 
-        <div id="bottom">
-            <ui:insert name="bottom">Bottom</ui:insert>
+        
+        <!-- Footer  -->
+        <div id="footer">
+            <ui:insert name="bottom">© Copyright 2013-2014 Have a Look . Inc - All Rights Reserved</ui:insert>
         </div>
 
     </h:body>
