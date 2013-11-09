@@ -3,3 +3,6 @@
 /java_site_lunette-war/build/
 /build/
 /java_site_lunette-war/dist/
+/nbproject/private/
+/java_site_lunette-war/nbproject/private/
+/java_site_lunette-ejb/nbproject/private/

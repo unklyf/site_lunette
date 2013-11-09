@@ -1,18 +1,28 @@
 body {
     background-color: #ffffff;
     font-size: 12px;
-    font-family: Verdana, "Verdana CE",  Arial, "Arial CE", "Lucida Grande CE", lucida, "Helvetica CE", sans-serif;
+    font-family: sans-serif;
     color: #000000;  
     margin: 10px;
 }
 
-h1 {
-    font-family: Arial, "Arial CE", "Lucida Grande CE", lucida, "Helvetica CE", sans-serif;
-    border-bottom: 1px solid #AFAFAF; 
-    font-size:  16px;
-    font-weight: bold;
-    margin: 0px;
-    padding: 0px;
-    color: #D20005;
+nav{
+    color:black;
+    text-decoration: none;
 }
 
+nav li{
+    
+    list-style-type: none;
+    display: inline-block;
+}
+
+#container{
+    margin: auto;
+    width : 810px;
+}
+
+div{
+    margin-top: 20px;
+    margin-bottom: 20px;
+}

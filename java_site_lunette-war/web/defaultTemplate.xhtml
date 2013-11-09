@@ -2,47 +2,53 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:ui="http://java.sun.com/jsf/facelets"
-      xmlns:h="http://java.sun.com/jsf/html">
-
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+    
+    <f:view locale="fr">
+    <f:loadBundle basename="language.lang" var="msg" />
+    
     <h:head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
         <link href="./resources/css/style.css" rel="stylesheet" type="text/css" />
         <link href="./resources/css/cssLayout.css" rel="stylesheet" type="text/css" />
         <title>Have a Look</title>
+        
     </h:head>
-
     <h:body>
-        <!-- Header -->
-        <header>
-            <div id="logo">
-                <ui:insert name="top">
-                    <h:graphicImage value="resources/images/logo.jpg" />
-                </ui:insert>
+        <div id="container">
+            <!-- Header -->
+            <header>
+                <div id="logo">
+                    <ui:insert name="top">
+                        <h:graphicImage value="resources/images/logo.jpg" />
+                    </ui:insert>
+                </div>
+            </header>    
+
+
+
+            <!-- Navbar -->
+            <nav class="navbar">               
+                  <h:graphicImage value="resources/images/home.png"></h:graphicImage>
+                  <h:link value="#{msg.menu_home}"></h:link>
+                  <h:link value="#{msg.menu_categorie}" outcome="catalogue.xhtml"></h:link>
+                  <h:link value="#{msg.menu_promo}" outcome="promo.xhtml"></h:link>
+                  <h:link value="#{msg.menu_contact}" outcome="contact.xhtml"></h:link>
+                  <h:link value="#{msg.menu_about}" outcome="about.xhtml"></h:link>
+            </nav>
+
+            <!-- Content -->
+            <div id="content" class="center_content">
+                <ui:insert name="content">Content</ui:insert>
             </div>
-        </header>    
-        
-        
-        
-        <!-- Navbar -->
-        <nav class="navbar">               
-              <li> <a href="#">Accueil</a> </li>
-              <li> <a href="#">Categorie</a> </li>
-              <li> <a href="#">Promotions</a> </li>
-              <li> <a href="#">Contact</a> </li>
-              <li> <a href="#">A propos</a> </li>
-        </nav>
-        
-        <!-- Content -->
-        <div id="content" class="center_content">
-            <ui:insert name="content">Content</ui:insert>
-        </div>
 
-        
-        <!-- Footer  -->
-        <div id="footer">
-            <ui:insert name="bottom">© Copyright 2013-2014 Have a Look . Inc - All Rights Reserved</ui:insert>
-        </div>
 
+            <!-- Footer  -->
+            <div id="footer">
+                <ui:insert name="bottom">© Copyright 2013-2014 Have a Look . Inc - All Rights Reserved</ui:insert>
+            </div>
+        </div>
     </h:body>
-
+    </f:view>
 </html>
