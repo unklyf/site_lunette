@@ -5,7 +5,7 @@
       xmlns:h="http://java.sun.com/jsf/html"
       xmlns:f="http://java.sun.com/jsf/core">
     
-    <f:view locale="fr">
+    <f:view locale="#{language.locale}">
     <f:loadBundle basename="language.lang" var="msg" />
     
     <h:head>
@@ -15,40 +15,94 @@
         <title>Have a Look</title>
         
     </h:head>
-    <h:body>
-        <div id="container">
-            <!-- Header -->
-            <header>
-                <div id="logo">
-                    <ui:insert name="top">
-                        <h:graphicImage value="resources/images/logo.jpg" />
-                    </ui:insert>
-                </div>
-            </header>    
+    <h:body>            
+        <!-- Header -->        
+        <header>
+            <div id="bande">
+                <ui:insert name="top">
+                    <span class="right">
+                        <h:form>
+                            <!-- Language -->
+                            <span>
+                                <h:graphicImage value="resources/images/frenchflag.png" /> 
+                                <h:commandLink action="#{language.setToFrench()}" class="#{language.setBoldFr()}"> fr</h:commandLink>
+                                <h:outputText value=" - "/>
+                                <h:graphicImage value="resources/images/englishflag.jpg" /> 
+                                <h:commandLink action="#{language.setToEnglish()}" class="#{language.setBoldEn()}"> en</h:commandLink>
+                            </span>
+                            
+                            <!-- Login -->
+                            <span>
+                                <h:link value="#{msg.menu_login}" outcome="login.xhtml"></h:link>
+                            </span>                                
+                        </h:form>                      
+                    </span>
+                </ui:insert>
+            </div>
+        </header>   
+     
 
+        <!-- Start container  -->
+        <div id="container"> 
+                
+                <!-- Logo -->
+                <span class="left">
+                    <h:graphicImage value="resources/images/logo.jpg" />
+                </span>    
+                
+            <!-- Search & cart  -->
+            <div id="bandeshop">               
 
+                <!-- Search -->
+                <span class="range">
+                    <h:form>
+                        <h:inputText size="20"  value="#{msg.menu_search}" id="searchInput" />
+                        <h:commandButton action="#" image="resources/images/search.png" />
+                    </h:form>
+                </span>
 
+                <!-- Cart -->
+                <span >
+                    <h:link class="cart" value="#{msg.menu_cart} (0)" outcome="cart.xhtml"></h:link>
+                </span>
+            </div>
+          
+            
+            
             <!-- Navbar -->
-            <nav class="navbar">               
-                  <h:graphicImage value="resources/images/home.png"></h:graphicImage>
-                  <h:link value="#{msg.menu_home}"></h:link>
-                  <h:link value="#{msg.menu_categorie}" outcome="catalogue.xhtml"></h:link>
-                  <h:link value="#{msg.menu_promo}" outcome="promo.xhtml"></h:link>
-                  <h:link value="#{msg.menu_contact}" outcome="contact.xhtml"></h:link>
-                  <h:link value="#{msg.menu_about}" outcome="about.xhtml"></h:link>
-            </nav>
+            <div>
+                <nav class="navbar">
+                      <hr/>
+                      <!--<h:graphicImage value="resources/images/home.png"></h:graphicImage>-->
+                      <h:link value="#{msg.menu_home}" outcome="index.xhtml"></h:link>
+                      <h:link value="#{msg.menu_categorie}" outcome="catalogue.xhtml"></h:link>
+                      <h:link value="#{msg.menu_promo}" outcome="promo.xhtml"></h:link>
+                      <h:link value="#{msg.menu_contact}" outcome="contact.xhtml"></h:link>
+                      <h:link value="#{msg.menu_about}" outcome="about.xhtml"></h:link>
+                      <hr/>
+                </nav>
+            </div>
 
             <!-- Content -->
             <div id="content" class="center_content">
                 <ui:insert name="content">Content</ui:insert>
-            </div>
-
-
+            </div> 
+            
             <!-- Footer  -->
-            <div id="footer">
-                <ui:insert name="bottom">© Copyright 2013-2014 Have a Look . Inc - All Rights Reserved</ui:insert>
-            </div>
-        </div>
+            <footer>
+                
+            </footer>
+        </div><!-- End container  -->
+        
+        
+        <!-- Copyright  -->        
+        <ui:insert name="bottom">
+            <p class="copyright">
+                © Copyright 2013-2014 Have a Look .Inc - All Rights Reserved ~
+                 <h:link value="#{msg.menu_terms}" outcome="index.xhtml"></h:link>
+            </p>
+        </ui:insert>
+        
     </h:body>
     </f:view>
 </html>

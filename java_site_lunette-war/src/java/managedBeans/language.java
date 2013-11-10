@@ -34,7 +34,7 @@ public class language {
         this.boolfr = true;
     }
     
-    /*
+    
     public String setBoldFr () {
         if (boolfr)
             return "lang-selected";
@@ -47,5 +47,5 @@ public class language {
         else
             return "";
     }
-    */
+    
 }
