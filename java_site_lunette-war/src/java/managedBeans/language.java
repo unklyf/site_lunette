@@ -35,13 +35,13 @@ public class language {
     }
     
     
-    public String setBoldFr () {
+    public String setSelectFr () {
         if (boolfr)
             return "lang-selected";
         else
             return "";
     }
-     public String setBoldEn () {
+     public String setSelectEn () {
           if (boolen)
             return "lang-selected";
         else
