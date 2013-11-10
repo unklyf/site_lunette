@@ -47,7 +47,7 @@
                 
                 <!-- Logo -->
                 <span class="left">
-                    <h:graphicImage value="resources/images/logo.jpg" />
+                    <h:graphicImage value="resources/images/logo.png" />
                 </span>    
                 
             <!-- Search & cart  -->
@@ -90,7 +90,29 @@
             
             <!-- Footer  -->
             <footer>
-                
+                <h:panelGrid columns="4">
+                    <!-- 1ere ligne  -->
+                    <h:outputText class="big" value="#{msg.footer_contact}" />
+                    <h:outputText class="big" value="#{msg.footer_paiement}" />
+                    <h:outputText class="big" value="#{msg.footer_brands}" />
+                    
+                    <!-- 2eme ligne  -->
+                    <h:outputText value="88, rue des yeux" />
+                    <h:graphicImage value="resources/images/visa.png" />                    
+                    <h:graphicImage value="resources/images/ray-ban.png" /> 
+                    
+                    <!-- 3eme ligne  -->     
+                    <h:outputText value="B-8888 LunetteVille" />
+                    <h:graphicImage value="resources/images/bancontact.png" />
+                    <h:graphicImage value="resources/images/calvin-klein.jpeg" /> 
+                    
+                    <!-- 4eme ligne  -->
+                    <h:outputText value="Tel + 32 478 258" />
+                    <h:graphicImage value="resources/images/mastercard.png" />
+                    <h:graphicImage value="resources/images/vogue.jpg" /> 
+                    
+                     
+                </h:panelGrid>
             </footer>
         </div><!-- End container  -->
         

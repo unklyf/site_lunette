@@ -43,7 +43,7 @@ nav a{
 nav a:hover{ 
     height: 40px;
     color:black; 
-    background-color: rgba(255, 102,51, 0.20);
+    background-color: rgba(209, 162,26, 0.30);
     font-weight: normal;
 }
 
@@ -126,19 +126,34 @@ footer{
     background-color: rgba(0,0,0,0.5);
     margin-top : 40px;
     color: white;
-    padding: 40px;
+    padding-top: 15px;
+    padding-left: 10px;
+    padding-bottom: 15px;
     border-top: rgba(0,0,0,0.85) 2px solid;
+    font-size: 12px;
 }
 
-.active{
-    text-decoration: underline;
+footer td{
+    padding-top: -12px; 
+    text-align: center;
 }
+
+footer table{
+    width : 800px;
+    margin: auto;
+}
+
+.big{
+    font-size: 16px;
+    font-weight: bolder;
+    text-shadow: 0.1em 0.1em 0.2em black;
+}
+
 
 
 .copyright{ 
     margin : auto;
-    position:absolute;
-    bottom:5px;
+    padding-top: 40px;
     left: 12px;
     color: white;
     opacity:0.50;
