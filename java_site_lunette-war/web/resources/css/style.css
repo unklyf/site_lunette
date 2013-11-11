@@ -136,11 +136,12 @@ footer{
 footer td{
     padding-top: -12px; 
     text-align: center;
+    opacity: 0.75;
 }
 
 footer table{
     width : 800px;
-    margin: auto;
+    margin: auto;  
 }
 
 .big{
@@ -158,6 +159,8 @@ footer table{
     color: white;
     opacity:0.50;
     font-size: 13px;
+    position: absolute;
+    bottom:0;  
 }
 
 .copyright a{
