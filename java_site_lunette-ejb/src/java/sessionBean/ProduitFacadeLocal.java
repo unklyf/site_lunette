@@ -4,7 +4,7 @@
  */
 package sessionBean;
 
-import data.Produit;
+import model.Produit;
 import java.util.List;
 import javax.ejb.Local;
 

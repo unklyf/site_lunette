@@ -4,7 +4,7 @@
  */
 package sessionBean;
 
-import data.Ville;
+import model.Ville;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;

@@ -2,7 +2,7 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-package data;
+package model;
 
 import java.io.Serializable;
 import java.util.Collection;
@@ -25,45 +25,45 @@ import javax.xml.bind.annotation.XmlTransient;
  * @author etu17965
  */
 @Entity
-@Table(name = "CATEGORIE")
+@Table(name = "COULEUR")
 @XmlRootElement
 @NamedQueries({
-    @NamedQuery(name = "Categorie.findAll", query = "SELECT c FROM Categorie c"),
-    @NamedQuery(name = "Categorie.findByIdcategorie", query = "SELECT c FROM Categorie c WHERE c.idcategorie = :idcategorie")})
-public class Categorie implements Serializable {
+    @NamedQuery(name = "Couleur.findAll", query = "SELECT c FROM Couleur c"),
+    @NamedQuery(name = "Couleur.findByIdcouleur", query = "SELECT c FROM Couleur c WHERE c.idcouleur = :idcouleur")})
+public class Couleur implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Basic(optional = false)
-    @Column(name = "IDCATEGORIE")
-    private Integer idcategorie;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "categorie")
-    private Collection<Tradcategorie> tradcategorieCollection;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "idcategorie")
+    @Column(name = "IDCOULEUR")
+    private Integer idcouleur;
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "couleur")
+    private Collection<Tradcouleur> tradcouleurCollection;
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "idcouleur")
     private Collection<Produit> produitCollection;
 
-    public Categorie() {
+    public Couleur() {
     }
 
-    public Categorie(Integer idcategorie) {
-        this.idcategorie = idcategorie;
+    public Couleur(Integer idcouleur) {
+        this.idcouleur = idcouleur;
     }
 
-    public Integer getIdcategorie() {
-        return idcategorie;
+    public Integer getIdcouleur() {
+        return idcouleur;
     }
 
-    public void setIdcategorie(Integer idcategorie) {
-        this.idcategorie = idcategorie;
+    public void setIdcouleur(Integer idcouleur) {
+        this.idcouleur = idcouleur;
     }
 
     @XmlTransient
-    public Collection<Tradcategorie> getTradcategorieCollection() {
-        return tradcategorieCollection;
+    public Collection<Tradcouleur> getTradcouleurCollection() {
+        return tradcouleurCollection;
     }
 
-    public void setTradcategorieCollection(Collection<Tradcategorie> tradcategorieCollection) {
-        this.tradcategorieCollection = tradcategorieCollection;
+    public void setTradcouleurCollection(Collection<Tradcouleur> tradcouleurCollection) {
+        this.tradcouleurCollection = tradcouleurCollection;
     }
 
     @XmlTransient
@@ -78,18 +78,18 @@ public class Categorie implements Serializable {
     @Override
     public int hashCode() {
         int hash = 0;
-        hash += (idcategorie != null ? idcategorie.hashCode() : 0);
+        hash += (idcouleur != null ? idcouleur.hashCode() : 0);
         return hash;
     }
 
     @Override
     public boolean equals(Object object) {
         // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof Categorie)) {
+        if (!(object instanceof Couleur)) {
             return false;
         }
-        Categorie other = (Categorie) object;
-        if ((this.idcategorie == null && other.idcategorie != null) || (this.idcategorie != null && !this.idcategorie.equals(other.idcategorie))) {
+        Couleur other = (Couleur) object;
+        if ((this.idcouleur == null && other.idcouleur != null) || (this.idcouleur != null && !this.idcouleur.equals(other.idcouleur))) {
             return false;
         }
         return true;
@@ -97,7 +97,7 @@ public class Categorie implements Serializable {
 
     @Override
     public String toString() {
-        return "data.Categorie[ idcategorie=" + idcategorie + " ]";
+        return "data.Couleur[ idcouleur=" + idcouleur + " ]";
     }
     
 }

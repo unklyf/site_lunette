@@ -4,7 +4,7 @@
  */
 package sessionBean;
 
-import data.Commande;
+import model.Commande;
 import java.util.List;
 import javax.ejb.Local;
 

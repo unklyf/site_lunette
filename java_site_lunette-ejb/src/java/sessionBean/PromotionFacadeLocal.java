@@ -4,7 +4,7 @@
  */
 package sessionBean;
 
-import data.Promotion;
+import model.Promotion;
 import java.util.List;
 import javax.ejb.Local;
 

@@ -4,7 +4,7 @@
  */
 package sessionBean;
 
-import data.Adresse;
+import model.Adresse;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;

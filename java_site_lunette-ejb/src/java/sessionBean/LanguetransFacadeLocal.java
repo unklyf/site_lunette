@@ -4,7 +4,7 @@
  */
 package sessionBean;
 
-import data.Languetrans;
+import model.Languetrans;
 import java.util.List;
 import javax.ejb.Local;
 

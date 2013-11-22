@@ -4,7 +4,7 @@
  */
 package sessionBean;
 
-import data.Ville;
+import model.Ville;
 import java.util.List;
 import javax.ejb.Local;
 

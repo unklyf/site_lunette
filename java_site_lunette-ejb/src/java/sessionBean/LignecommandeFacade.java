@@ -4,7 +4,7 @@
  */
 package sessionBean;
 
-import data.Lignecommande;
+import model.Lignecommande;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;

@@ -4,7 +4,7 @@
  */
 package sessionBean;
 
-import data.Adresse;
+import model.Adresse;
 import java.util.List;
 import javax.ejb.Local;
 

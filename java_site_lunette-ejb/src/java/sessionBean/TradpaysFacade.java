@@ -4,7 +4,7 @@
  */
 package sessionBean;
 
-import data.Tradpays;
+import model.Tradpays;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;

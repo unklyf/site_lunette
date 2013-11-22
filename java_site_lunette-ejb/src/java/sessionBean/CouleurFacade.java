@@ -4,7 +4,7 @@
  */
 package sessionBean;
 
-import data.Couleur;
+import model.Couleur;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;

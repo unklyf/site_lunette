@@ -4,7 +4,7 @@
  */
 package sessionBean;
 
-import data.Tradville;
+import model.Tradville;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;

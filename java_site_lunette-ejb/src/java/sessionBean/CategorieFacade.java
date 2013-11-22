@@ -4,7 +4,7 @@
  */
 package sessionBean;
 
-import data.Categorie;
+import model.Categorie;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;

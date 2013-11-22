@@ -4,7 +4,7 @@
  */
 package sessionBean;
 
-import data.Promotion;
+import model.Promotion;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;

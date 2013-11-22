@@ -4,7 +4,7 @@
  */
 package sessionBean;
 
-import data.Tradville;
+import model.Tradville;
 import java.util.List;
 import javax.ejb.Local;
 

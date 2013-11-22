@@ -4,7 +4,7 @@
  */
 package sessionBean;
 
-import data.Couleur;
+import model.Couleur;
 import java.util.List;
 import javax.ejb.Local;
 

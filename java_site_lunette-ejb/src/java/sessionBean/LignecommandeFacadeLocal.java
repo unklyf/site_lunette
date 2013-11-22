@@ -4,7 +4,7 @@
  */
 package sessionBean;
 
-import data.Lignecommande;
+import model.Lignecommande;
 import java.util.List;
 import javax.ejb.Local;
 

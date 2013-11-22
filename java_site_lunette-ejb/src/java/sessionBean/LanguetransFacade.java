@@ -4,7 +4,7 @@
  */
 package sessionBean;
 
-import data.Languetrans;
+import model.Languetrans;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;

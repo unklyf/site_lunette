@@ -4,7 +4,7 @@
  */
 package sessionBean;
 
-import data.Pays;
+import model.Pays;
 import java.util.List;
 import javax.ejb.Local;
 

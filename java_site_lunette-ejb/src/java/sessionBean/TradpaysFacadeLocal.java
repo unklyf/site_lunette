@@ -4,7 +4,7 @@
  */
 package sessionBean;
 
-import data.Tradpays;
+import model.Tradpays;
 import java.util.List;
 import javax.ejb.Local;
 

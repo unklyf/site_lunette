@@ -2,7 +2,7 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-package data;
+package model;
 
 import java.io.Serializable;
 import javax.persistence.Basic;
@@ -15,22 +15,22 @@ import javax.validation.constraints.NotNull;
  * @author etu17965
  */
 @Embeddable
-public class TradproduitPK implements Serializable {
+public class TradvillePK implements Serializable {
     @Basic(optional = false)
     @NotNull
     @Column(name = "IDLANGUE")
     private int idlangue;
     @Basic(optional = false)
     @NotNull
-    @Column(name = "IDPRODUIT")
-    private int idproduit;
+    @Column(name = "IDVILLE")
+    private int idville;
 
-    public TradproduitPK() {
+    public TradvillePK() {
     }
 
-    public TradproduitPK(int idlangue, int idproduit) {
+    public TradvillePK(int idlangue, int idville) {
         this.idlangue = idlangue;
-        this.idproduit = idproduit;
+        this.idville = idville;
     }
 
     public int getIdlangue() {
@@ -41,33 +41,33 @@ public class TradproduitPK implements Serializable {
         this.idlangue = idlangue;
     }
 
-    public int getIdproduit() {
-        return idproduit;
+    public int getIdville() {
+        return idville;
     }
 
-    public void setIdproduit(int idproduit) {
-        this.idproduit = idproduit;
+    public void setIdville(int idville) {
+        this.idville = idville;
     }
 
     @Override
     public int hashCode() {
         int hash = 0;
         hash += (int) idlangue;
-        hash += (int) idproduit;
+        hash += (int) idville;
         return hash;
     }
 
     @Override
     public boolean equals(Object object) {
         // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof TradproduitPK)) {
+        if (!(object instanceof TradvillePK)) {
             return false;
         }
-        TradproduitPK other = (TradproduitPK) object;
+        TradvillePK other = (TradvillePK) object;
         if (this.idlangue != other.idlangue) {
             return false;
         }
-        if (this.idproduit != other.idproduit) {
+        if (this.idville != other.idville) {
             return false;
         }
         return true;
@@ -75,7 +75,7 @@ public class TradproduitPK implements Serializable {
 
     @Override
     public String toString() {
-        return "data.TradproduitPK[ idlangue=" + idlangue + ", idproduit=" + idproduit + " ]";
+        return "data.TradvillePK[ idlangue=" + idlangue + ", idville=" + idville + " ]";
     }
     
 }
