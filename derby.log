@@ -1,0 +1,11 @@
+Fri Nov 22 11:01:20 CET 2013 : Apache Derby Network Server - 10.8.1.2 - (1095077) started and ready to accept connections on port 1527
+----------------------------------------------------------------
+Fri Nov 22 11:01:22 CET 2013:
+Booting Derby version The Apache Software Foundation - Apache Derby - 10.8.1.2 - (1095077): instance a816c00e-0142-7f41-af18-ffff8eeac9ce 
+on database directory C:\Users\etu17965\Documents\NetBeansProjects\site_lunette\dbLunettes  with class loader sun.misc.Launcher$AppClassLoader@709db0ad 
+Loaded from file:/C:/Program%20Files/glassfish-3.1.2.2/javadb/lib/derby.jar
+java.vendor=Oracle Corporation
+java.runtime.version=1.7.0_21-b11
+user.dir=C:\Program Files\glassfish-3.1.2.2\javadb
+derby.system.home=C:\Users\etu17965\Documents\NetBeansProjects\site_lunette
+Database Class Loader started - derby.database.classpath=''
