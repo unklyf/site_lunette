@@ -1,18 +1,42 @@
 <?xml version='1.0' encoding='UTF-8' ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:ui="http://java.sun.com/jsf/facelets">
-
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html">
+      
     <body>
 
         <ui:composition template="./defaultTemplate.xhtml">
 
 
-            <ui:define name="content">
-                ABOUT
+            <ui:define name="content">               
+                <p><h:outputText value="#{msg.menu_aboutus_1}"/></p>
+                <p><h:outputText value="#{msg.menu_aboutus_2}"/></p>  
+                <div>
+                   <p>
+                       <h:graphicImage value="../resources/images/jo.jpg" />
+                   <span class="aboutimage">
+                       <h:outputText  value="BELLENGER Jordan"/> 
+                       <br/>
+                       <h:outputText  value="0483/38.44.72"/>
+                       <br/>
+                       <h:outputText  value="bellenger.jordan@gmail.com"/>
+                   </span>
+                   </p>
+                </div>
+                <div>
+                   <p>
+                       <h:graphicImage value="../resources/images/lo.png.jpg" />
+                   <span class="aboutimage">
+                       <h:outputText  value="SCHMITZ Loic "/> 
+                       <br/>
+                       <h:outputText  value="0494/08.64.24"/>
+                       <br/>
+                       <h:outputText  value="schmitz.loic@gmail.com"/>
+                   </span>
+                   </p>
+                </div>   
             </ui:define>
-
-
         </ui:composition>
 
     </body>
