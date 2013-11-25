@@ -195,3 +195,10 @@ footer table{
 .small a{
     color: black;
 }
+
+.aboutimage{
+    float:right;
+    position: absolute;
+    margin-left: 10px;
+    padding-top: 50px;
+}
