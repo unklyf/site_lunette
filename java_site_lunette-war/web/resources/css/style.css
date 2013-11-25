@@ -72,7 +72,7 @@ nav ul li:hover ul {
 
 nav li:hover ul li {
  float:none;
- background-color: rgba(213, 215,215,0.9);
+ background-color: rgba(213, 215,215,0.95);
  border-bottom: 1px rgba(0, 0,0, 0.65) solid;
  margin-left: -20px;
 }
@@ -117,11 +117,13 @@ div{
     color: white; 
     font-size: 11px;
     font-weight: bold;
+    
 }
 
 #bande span{
     margin-left: 25px;
 }
+
 
 .lang-selected {
     text-decoration: none;
@@ -199,15 +201,14 @@ footer table{
     color: white;
 }
 
-.red{
-    color: white;
-    margin-left: 10px;
-    font-size: 12px;
-    height : 30px;
-    border-radius: 4px;
-    padding: 5px;
-    background-color: rgba(238,59,59,0.75);
-    
+.red{ 
+    color: white; 
+    margin-left: 10px; 
+    font-size: 12px; 
+    border-radius: 4px; 
+    padding: 5px; 
+    background-color: rgba(238,59,59,0.75); 
+    position: absolute; 
 }
 
 .button{
@@ -232,4 +233,20 @@ footer table{
     position: absolute;
     margin-left: 10px;
     padding-top: 50px;
+}
+
+.small{ 
+    font-size: 11px; 
+} 
+
+.small a{ 
+    color: black; 
+}
+
+#center_content{ 
+    text-align: center; 
+}
+
+#center_content p{ 
+    margin-top : 20px; 
 }

@@ -11,7 +11,8 @@
 
             
             <ui:define name="content">
-                
+             <div id="center_content">  
+                 <div id="bande_center">
                 <h:form>
                     <p>
                         <h:outputText value="#{msg.log_login}" />
@@ -26,11 +27,13 @@
                         <h:message class="red" for="password"/>
                     </p>
                     
-                    <h:commandButton class="button" value="#{msg.log_button}" action="tttt" /> <br />
-                    <h:link class="small" value="#{msg.log_create}" outcome="createClient.xhtml" />
-                    
+                    <p>
+                        <h:commandButton class="button" value="#{msg.log_button}" action="tttt" /> <br />
+                        <h:link class="small" value="#{msg.log_create}" outcome="createClient.xhtml" />
+                    </p>
                 </h:form>
-                
+                     </div>
+             </div>
                 
                 
             </ui:define>
