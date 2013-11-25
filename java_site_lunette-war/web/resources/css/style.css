@@ -17,35 +17,70 @@ a:hover{
    font-weight: bold; 
 }
 
-nav{
-    width : 800px;  
-    margin-top : 40px;
-    text-align:center; 
-    background-color: rgba(213, 215,215, 0.20);
-    opacity:0.70;
+
+nav {
+ height: 40px;
+ width : 800px;  
+ margin-top : 40px;
+ text-align:center;
+ background-color: rgba(213, 215,215, 0.40);
+
+ border-bottom: 1px rgba(0, 0,0, 0.65) solid;
+ border-top: 1px rgba(0, 0,0, 0.65) solid;
+}
+ 
+nav ul {
+ margin:auto;
+ list-style-type:none; 
 }
 
-nav li{  
-    list-style-type: none;
-    display: inline-block;     
+nav li {
+ float:left; 
+ margin:auto;
+ padding:0;
 }
 
-
-nav a{
-    padding-top : 10px;
-    padding-bottom: 10px; 
-    padding-left: 30px;
-    padding-right: 30px;
-    text-decoration: none;
-    color:black; 
+nav li a {
+ display:block;
+ width:auto;
+ color:white;
+ padding-top : 10px;
+ padding-bottom: 5px; 
+ padding-left: 40px;
+ padding-right: 40px;
+ text-decoration: none;
+ text-align:left;
+ color:black; 
 }
 
-nav a:hover{ 
-    height: 40px;
-    color:black; 
-    background-color: rgba(209, 162,26, 0.30);
-    font-weight: normal;
+nav li a:hover {
+ height: 25px;
+ color:black; 
+ background-color: rgba(209, 162,26, 1);
+ font-weight: normal;
 }
+ 
+nav ul li ul {
+ display:none;
+ padding-top: 6px;
+}
+ 
+nav ul li:hover ul {
+ display: block;
+ padding-top: 5px;
+}
+
+nav li:hover ul li {
+ float:none;
+ background-color: rgba(213, 215,215,0.95);
+ border-bottom: 1px rgba(0, 0,0, 0.65) solid;
+ margin-left: -20px;
+}
+ 
+nav li ul {
+ position:absolute;
+}
+ 
 
 #container{
     margin: auto;
@@ -82,11 +117,13 @@ div{
     color: white; 
     font-size: 11px;
     font-weight: bold;
+    
 }
 
 #bande span{
     margin-left: 25px;
 }
+
 
 .lang-selected {
     text-decoration: none;
@@ -113,7 +150,7 @@ div{
     color: white;
 }
 
-#center_content{
+#content{
     width: auto;
     padding : 40px;
     margin-top: 35px;
@@ -150,8 +187,6 @@ footer table{
     text-shadow: 0.1em 0.1em 0.2em black;
 }
 
-
-
 .copyright{ 
     margin : auto;
     padding-top: 40px;
@@ -159,8 +194,6 @@ footer table{
     color: white;
     opacity:0.50;
     font-size: 13px;
-    position: absolute;
-    bottom:0;  
 }
 
 .copyright a{
@@ -168,15 +201,14 @@ footer table{
     color: white;
 }
 
-.red{
-    color: white;
-    margin-left: 10px;
-    font-size: 12px;
-    height : 30px;
-    border-radius: 4px;
-    padding: 5px;
-    background-color: rgba(238,59,59,0.75);
-    
+.red{ 
+    color: white; 
+    margin-left: 10px; 
+    font-size: 12px; 
+    border-radius: 4px; 
+    padding: 5px; 
+    background-color: rgba(238,59,59,0.75); 
+    position: absolute; 
 }
 
 .button{
@@ -203,6 +235,18 @@ footer table{
     padding-top: 50px;
 }
 
-.createprenom{
-    margin-left: 10px;
+.small{ 
+    font-size: 11px; 
+} 
+
+.small a{ 
+    color: black; 
+}
+
+#center_content{ 
+    text-align: center; 
+}
+
+#center_content p{ 
+    margin-top : 20px; 
 }

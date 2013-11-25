@@ -14,6 +14,20 @@
         <link href="./resources/css/cssLayout.css" rel="stylesheet" type="text/css" />
         <link rel="shortcut icon" type="image/x-icon" href="resources/images/favicon.ico"/>
         <title>Have a Look</title>
+        <!--[if !IE]> <-->
+        <style type="text/CSS">
+        #menu li ul {
+         position:absolute;
+         }
+        </style>
+        <!--><![endif]-->
+        <!--[if IE 8]>
+        <style type="text/CSS">
+        #menu li ul {
+         position:absolute;
+         }
+        </style>
+        <![endif]--> 
         
         
     </h:head>
@@ -73,20 +87,30 @@
             
             <!-- Navbar -->
             <div>
-                <nav class="navbar">
-                      <hr/>
-                      <h:link value="#{msg.menu_home}" outcome="index.xhtml"></h:link>
-                      <h:link value="#{msg.menu_categorie}" outcome="catalogue.xhtml"></h:link>
-                      <h:link value="#{msg.menu_promo}" outcome="promo.xhtml"></h:link>
-                      <h:link value="#{msg.menu_about}" outcome="about.xhtml"></h:link>
-                      <hr/>
+                <nav>
+                        <ul>
+                            <li><h:link value="#{msg.menu_home}" outcome="index.xhtml"></h:link></li>
+                            <li><h:link value="#{msg.menu_categorie}" outcome="catalogue.xhtml"></h:link>
+                                <ul>
+                                    <li class="liste"><h:link value="#{msg.cat_lunsol}" outcome="catalogue.xhtml"/></li>
+                                    <li class="liste"><h:link value="#{msg.cat_lunvue}" outcome="catalogue.xhtml"/></li>
+                                    <li class="liste"><h:link value="#{msg.cat_lunsport}" outcome="catalogue.xhtml"/></li>
+                                    <li class="liste"><h:link value="#{msg.cat_lunlect}" outcome="catalogue.xhtml"/></li>
+                                    <li class="liste"><h:link value="#{msg.cat_lunperso}" outcome="catalogue.xhtml"/></li>
+                                    <li class="liste"><h:link value="#{msg.cat_lunpiscine}" outcome="catalogue.xhtml"/></li>                                    
+                                </ul>
+                            
+                            </li>
+                            <li><h:link value="#{msg.menu_promo}" outcome="promo.xhtml"></h:link></li>
+                            <li><h:link value="#{msg.menu_about}" outcome="about.xhtml"></h:link></li>
+                         </ul>
                 </nav>
             </div>
 
             <!-- Content -->
-            <div  class="center_content">
-                <ui:insert name="content">Content
-                
+            <div  id="content">
+                <ui:insert name="content">
+                    Content                
                 </ui:insert>
             </div> 
             
@@ -111,21 +135,23 @@
                     <!-- 4eme ligne  -->
                     <h:outputText value="Tel + 32 478 258" />
                     <h:graphicImage value="resources/images/mastercard.png" />
-                    <h:graphicImage value="resources/images/vogue.jpg" /> 
-                    
-                     
+                    <h:graphicImage value="resources/images/vogue.jpg" />    
                 </h:panelGrid>
+                
+                
             </footer>
+            
+             <!-- Copyright  -->   
+             <ui:insert name="bottom">
+                <p class="copyright">
+                    © Copyright 2013-2014 Have a Look .Inc - All Rights Reserved ~
+                     <h:link value="#{msg.menu_terms}" outcome="index.xhtml"></h:link>
+                </p>
+            </ui:insert>
         </div><!-- End container  -->
         
-        
-        <!-- Copyright  -->        
-        <ui:insert name="bottom">
-            <p class="copyright">
-                © Copyright 2013-2014 Have a Look .Inc - All Rights Reserved ~
-                 <h:link value="#{msg.menu_terms}" outcome="index.xhtml"></h:link>
-            </p>
-        </ui:insert>
+   
+       
         
     </h:body>
     </f:view>
