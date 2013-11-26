@@ -26,12 +26,13 @@ import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
- * @author etu17965
+ * @author Unklyf
  */
 @Entity
 @Table(name = "CLIENT")
 @XmlRootElement
 @NamedQueries({
+    @NamedQuery(name = "Client.connect", query = "SELECT c FROM Client c WHERE c.pseudo = :pseudo AND c.motdepasse = :motdepasse"),
     @NamedQuery(name = "Client.findAll", query = "SELECT c FROM Client c"),
     @NamedQuery(name = "Client.findByIdclient", query = "SELECT c FROM Client c WHERE c.idclient = :idclient"),
     @NamedQuery(name = "Client.findByNom", query = "SELECT c FROM Client c WHERE c.nom = :nom"),
@@ -39,7 +40,6 @@ import javax.xml.bind.annotation.XmlTransient;
     @NamedQuery(name = "Client.findByNumtelephone", query = "SELECT c FROM Client c WHERE c.numtelephone = :numtelephone"),
     @NamedQuery(name = "Client.findByMail", query = "SELECT c FROM Client c WHERE c.mail = :mail"),
     @NamedQuery(name = "Client.findByMotdepasse", query = "SELECT c FROM Client c WHERE c.motdepasse = :motdepasse"),
-    @NamedQuery(name = "Client.findByAvatar", query = "SELECT c FROM Client c WHERE c.avatar = :avatar"),
     @NamedQuery(name = "Client.findByPseudo", query = "SELECT c FROM Client c WHERE c.pseudo = :pseudo")})
 public class Client implements Serializable {
     private static final long serialVersionUID = 1L;
@@ -58,9 +58,7 @@ public class Client implements Serializable {
     @Size(min = 1, max = 50)
     @Column(name = "PRENOM")
     private String prenom;
-    @Basic(optional = false)
-    @NotNull
-    @Size(min = 1, max = 50)
+    @Size(max = 50)
     @Column(name = "NUMTELEPHONE")
     private String numtelephone;
     @Basic(optional = false)
@@ -73,10 +71,9 @@ public class Client implements Serializable {
     @Size(min = 1, max = 30)
     @Column(name = "MOTDEPASSE")
     private String motdepasse;
-    @Size(max = 255)
-    @Column(name = "AVATAR")
-    private String avatar;
-    @Size(max = 40)
+    @Basic(optional = false)
+    @NotNull
+    @Size(min = 1, max = 40)
     @Column(name = "PSEUDO")
     private String pseudo;
     @JoinColumn(name = "IDADRESSE", referencedColumnName = "IDADRESSE")
@@ -92,13 +89,13 @@ public class Client implements Serializable {
         this.idclient = idclient;
     }
 
-    public Client(Integer idclient, String nom, String prenom, String numtelephone, String mail, String motdepasse) {
+    public Client(Integer idclient, String nom, String prenom, String mail, String motdepasse, String pseudo) {
         this.idclient = idclient;
         this.nom = nom;
         this.prenom = prenom;
-        this.numtelephone = numtelephone;
         this.mail = mail;
         this.motdepasse = motdepasse;
+        this.pseudo = pseudo;
     }
 
     public Integer getIdclient() {
@@ -149,14 +146,6 @@ public class Client implements Serializable {
         this.motdepasse = motdepasse;
     }
 
-    public String getAvatar() {
-        return avatar;
-    }
-
-    public void setAvatar(String avatar) {
-        this.avatar = avatar;
-    }
-
     public String getPseudo() {
         return pseudo;
     }
@@ -204,7 +193,7 @@ public class Client implements Serializable {
 
     @Override
     public String toString() {
-        return "data.Client[ idclient=" + idclient + " ]";
+        return "model.Client[ idclient=" + idclient + " ]";
     }
     
 }

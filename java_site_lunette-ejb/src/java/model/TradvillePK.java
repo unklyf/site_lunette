@@ -12,7 +12,7 @@ import javax.validation.constraints.NotNull;
 
 /**
  *
- * @author etu17965
+ * @author Unklyf
  */
 @Embeddable
 public class TradvillePK implements Serializable {
@@ -75,7 +75,7 @@ public class TradvillePK implements Serializable {
 
     @Override
     public String toString() {
-        return "data.TradvillePK[ idlangue=" + idlangue + ", idville=" + idville + " ]";
+        return "model.TradvillePK[ idlangue=" + idlangue + ", idville=" + idville + " ]";
     }
     
 }

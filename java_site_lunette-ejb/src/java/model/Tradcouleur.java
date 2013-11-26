@@ -20,7 +20,7 @@ import javax.xml.bind.annotation.XmlRootElement;
 
 /**
  *
- * @author etu17965
+ * @author Unklyf
  */
 @Entity
 @Table(name = "TRADCOULEUR")
@@ -116,7 +116,7 @@ public class Tradcouleur implements Serializable {
 
     @Override
     public String toString() {
-        return "data.Tradcouleur[ tradcouleurPK=" + tradcouleurPK + " ]";
+        return "model.Tradcouleur[ tradcouleurPK=" + tradcouleurPK + " ]";
     }
     
 }

@@ -26,7 +26,7 @@ import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
- * @author etu17965
+ * @author Unklyf
  */
 @Entity
 @Table(name = "PROMOTION")
@@ -153,7 +153,7 @@ public class Promotion implements Serializable {
 
     @Override
     public String toString() {
-        return "data.Promotion[ idpromo=" + idpromo + " ]";
+        return "model.Promotion[ idpromo=" + idpromo + " ]";
     }
     
 }

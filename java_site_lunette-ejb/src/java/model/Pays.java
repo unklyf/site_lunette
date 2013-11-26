@@ -22,7 +22,7 @@ import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
- * @author etu17965
+ * @author Unklyf
  */
 @Entity
 @Table(name = "PAYS")
@@ -97,7 +97,7 @@ public class Pays implements Serializable {
 
     @Override
     public String toString() {
-        return "data.Pays[ idpays=" + idpays + " ]";
+        return "model.Pays[ idpays=" + idpays + " ]";
     }
     
 }
