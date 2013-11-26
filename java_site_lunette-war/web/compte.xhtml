@@ -1,0 +1,87 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html">
+
+    <body>
+
+        <ui:composition template="./defaultTemplate.xhtml">
+
+     
+            <ui:define name="content">
+                <h:form>
+                    <p class="createintro">Vos coordonnées</p>
+                    <p>
+                        <h:outputText value="#{msg.create_nom}" />
+                        <h:inputText size="20"  value=""/>
+                        <h:outputText class ="createprenom" value ="#{msg.create_prenom}" />
+                        <h:inputText size="20"  value=""/>
+                    </p>    
+                    <p>
+                        <h:outputText value="#{msg.create_mail}" />
+                        <h:inputText size="20"  value=""/>
+                    </p>                        
+                    <p>
+                        <h:outputText value="#{msg.create_rue}" />
+                        <h:inputText size="20"  value=""/>
+                    </p>
+                    <p>
+                        <h:outputText value="#{msg.create_numero}" />
+                        <h:inputText size="3"  value=""/>
+                         <h:outputText value="#{msg.create_boite}" style="padding-left: 50px" />
+                        <h:inputText size="3"  value=""/>
+                        (*)
+                    </p>
+                    <p>
+                        <h:outputText value="#{msg.create_codepostal}" />
+                        <h:inputText size="5"  value=""/>
+                         <h:outputText value="#{msg.create_ville}"  style="padding-left: 10px" />
+                        <h:inputText size="20"  value=""/>                     
+                    </p>
+                    
+                    <p>
+                        <h:outputText value="#{msg.create_pays}" />
+                        <select>
+                            <option>Belgique</option>
+                            <option>France</option>
+                            <option>Angleterre</option>
+                        </select>       
+                    </p> 
+                    <p>
+                        <h:outputText value="#{msg.create_numtel}" />
+                        <h:inputText size="20"  value=""/>
+                        (*)
+                    </p>
+                    
+                    <p class="createintro">Pseudo et mot de passe </p>
+                    
+                    <p>
+                        <h:outputText value="#{msg.create_pseudo}" />
+                        <h:inputText size="20"  value=""/>                                   
+                    </p>
+                    
+                    <p>
+                        <h:outputText value="#{msg.create_motdepasse}" />
+                        <h:inputText size="20"  value=""/>                                   
+                    </p>
+                    
+                    <p>
+                        <h:outputText value="#{msg.create_motdepassedeux}" />
+                        <h:inputText size="20"  value=""/>                                   
+                    </p>
+                    <p align="left"  ><br/>
+                        <h:commandButton class="button" id="button" value="S'inscrire" action="act" /><br/>
+                        <h:outputText class="small" value="(*) = facultatif" />
+                    </p>  
+                    
+                    
+                </h:form>
+            </ui:define>
+
+         
+
+        </ui:composition>
+
+    </body>
+</html>

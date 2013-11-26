@@ -250,3 +250,15 @@ footer table{
 #center_content p{ 
     margin-top : 20px; 
 }
+
+.createprenom{
+    margin-left: 10px;
+}
+
+.createintro{
+    background-color: #DEB887;
+    border-bottom: solid;
+    border-top: solid;
+    text-align: center;
+    font-weight: bold;
+}
