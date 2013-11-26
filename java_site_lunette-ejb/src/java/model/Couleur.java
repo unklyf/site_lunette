@@ -22,7 +22,7 @@ import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
- * @author etu17965
+ * @author Unklyf
  */
 @Entity
 @Table(name = "COULEUR")
@@ -97,7 +97,7 @@ public class Couleur implements Serializable {
 
     @Override
     public String toString() {
-        return "data.Couleur[ idcouleur=" + idcouleur + " ]";
+        return "model.Couleur[ idcouleur=" + idcouleur + " ]";
     }
     
 }

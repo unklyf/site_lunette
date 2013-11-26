@@ -24,7 +24,7 @@ import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
- * @author etu17965
+ * @author Unklyf
  */
 @Entity
 @Table(name = "FOURNISSEUR")
@@ -137,7 +137,7 @@ public class Fournisseur implements Serializable {
 
     @Override
     public String toString() {
-        return "data.Fournisseur[ idfournisseur=" + idfournisseur + " ]";
+        return "model.Fournisseur[ idfournisseur=" + idfournisseur + " ]";
     }
     
 }

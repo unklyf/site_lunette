@@ -29,7 +29,7 @@ import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
- * @author etu17965
+ * @author Unklyf
  */
 @Entity
 @Table(name = "COMMANDE")
@@ -153,7 +153,7 @@ public class Commande implements Serializable {
 
     @Override
     public String toString() {
-        return "data.Commande[ idcommande=" + idcommande + " ]";
+        return "model.Commande[ idcommande=" + idcommande + " ]";
     }
     
 }

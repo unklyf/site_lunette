@@ -22,7 +22,7 @@ import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
- * @author etu17965
+ * @author Unklyf
  */
 @Entity
 @Table(name = "CATEGORIE")
@@ -97,7 +97,7 @@ public class Categorie implements Serializable {
 
     @Override
     public String toString() {
-        return "data.Categorie[ idcategorie=" + idcategorie + " ]";
+        return "model.Categorie[ idcategorie=" + idcategorie + " ]";
     }
     
 }

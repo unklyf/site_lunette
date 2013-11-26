@@ -20,7 +20,7 @@ import javax.xml.bind.annotation.XmlRootElement;
 
 /**
  *
- * @author etu17965
+ * @author Unklyf
  */
 @Entity
 @Table(name = "LIGNECOMMANDE")
@@ -130,7 +130,7 @@ public class Lignecommande implements Serializable {
 
     @Override
     public String toString() {
-        return "data.Lignecommande[ lignecommandePK=" + lignecommandePK + " ]";
+        return "model.Lignecommande[ lignecommandePK=" + lignecommandePK + " ]";
     }
     
 }

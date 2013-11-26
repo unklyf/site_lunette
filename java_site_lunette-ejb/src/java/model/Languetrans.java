@@ -24,7 +24,7 @@ import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
- * @author etu17965
+ * @author Unklyf
  */
 @Entity
 @Table(name = "LANGUETRANS")
@@ -151,7 +151,7 @@ public class Languetrans implements Serializable {
 
     @Override
     public String toString() {
-        return "data.Languetrans[ idlangue=" + idlangue + " ]";
+        return "model.Languetrans[ idlangue=" + idlangue + " ]";
     }
     
 }

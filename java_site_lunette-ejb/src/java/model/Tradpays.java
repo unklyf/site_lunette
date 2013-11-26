@@ -20,7 +20,7 @@ import javax.xml.bind.annotation.XmlRootElement;
 
 /**
  *
- * @author etu17965
+ * @author Unklyf
  */
 @Entity
 @Table(name = "TRADPAYS")
@@ -116,7 +116,7 @@ public class Tradpays implements Serializable {
 
     @Override
     public String toString() {
-        return "data.Tradpays[ tradpaysPK=" + tradpaysPK + " ]";
+        return "model.Tradpays[ tradpaysPK=" + tradpaysPK + " ]";
     }
     
 }

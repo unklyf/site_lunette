@@ -16,19 +16,23 @@
                 <h:form>
                     <p>
                         <h:outputText value="#{msg.log_login}" />
-                        <h:inputText size="20"  value="" requiredMessage="#{msg.log_logerror}" required="true" id="login" />
+                        <h:inputText size="20"  value="#{connexion.pseudo}" requiredMessage="#{msg.log_logerror}" required="true" id="login" />
                         <h:message class="red" for="login"/>
                         
                     </p>
                     
                     <p>
                         <h:outputText value="#{msg.log_password}"  /> 
-                        <h:inputSecret size="20"  value="" requiredMessage="#{msg.log_passerror}" required="true" id="password" />
-                        <h:message class="red" for="password"/>
+                        <h:inputSecret size="20"  value="#{connexion.motdepasse}" requiredMessage="#{msg.log_passerror}" required="true" id="motdepasse" />
+                        <h:message class="red" for="motdepasse"/>
                     </p>
                     
                     <p>
+
                         <h:commandButton class="button" value="#{msg.log_button}" action="tttt" /> <br />
+
+                        <h:commandButton class="button" value="#{msg.log_button}" action="#{connexion.login()}" /> <br />
+
                         <h:link class="small" value="#{msg.log_create}" outcome="compte.xhtml" />
                     </p>
                 </h:form>

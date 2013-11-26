@@ -12,7 +12,7 @@ import javax.validation.constraints.NotNull;
 
 /**
  *
- * @author etu17965
+ * @author Unklyf
  */
 @Embeddable
 public class LignecommandePK implements Serializable {
@@ -75,7 +75,7 @@ public class LignecommandePK implements Serializable {
 
     @Override
     public String toString() {
-        return "data.LignecommandePK[ idcommande=" + idcommande + ", idproduit=" + idproduit + " ]";
+        return "model.LignecommandePK[ idcommande=" + idcommande + ", idproduit=" + idproduit + " ]";
     }
     
 }
