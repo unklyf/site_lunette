@@ -72,7 +72,7 @@ public class connexion {
         }
         else {
             setErreur(true);
-            return "login";
+            return null;
         }
           
     }
@@ -111,6 +111,14 @@ public class connexion {
         else
             return "";   
     }
+    
+    
+   public String compte(){
+       if(isConnected())
+           return "msg.menu_compte";
+       else
+           return "msg.menu_login";
+   }
     
     /**
     * @return the erreur
