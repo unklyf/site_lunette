@@ -38,6 +38,4 @@ public class ClientFacade extends AbstractFacade<Client> implements ClientFacade
         query.setParameter("motdepasse", motdepasse);
         return query.getResultList();
     }
-    
-    
 }
