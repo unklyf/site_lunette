@@ -97,6 +97,9 @@ public class Client implements Serializable {
         this.motdepasse = motdepasse;
         this.pseudo = pseudo;
     }
+    public Client(String nom){
+        this.nom=nom;
+    }
 
     public Integer getIdclient() {
         return idclient;
