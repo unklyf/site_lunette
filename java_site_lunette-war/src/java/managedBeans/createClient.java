@@ -89,19 +89,5 @@ public class createClient {
         return erreur;
     }
     
-    
-    public String addCustomer() {     
-        
-        Client cli = new Client(this.getNom());
-        /*List<Client> testCli = clientFacade.findByLogin(this.getPseudo());
-        if(testCli.isEmpty()) {
-            clientFacade.create(cli);
-            return "index";
-        }
-        else {*/
-            setErreur(true);
-            return "compte";
-       // }
-    }
 
 }
