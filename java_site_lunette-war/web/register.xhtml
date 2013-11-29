@@ -1,0 +1,132 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+
+    <body>
+
+        <ui:composition template="./defaultTemplate.xhtml">
+
+     
+            <ui:define name="content">
+                <h:form>
+                    <p class="createintro">Vos coordonnées</p>
+                    <div>
+                        <p>
+                            <h:outputLabel value="#{msg.create_nom}" for="nom"> <span class="small"><h:outputText value="*"/></span></h:outputLabel> 
+                            <br/>
+                            <h:inputText size="20"  value="#{createClient.nom}" id="nom" required="true" requiredMessage="#{msg.register_name_required}" validatorMessage="#{msg.register_password_validator}">
+                                <f:validateLength minimum="2" maximum="50" />
+                            </h:inputText>
+                             <h:message class="red" for="nom"/>
+                        </p>
+                        <p>
+                            <h:outputLabel value ="#{msg.create_prenom}" for="prenom"> <span class="small"><h:outputText value="*"/></span></h:outputLabel>
+                            <br/>
+                            <h:inputText size="20"  value="#{createClient.prenom}" id="prenom" required="true" requiredMessage="#{msg.register_prenom_required}" validatorMessage="#{msg.register_password_validator}">
+                                <f:validateLength minimum="2" maximum="50" />
+                            </h:inputText>
+                             <h:message class="red" for="prenom"/>
+                        </p>    
+                        <p>
+                            <h:outputLabel value="#{msg.create_mail}" for="mail"><span class="small"><h:outputText value="*"/></span></h:outputLabel>
+                            <br/>
+                            <h:inputText size="20"  value="#{createClient.mail}" id="mail" required="true" requiredMessage="#{msg.register_mail_required}" validatorMessage="#{msg.register_password_validator}">
+                                <f:validateLength minimum="2" maximum="50" />
+                            </h:inputText>
+                             <h:message class="red" for="mail"/>
+                        </p>                        
+                        <p>
+                            <h:outputLabel value="#{msg.create_rue}" for="rue"><span class="small"><h:outputText value="*"/></span></h:outputLabel>
+                            <br/>
+                            <h:inputText size="20"  value="#{createClient.rue}" id="rue" required="true" requiredMessage="#{msg.register_rue_required}" validatorMessage="#{msg.register_password_validator}">
+                                <f:validateLength minimum="2" maximum="50" />
+                            </h:inputText>
+                             <h:message class="red" for="rue"/>
+                        </p>
+                        <p>
+                            <h:outputLabel value="#{msg.create_numero}" for="numero"><span class="small"><h:outputText value="*"/></span></h:outputLabel>
+                            <br/>
+                            <h:inputText size="20"  value="#{createClient.numero}" id="numero" required="true" requiredMessage="#{msg.register_numero_required}" validatorMessage="#{msg.register_password_validator}">
+                                   <f:validateDoubleRange minimum="1" />
+                            </h:inputText>
+                             <h:message class="red" for="numero"/>
+                        </p> 
+                    </div>
+                    <div >
+                        <p>   
+                             <h:outputLabel value="#{msg.create_boite}"/>
+                             <br/>
+                             <h:inputText size="3"  value="#{createClient.boite}"/>
+                        </p>
+                        <p>
+                            <h:outputLabel value="#{msg.create_codepostal}" for="codepostal"><span class="small"><h:outputText value="*"/></span></h:outputLabel>
+                            <br/>
+                            <h:inputText size="20"  value="#{createClient.codepostal}" id="codepostal" required="true" requiredMessage="#{msg.register_codepostal_required}" validatorMessage="#{msg.register_password_validator}">
+                                   <f:validateDoubleRange minimum="1" />
+                            </h:inputText>
+                             <h:message class="red" for="codepostal"/>
+                        </p>
+                        <p>
+                             <h:outputLabel value="#{msg.create_ville}" for="ville"><span class="small"><h:outputText value="*"/></span></h:outputLabel>
+                            <br/>
+                            <h:inputText size="20"  value="#{createClient.ville}" id="ville" required="true" requiredMessage="#{msg.register_ville_required}" validatorMessage="#{msg.register_password_validator}">
+                                   <f:validateLength minimum="2" maximum="25" />
+                            </h:inputText>
+                             <h:message class="red" for="ville"/>           
+                        </p>
+                        <p>
+                            <h:outputLabel value="#{msg.create_pays}" for="pays" ><span class="small"><h:outputText value="*"/></span></h:outputLabel><br/>
+                            <h:selectOneMenu id="pays" value="#{createClient.pays}">
+                                    <f:selectItem itemValue="2" itemLabel="France" />
+                                    <f:selectItem itemValue="3" itemLabel="Belgique" />
+                                    <f:selectItem itemValue="4" itemLabel="Angleterre" />
+                           </h:selectOneMenu>  
+                                                           
+                        </p> 
+                        <p>
+                            <h:outputText value="#{msg.create_numtel}" />
+                            <br/>
+                            <h:inputText size="20"  value=""/>                            
+                        </p>
+                    </div>
+                    
+                    <p class="createintro">Pseudo et mot de passe </p>
+                    
+                    <p>
+                        <h:outputLabel value="#{msg.create_pseudo}" for="pseudo"> <span class="small"><h:outputText value="*"/></span></h:outputLabel><br/>
+                        <h:inputText id="pseudo" value="#{createClient.pays}" required="true" requiredMessage="#{msg.register_pseudo_required}" validatorMessage="#{msg.register_pseudo_validator}">
+                                <f:validateLength minimum="4" maximum="25" />
+                        </h:inputText>
+                        <h:message class="red" for="pseudo"/>                         
+                    </p>
+                    
+                    <p>
+                        <h:outputText value="#{msg.create_motdepasse}" />
+                        <br/>
+                        <h:inputText size="20"  value=""/>                                   
+                    </p>
+                    
+                    <p>
+                        <h:outputText value="#{msg.create_motdepassedeux}" />
+                        <br/>
+                        <h:inputText size="20"  value=""/>                                   
+                    </p>
+                    <p align="left"  ><br/>
+                        <h:commandButton class="button" id="button" value="S'inscrire" action="#{register.addCustomer}" /><br/>
+                        <span id="qte"><h:outputText value="*"/></span> <h:outputText value=" #{msg.register_required}" class="required"/><br/>                       
+                    </p>  
+         
+                </h:form>
+                
+                
+            </ui:define>
+
+         
+
+        </ui:composition>
+
+    </body>
+</html>
