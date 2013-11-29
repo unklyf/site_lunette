@@ -3,7 +3,8 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:ui="http://java.sun.com/jsf/facelets"
       xmlns:h="http://java.sun.com/jsf/html"
-      xmlns:f="http://java.sun.com/jsf/core">
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
     
     <f:view locale="#{language.locale}">
     <f:loadBundle basename="language.lang" var="msg" />
@@ -34,23 +35,25 @@
     <h:body>            
         <!-- Header -->        
         <header>
-            <div id="bande">
+            <div id="bande">       
                 <ui:insert name="top">
-                    <span class="right">
-                        <h:form>
-                            <!-- Language -->
-                            <span>
-                                <h:graphicImage value="resources/images/frenchflag.png" /> 
-                                <h:commandLink action="#{language.setToFrench()}" class="#{language.setSelectFr()}"> fr</h:commandLink>
+                    <span>
+                        <h:form>                           
+                            <!-- Login -->
+                            <span class="right">
+                                <h:outputText value="#{msg.menu_welcome}" rendered="#{connexion.afficherCompte() == 'connected'}"></h:outputText>
+                                <h:link value=" #{connexion.pseudo}"  rendered="#{connexion.afficherCompte() == 'connected'}" outcome="compte.xhtml"></h:link>
+                                <h:link class="visuellink" value="#{msg.menu_login}" rendered="#{connexion.afficherCompte() == 'guest'}" outcome="login.xhtml"></h:link>                                
+                                <h:outputText value=" | " rendered="#{connexion.afficherCompte() == 'connected'}" />
+                                <h:commandButton class="visuel" value="#{msg.menu_logout}" action="#{connexion.logout()}" rendered="#{connexion.afficherCompte() == 'connected'}" /> 
+                            </span>
+                            
+                             <!-- Language -->
+                            <span>                              
+                                <h:commandLink action="#{language.setToFrench()}" class="#{language.setSelectFr()}"> fr</h:commandLink><h:graphicImage value="resources/images/frenchflag.png" />                             
                                 <h:outputText value=" - "/>
                                 <h:graphicImage value="resources/images/englishflag.jpg" /> 
                                 <h:commandLink action="#{language.setToEnglish()}" class="#{language.setSelectEn()}"> en</h:commandLink>
-                            </span>
-                            
-                            <!-- Login -->
-                            <span>
-                                <!--<h:outputText value="#{msg.menu_welcome} #{connexion.bienvenue()}"></h:outputText>-->
-                                <h:link value="#{msg.menu_compte}" outcome="#{connexion.outcomeAccount()}"></h:link>
                             </span>                                
                         </h:form>                      
                     </span>

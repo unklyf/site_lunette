@@ -11,14 +11,17 @@
 
    
             <ui:define name="content">
-                
-                <c:forEach items="#{categorie.prodList()}" var="produit">
-                    <p>            
-                       <h:outputText value="#{produit.marque}" /> <br/>
-                       <h:graphicImage class="thumbs" value="#{produit.image}" /><br/>
-                       <h:outputText value="#{produit.prixunitaire}€" /> <br/>
-                    </p>
-                </c:forEach>
+                <h2><h:outputText value="#{msg.title_allcat}" /></h2>
+                 <c:forEach items="#{categorie.prodList()}" var="produit">
+                        <article>  
+                            <h:form>
+                                <h:outputText value="#{produit.marque}" /> <br/>
+                                <h:graphicImage class="thumbsimg" value="#{produit.image}" /><br/>
+                                <h:outputText value="#{produit.prixunitaire}#{msg.symbole}" /> <br/> <br/> 
+                                <h:commandButton class="button" value="#{msg.shop_addcart}" action="index" />  <br/> 
+                             </h:form>
+                        </article>
+                    </c:forEach>  
             </ui:define>
 
 
