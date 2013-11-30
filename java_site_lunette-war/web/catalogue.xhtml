@@ -3,6 +3,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:ui="http://java.sun.com/jsf/facelets"
       xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
       xmlns:c="http://java.sun.com/jsp/jstl/core">
 
     <body>
@@ -18,6 +19,14 @@
                                 <h:outputText value="#{produit.marque}" /> <br/>
                                 <h:graphicImage class="thumbsimg" value="#{produit.image}" /><br/>
                                 <h:outputText value="#{produit.prixunitaire}#{msg.symbole}" /> <br/> <br/> 
+                                <h:selectOneMenu class="visuelwhite" style="margin-right: 3px;" id="qte" value="qte">
+                                    <f:selectItem itemValue="0" itemLabel="0" />
+                                    <f:selectItem itemValue="1" itemLabel="1" />
+                                    <f:selectItem itemValue="2" itemLabel="2" />
+                                    <f:selectItem itemValue="3" itemLabel="3" />
+                                    <f:selectItem itemValue="4" itemLabel="4" />
+                                    <f:selectItem itemValue="4" itemLabel="5" />
+                                </h:selectOneMenu> 
                                 <h:commandButton class="button" value="#{msg.shop_addcart}" action="index" />  <br/> 
                              </h:form>
                         </article>

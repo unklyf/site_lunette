@@ -19,9 +19,9 @@ import javax.faces.bean.SessionScoped;
  *
  * @author Home
  */
-@ManagedBean
+@ManagedBean (name="createClient")
 @SessionScoped
-public class createClient {
+public class CreateClient {
 
     // Add business logic below. (Right-click in editor and choose
     // "Insert Code > Add Business Method")

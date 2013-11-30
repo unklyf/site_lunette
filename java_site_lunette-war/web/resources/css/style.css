@@ -134,6 +134,15 @@ header{
     opacity: 0.75;
 }
 
+.visuelwhite{ 
+    text-align: center; 
+    border-radius: 2px;
+    border: none;
+    padding: 4px;
+    background-color: white;
+    opacity: 0.75;
+}
+
 #bande{
     color: white; 
     height: 25px; 
@@ -309,3 +318,20 @@ article{
     height: 190px;
     border-radius: 2px;
 }
+
+.createintro{
+    background-color: #DEB887;
+    border-bottom: solid;
+    border-top: solid;
+    text-align: center;
+    font-weight: bold;
+}
+
+.form {
+    float:left;
+}
+
+.form1 {
+    float:right;
+}
+
