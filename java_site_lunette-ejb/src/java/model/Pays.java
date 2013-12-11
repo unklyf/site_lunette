@@ -37,10 +37,10 @@ public class Pays implements Serializable {
     @Basic(optional = false)
     @Column(name = "IDPAYS")
     private Integer idpays;
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "idpays")
+    private Collection<Client> clientCollection;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "pays")
     private Collection<Tradpays> tradpaysCollection;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "idpays")
-    private Collection<Ville> villeCollection;
 
     public Pays() {
     }
@@ -58,21 +58,21 @@ public class Pays implements Serializable {
     }
 
     @XmlTransient
+    public Collection<Client> getClientCollection() {
+        return clientCollection;
+    }
+
+    public void setClientCollection(Collection<Client> clientCollection) {
+        this.clientCollection = clientCollection;
+    }
+
+    @XmlTransient
     public Collection<Tradpays> getTradpaysCollection() {
         return tradpaysCollection;
     }
 
     public void setTradpaysCollection(Collection<Tradpays> tradpaysCollection) {
         this.tradpaysCollection = tradpaysCollection;
-    }
-
-    @XmlTransient
-    public Collection<Ville> getVilleCollection() {
-        return villeCollection;
-    }
-
-    public void setVilleCollection(Collection<Ville> villeCollection) {
-        this.villeCollection = villeCollection;
     }
 
     @Override

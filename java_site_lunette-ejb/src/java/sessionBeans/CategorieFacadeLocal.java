@@ -26,7 +26,7 @@ public interface CategorieFacadeLocal {
     List<Categorie> findAll();
 
     List<Categorie> findRange(int[] range);
-
+    
     int count();
     
 }

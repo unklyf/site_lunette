@@ -7,14 +7,14 @@ package sessionBeans;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
-import model.Ville;
+import model.Description;
 
 /**
  *
  * @author Unklyf
  */
 @Stateless
-public class VilleFacade extends AbstractFacade<Ville> implements VilleFacadeLocal {
+public class DescriptionFacade extends AbstractFacade<Description> implements DescriptionFacadeLocal {
     @PersistenceContext(unitName = "java_site_lunette-ejbPU")
     private EntityManager em;
 
@@ -23,8 +23,8 @@ public class VilleFacade extends AbstractFacade<Ville> implements VilleFacadeLoc
         return em;
     }
 
-    public VilleFacade() {
-        super(Ville.class);
+    public DescriptionFacade() {
+        super(Description.class);
     }
     
 }

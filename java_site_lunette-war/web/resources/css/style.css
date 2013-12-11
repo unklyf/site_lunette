@@ -271,6 +271,18 @@ footer table{
     background-color: dodgerblue;
 }
 
+.buttonLow{
+    color: white;
+    text-align: center;
+    height : 35px;
+    border-radius: 4px;
+    border: none;
+    padding: 10px;
+    background-color: darkgrey;
+    margin-right:10px;
+}
+
+
 .small{
     font-size: 11px;
 }
@@ -278,11 +290,33 @@ footer table{
     color: black;
 }
 
-.aboutimage{
-    float:right;
-    position: absolute;
-    margin-left: 10px;
-    padding-top: 50px;
+
+
+.bubble
+{
+color : #333333;
+position: relative;
+padding: 10px;
+width: 200px;
+height: 65px;
+background: rgba(255,255,255,0.65);
+-webkit-border-radius: 10px;
+-moz-border-radius: 10px;
+border-radius: 10px;
+}
+
+.bubble:after
+{
+content: '';
+position: absolute;
+border-style: solid;
+border-width: 0 11px 15px;
+border-color: rgba(255,255,255,0.65) transparent;
+display: block;
+width: 0;
+z-index: 1;
+top: -15px;
+left: 114px;
 }
 
 .small{ 
@@ -310,11 +344,17 @@ article{
     padding: 5px;
     margin: 10px;
     display: inline-block;
+    -webkit-box-shadow: 2px 2px 2px rgba( 0,0,0,0.25);
+            box-shadow: 2px 2px 2px rgba( 0,0,0,0.35); 
+}
+
+article:hover{
+    border: 1px lightyellow groove;
 }
 
 .thumbsimg{
     padding: 15px;;
-    width : 190px; 
+    width : 170px; 
     /*height: 190px;*/
     border-radius: 2px;
 }
@@ -335,3 +375,148 @@ article{
     float:right;
 }
 
+.label{
+    margin-left:4px;
+    font-size: 11px;
+    color: white;
+    text-align: center;
+    height : 10px;
+    border-radius: 4px;
+    border: none;
+    padding: 2px;
+    background-color: crimson;
+}
+
+
+.inputs  { 
+    background: #f5f5f5; 
+    font-size: 0.8rem; 
+    -moz-border-radius: 3px; 
+    -webkit-border-radius: 3px; 
+    border-radius: 3px; 
+    border: none; 
+    padding: 10px 10px; 
+    width:150px; 
+    margin-top:5px;
+    margin-bottom: 20px; 
+    box-shadow: inset 0px 2px 3px rgba( 0,0,0,0.4 ); 
+    clear: both; 
+} 
+.inputs:focus { 
+    background: #fff; 
+    box-shadow: 0px 0px 0px 3px rgba(4,108,127,0.5), inset 0px 1px 2px rgba( 0,0,0,0.2 ), 0px 4px 4px rgba( 0,0,0,0.25 ); 
+    outline: none;    
+} 
+ 
+
+.pic {
+  height: 200px;
+  width: 200px;
+  border: 8px solid #fff; 
+  /*margin: 20px;*/
+  overflow: hidden;   
+  -webkit-box-shadow: 2px 2px 2px rgba( 0,0,0,0.25);
+          box-shadow: 2px 2px 2px rgba( 0,0,0,0.25); 
+}
+ 
+
+.focus {
+  -webkit-transition: all 1s ease;
+     -moz-transition: all 1s ease;
+       -o-transition: all 1s ease;
+      -ms-transition: all 1s ease;
+          transition: all 1s ease;
+}
+ 
+.focus:hover {
+  border: 50px solid #000;
+  border-radius: 50%;
+}
+		
+.backcontent{
+    background : rgba( 255,255,255,0.65 ); 
+    width: 650px;
+    padding : 30px;
+    -webkit-box-shadow: 2px 2px 2px rgba( 0,0,0,0.25);
+            box-shadow: 2px 2px 2px rgba( 0,0,0,0.35); 
+}		 
+		 
+
+.mini{
+    width: 60px;
+}
+
+.btn-supp{
+    background-image: url(../images/bt-supprimer.gif);
+    background-repeat: no-repeat;
+    border:none;
+    width:10px;
+    height:10px;
+    margin:0;
+    padding:0;
+}
+
+
+.btn-up{
+    background-image: url(../images/ico-plus.gif);
+    background-repeat: no-repeat;
+    border:none;
+    width:11px;
+    height:11px;
+    margin-left:5px;
+    padding:0;
+    border-radius: 50px;
+}
+
+.btn-down{
+    background-image: url(../images/ico-moins.gif);
+    background-repeat: no-repeat;
+    border:none;
+    width:11px;
+    height:11px;    
+    margin-right: 5px;
+    padding:0;
+    border-radius: 50px;
+}
+
+
+.promo{
+    color: white;
+    background-image: url(../images/smallpromo.png);
+    background-repeat: no-repeat;
+    border:none;
+    width:50px;
+    height:50px;
+    margin-left: -90px;
+    margin-top: -55px;
+    padding-top:15px;
+    position:absolute;
+}
+
+.caddie{
+    width : 700px;
+    text-align:center;
+    margin-bottom: 40px;
+    margin-top: 40px;
+    border-collapse: collapse
+}
+
+.caddie td{
+    padding: 15px;
+    border-bottom: 1px solid rgba(0,0,0,0.45);
+    background-color: rgba(185,185,185,0.35);
+}
+
+.caddie tr:hover{
+    background-color: rgba(224,126,0,0.35);
+}
+
+.caddie th{
+    padding-bottom: 10px;
+    border-bottom: 1px solid rgba(0,0,0,0.45);
+}
+
+
+.larger{
+    width : 300px;
+}

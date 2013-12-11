@@ -33,11 +33,15 @@ import javax.xml.bind.annotation.XmlTransient;
 @Table(name = "PRODUIT")
 @XmlRootElement
 @NamedQueries({
+    @NamedQuery(name = "Produit.findByCategorie", query = "SELECT p FROM Produit p WHERE p.idcategorie.idcategorie = :idcategorie"),
     @NamedQuery(name = "Produit.findAll", query = "SELECT p FROM Produit p"),
     @NamedQuery(name = "Produit.findByIdproduit", query = "SELECT p FROM Produit p WHERE p.idproduit = :idproduit"),
     @NamedQuery(name = "Produit.findByImage", query = "SELECT p FROM Produit p WHERE p.image = :image"),
     @NamedQuery(name = "Produit.findByMarque", query = "SELECT p FROM Produit p WHERE p.marque = :marque"),
-    @NamedQuery(name = "Produit.findByPrixunitaire", query = "SELECT p FROM Produit p WHERE p.prixunitaire = :prixunitaire")})
+    @NamedQuery(name = "Produit.findByModele", query = "SELECT p FROM Produit p WHERE p.modele = :modele"),
+    @NamedQuery(name = "Produit.findByPrixunitaire", query = "SELECT p FROM Produit p WHERE p.prixunitaire = :prixunitaire"),
+    @NamedQuery(name = "Produit.findByNouveautee", query = "SELECT p FROM Produit p WHERE p.nouveautee = :nouveautee"),
+    @NamedQuery(name = "Produit.findByGenre", query = "SELECT p FROM Produit p WHERE p.genre = :genre")})
 public class Produit implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id
@@ -55,24 +59,41 @@ public class Produit implements Serializable {
     @Size(min = 1, max = 100)
     @Column(name = "MARQUE")
     private String marque;
+    @Basic(optional = false)
+    @NotNull
+    @Size(min = 1, max = 100)
+    @Column(name = "MODELE")
+    private String modele;
     // @Max(value=?)  @Min(value=?)//if you know range of your decimal fields consider using these annotations to enforce field validation
     @Basic(optional = false)
     @NotNull
     @Column(name = "PRIXUNITAIRE")
-    private BigDecimal prixunitaire;
+    private double prixunitaire;
+    @Basic(optional = false)
+    @NotNull
+    @Column(name = "NOUVEAUTEE")
+    private boolean nouveautee;
+    @Basic(optional = false)
+    @NotNull
+    @Column(name = "GENRE")
+    private char genre;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "produit")
     private Collection<Lignecommande> lignecommandeCollection;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "produit")
-    private Collection<Tradproduit> tradproduitCollection;
     @JoinColumn(name = "IDPROMO", referencedColumnName = "IDPROMO")
     @ManyToOne
     private Promotion idpromo;
     @JoinColumn(name = "IDFOURNISSEUR", referencedColumnName = "IDFOURNISSEUR")
     @ManyToOne(optional = false)
     private Fournisseur idfournisseur;
-    @JoinColumn(name = "IDCOULEUR", referencedColumnName = "IDCOULEUR")
+    @JoinColumn(name = "IDDESCRIPTION", referencedColumnName = "IDDESCRIPTION")
     @ManyToOne(optional = false)
-    private Couleur idcouleur;
+    private Description iddescription;
+    @JoinColumn(name = "IDCOULEURMONT", referencedColumnName = "IDCOULEUR")
+    @ManyToOne(optional = false)
+    private Couleur idcouleurmont;
+    @JoinColumn(name = "IDCOULEURVERRE", referencedColumnName = "IDCOULEUR")
+    @ManyToOne(optional = false)
+    private Couleur idcouleurverre;
     @JoinColumn(name = "IDCATEGORIE", referencedColumnName = "IDCATEGORIE")
     @ManyToOne(optional = false)
     private Categorie idcategorie;
@@ -84,11 +105,14 @@ public class Produit implements Serializable {
         this.idproduit = idproduit;
     }
 
-    public Produit(Integer idproduit, String image, String marque, BigDecimal prixunitaire) {
+    public Produit(Integer idproduit, String image, String marque, String modele, double prixunitaire, boolean nouveautee, char genre) {
         this.idproduit = idproduit;
         this.image = image;
         this.marque = marque;
+        this.modele = modele;
         this.prixunitaire = prixunitaire;
+        this.nouveautee = nouveautee;
+        this.genre = genre;
     }
 
     public Integer getIdproduit() {
@@ -115,12 +139,36 @@ public class Produit implements Serializable {
         this.marque = marque;
     }
 
-    public BigDecimal getPrixunitaire() {
+    public String getModele() {
+        return modele;
+    }
+
+    public void setModele(String modele) {
+        this.modele = modele;
+    }
+
+    public double getPrixunitaire() {
         return prixunitaire;
     }
 
-    public void setPrixunitaire(BigDecimal prixunitaire) {
+    public void setPrixunitaire(double prixunitaire) {
         this.prixunitaire = prixunitaire;
+    }
+
+    public boolean getNouveautee() {
+        return nouveautee;
+    }
+
+    public void setNouveautee(boolean nouveautee) {
+        this.nouveautee = nouveautee;
+    }
+
+    public char getGenre() {
+        return genre;
+    }
+
+    public void setGenre(char genre) {
+        this.genre = genre;
     }
 
     @XmlTransient
@@ -130,15 +178,6 @@ public class Produit implements Serializable {
 
     public void setLignecommandeCollection(Collection<Lignecommande> lignecommandeCollection) {
         this.lignecommandeCollection = lignecommandeCollection;
-    }
-
-    @XmlTransient
-    public Collection<Tradproduit> getTradproduitCollection() {
-        return tradproduitCollection;
-    }
-
-    public void setTradproduitCollection(Collection<Tradproduit> tradproduitCollection) {
-        this.tradproduitCollection = tradproduitCollection;
     }
 
     public Promotion getIdpromo() {
@@ -157,12 +196,28 @@ public class Produit implements Serializable {
         this.idfournisseur = idfournisseur;
     }
 
-    public Couleur getIdcouleur() {
-        return idcouleur;
+    public Description getIddescription() {
+        return iddescription;
     }
 
-    public void setIdcouleur(Couleur idcouleur) {
-        this.idcouleur = idcouleur;
+    public void setIddescription(Description iddescription) {
+        this.iddescription = iddescription;
+    }
+
+    public Couleur getIdcouleurmont() {
+        return idcouleurmont;
+    }
+
+    public void setIdcouleurmont(Couleur idcouleurmont) {
+        this.idcouleurmont = idcouleurmont;
+    }
+
+    public Couleur getIdcouleurverre() {
+        return idcouleurverre;
+    }
+
+    public void setIdcouleurverre(Couleur idcouleurverre) {
+        this.idcouleurverre = idcouleurverre;
     }
 
     public Categorie getIdcategorie() {

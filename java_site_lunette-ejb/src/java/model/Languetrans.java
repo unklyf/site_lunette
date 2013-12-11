@@ -46,15 +46,13 @@ public class Languetrans implements Serializable {
     @Column(name = "LIBELLE")
     private String libelle;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "languetrans")
-    private Collection<Tradville> tradvilleCollection;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "languetrans")
     private Collection<Tradpays> tradpaysCollection;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "languetrans")
-    private Collection<Tradproduit> tradproduitCollection;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "languetrans")
     private Collection<Tradcategorie> tradcategorieCollection;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "languetrans")
     private Collection<Tradcouleur> tradcouleurCollection;
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "languetrans")
+    private Collection<Traddescription> traddescriptionCollection;
 
     public Languetrans() {
     }
@@ -85,30 +83,12 @@ public class Languetrans implements Serializable {
     }
 
     @XmlTransient
-    public Collection<Tradville> getTradvilleCollection() {
-        return tradvilleCollection;
-    }
-
-    public void setTradvilleCollection(Collection<Tradville> tradvilleCollection) {
-        this.tradvilleCollection = tradvilleCollection;
-    }
-
-    @XmlTransient
     public Collection<Tradpays> getTradpaysCollection() {
         return tradpaysCollection;
     }
 
     public void setTradpaysCollection(Collection<Tradpays> tradpaysCollection) {
         this.tradpaysCollection = tradpaysCollection;
-    }
-
-    @XmlTransient
-    public Collection<Tradproduit> getTradproduitCollection() {
-        return tradproduitCollection;
-    }
-
-    public void setTradproduitCollection(Collection<Tradproduit> tradproduitCollection) {
-        this.tradproduitCollection = tradproduitCollection;
     }
 
     @XmlTransient
@@ -127,6 +107,15 @@ public class Languetrans implements Serializable {
 
     public void setTradcouleurCollection(Collection<Tradcouleur> tradcouleurCollection) {
         this.tradcouleurCollection = tradcouleurCollection;
+    }
+
+    @XmlTransient
+    public Collection<Traddescription> getTraddescriptionCollection() {
+        return traddescriptionCollection;
+    }
+
+    public void setTraddescriptionCollection(Collection<Traddescription> traddescriptionCollection) {
+        this.traddescriptionCollection = traddescriptionCollection;
     }
 
     @Override

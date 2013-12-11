@@ -39,8 +39,10 @@ public class Couleur implements Serializable {
     private Integer idcouleur;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "couleur")
     private Collection<Tradcouleur> tradcouleurCollection;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "idcouleur")
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "idcouleurmont")
     private Collection<Produit> produitCollection;
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "idcouleurverre")
+    private Collection<Produit> produitCollection1;
 
     public Couleur() {
     }
@@ -73,6 +75,15 @@ public class Couleur implements Serializable {
 
     public void setProduitCollection(Collection<Produit> produitCollection) {
         this.produitCollection = produitCollection;
+    }
+
+    @XmlTransient
+    public Collection<Produit> getProduitCollection1() {
+        return produitCollection1;
+    }
+
+    public void setProduitCollection1(Collection<Produit> produitCollection1) {
+        this.produitCollection1 = produitCollection1;
     }
 
     @Override

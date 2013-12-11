@@ -4,6 +4,7 @@
  */
 package managedBeans;
 
+import java.io.Serializable;
 import java.util.List;
 import javax.ejb.EJB;
 import javax.ejb.Stateless;
@@ -21,7 +22,7 @@ import javax.faces.bean.SessionScoped;
  */
 @ManagedBean (name="createClient")
 @SessionScoped
-public class CreateClient {
+public class CreateClient implements Serializable{
 
     // Add business logic below. (Right-click in editor and choose
     // "Insert Code > Add Business Method")

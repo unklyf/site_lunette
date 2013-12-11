@@ -29,4 +29,8 @@ public interface ProduitFacadeLocal {
 
     int count();
     
+    List<Produit> findByCategorie(int idcategorie);
+    
+    Produit findByIdproduit(int idproduit);
+    
 }

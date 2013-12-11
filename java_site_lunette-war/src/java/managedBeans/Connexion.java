@@ -4,6 +4,7 @@
  */
 package managedBeans;
 
+import java.io.Serializable;
 import java.util.List;
 import model.Client;
 import javax.ejb.EJB;
@@ -19,7 +20,7 @@ import sessionBeans.ClientFacadeLocal;
 @ManagedBean (name="connexion")
 @SessionScoped
 
-public class Connexion {
+public class Connexion implements Serializable{
     
     @EJB
     private ClientFacadeLocal clientFacade;
@@ -114,7 +115,7 @@ public class Connexion {
        if(isConnected())
            return "connected";
        else
-           return "none";
+           return "guest";
     }
     
     

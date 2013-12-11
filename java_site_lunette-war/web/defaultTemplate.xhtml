@@ -66,7 +66,7 @@
         <div id="container"> 
                 
                 <!-- Logo -->
-                <span class="left">
+                <span style="margin-bottom:5px;" class="left">
                     <h:graphicImage value="resources/images/logo.png" />
                 </span>    
                 
@@ -83,7 +83,7 @@
 
                 <!-- Cart -->
                 <span >
-                    <h:link class="cart" value="#{msg.menu_cart} (0)" outcome="cart.xhtml"></h:link>
+                    <h:link class="cart" value="#{msg.menu_cart} (#{cart.caddie.size()})" outcome="cart.xhtml"></h:link>
                 </span>
             </div>
           
@@ -96,9 +96,9 @@
                             <li><h:link value="#{msg.menu_home}" outcome="index.xhtml"></h:link></li>
                             <li><h:link value="#{msg.menu_categorie}" outcome="catalogue.xhtml"></h:link>
                                 <ul>
-                                    <li class="liste"><h:link value="#{msg.cat_lunsol}" outcome="catalogue.xhtml"/></li>
+                                    <li class="liste"><h:link value="#{msg.cat_lunsol}" outcome="catSoleil.xhtml"/></li>
                                     <li class="liste"><h:link value="#{msg.cat_lunvue}" outcome="catalogue.xhtml"/></li>
-                                    <li class="liste"><h:link value="#{msg.cat_lunsport}" outcome="catalogue.xhtml"/></li>
+                                    <li class="liste"><h:link value="#{msg.cat_lunsport}" outcome="catSport.xhtml"/></li>
                                     <li class="liste"><h:link value="#{msg.cat_lunlect}" outcome="catalogue.xhtml"/></li>
                                     <li class="liste"><h:link value="#{msg.cat_lunperso}" outcome="catalogue.xhtml"/></li>
                                     <li class="liste"><h:link value="#{msg.cat_lunpiscine}" outcome="catalogue.xhtml"/></li>                                    

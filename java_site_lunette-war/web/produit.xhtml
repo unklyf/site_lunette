@@ -1,0 +1,43 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+
+    <body>
+
+        <ui:composition template="./defaultTemplate.xhtml">
+
+
+
+            <ui:define name="content">
+                <div class="backcontent"> 
+                    <h:form>
+                        <h:outputText value="#{selectProd.produit.marque}" /> 
+                        <h:outputText class="label" value="#{msg.new}" rendered="#{selectProd.produit.nouveautee =='true'}" /><br/>
+                        <h:graphicImage class="thumbsimg" value="#{selectProd.produit.image}" /><br/>
+                        <h:outputText value="#{selectProd.produit.genre}" /><br/>
+                        <h:outputText value="#{selectProd.produit.prixunitaire}#{msg.symbole}" /> <br/> <br/>                        
+                        <p>
+                            <h:outputText value="#{selectProd.traddescription.description}" />
+                        </p>
+                        <h:selectOneMenu class="visuelwhite" style="margin-right: 3px;" id="qte" value="#{cart.quantitee}">
+                            <f:selectItem itemValue="1" itemLabel="1" />
+                            <f:selectItem itemValue="2" itemLabel="2" />
+                            <f:selectItem itemValue="3" itemLabel="3" />
+                            <f:selectItem itemValue="4" itemLabel="4" />
+                            <f:selectItem itemValue="5" itemLabel="5" />
+                         </h:selectOneMenu> 
+
+                        <h:commandButton class="button" value="#{msg.shop_addcart}" action="#{cart.addItem(selectProd.produit)}" />  <br/> 
+                    </h:form>
+                </div>
+            </ui:define>
+
+   
+
+        </ui:composition>
+
+    </body>
+</html>

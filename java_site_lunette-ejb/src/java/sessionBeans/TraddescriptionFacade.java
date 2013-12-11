@@ -4,19 +4,18 @@
  */
 package sessionBeans;
 
-import java.util.List;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
-import model.Client;
+import model.Traddescription;
 
 /**
  *
  * @author Unklyf
  */
 @Stateless
-public class ClientFacade extends AbstractFacade<Client> implements ClientFacadeLocal {
+public class TraddescriptionFacade extends AbstractFacade<Traddescription> implements TraddescriptionFacadeLocal {
     @PersistenceContext(unitName = "java_site_lunette-ejbPU")
     private EntityManager em;
 
@@ -25,18 +24,18 @@ public class ClientFacade extends AbstractFacade<Client> implements ClientFacade
         return em;
     }
 
-    public ClientFacade() {
-        super(Client.class);
+    public TraddescriptionFacade() {
+        super(Traddescription.class);
     }
     
     @Override
-    public List<Client> connect(String pseudo,String motdepasse)
+    public Traddescription findDescription(int iddescription, int idlangue)
     {
         Query query;
-        query = em.createNamedQuery("Client.connect");
-        query.setParameter("pseudo", pseudo);
-        query.setParameter("motdepasse", motdepasse);
-        return query.getResultList();
+        query = em.createNamedQuery("Traddescription.findDescription");
+        query.setParameter("iddescription", iddescription);
+        query.setParameter("idlangue", idlangue);
+        return (Traddescription) query.getSingleResult();
     }
     
 }

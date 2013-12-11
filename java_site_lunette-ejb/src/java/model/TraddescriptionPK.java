@@ -15,22 +15,30 @@ import javax.validation.constraints.NotNull;
  * @author Unklyf
  */
 @Embeddable
-public class TradproduitPK implements Serializable {
+public class TraddescriptionPK implements Serializable {
+    @Basic(optional = false)
+    @NotNull
+    @Column(name = "IDDESCRIPTION")
+    private int iddescription;
     @Basic(optional = false)
     @NotNull
     @Column(name = "IDLANGUE")
     private int idlangue;
-    @Basic(optional = false)
-    @NotNull
-    @Column(name = "IDPRODUIT")
-    private int idproduit;
 
-    public TradproduitPK() {
+    public TraddescriptionPK() {
     }
 
-    public TradproduitPK(int idlangue, int idproduit) {
+    public TraddescriptionPK(int iddescription, int idlangue) {
+        this.iddescription = iddescription;
         this.idlangue = idlangue;
-        this.idproduit = idproduit;
+    }
+
+    public int getIddescription() {
+        return iddescription;
+    }
+
+    public void setIddescription(int iddescription) {
+        this.iddescription = iddescription;
     }
 
     public int getIdlangue() {
@@ -41,33 +49,25 @@ public class TradproduitPK implements Serializable {
         this.idlangue = idlangue;
     }
 
-    public int getIdproduit() {
-        return idproduit;
-    }
-
-    public void setIdproduit(int idproduit) {
-        this.idproduit = idproduit;
-    }
-
     @Override
     public int hashCode() {
         int hash = 0;
+        hash += (int) iddescription;
         hash += (int) idlangue;
-        hash += (int) idproduit;
         return hash;
     }
 
     @Override
     public boolean equals(Object object) {
         // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof TradproduitPK)) {
+        if (!(object instanceof TraddescriptionPK)) {
             return false;
         }
-        TradproduitPK other = (TradproduitPK) object;
+        TraddescriptionPK other = (TraddescriptionPK) object;
+        if (this.iddescription != other.iddescription) {
+            return false;
+        }
         if (this.idlangue != other.idlangue) {
-            return false;
-        }
-        if (this.idproduit != other.idproduit) {
             return false;
         }
         return true;
@@ -75,7 +75,7 @@ public class TradproduitPK implements Serializable {
 
     @Override
     public String toString() {
-        return "model.TradproduitPK[ idlangue=" + idlangue + ", idproduit=" + idproduit + " ]";
+        return "model.TraddescriptionPK[ iddescription=" + iddescription + ", idlangue=" + idlangue + " ]";
     }
     
 }

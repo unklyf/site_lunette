@@ -1,15 +1,76 @@
 <?xml version='1.0' encoding='UTF-8' ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:ui="http://java.sun.com/jsf/facelets">
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:c="http://java.sun.com/jsp/jstl/core">
 
     <body>
 
         <ui:composition template="./defaultTemplate.xhtml">
 
 
-            <ui:define name="content">
-                MARKET
+            <ui:define name="content">               
+                <h2><h:outputText value="#{msg.menu_cart}" /></h2>                
+                <h:outputText value="#{msg.emptycart}" rendered="#{cart.caddie.size() == 0}"/>
+                
+                <h:form>
+                    <h:dataTable class="caddie" value="#{cart.mapAsList}" rendered="#{cart.caddie.size() != 0}" var="liste">
+                        <h:column>
+                            <h:graphicImage class="mini" value="#{liste.produit.image}" />
+                        </h:column>
+
+                        <h:column class="larger">
+                            <f:facet name="header">
+                                <h:outputText value="produit" />
+                            </f:facet>
+                            <h:outputText value="#{liste.produit.marque}" /><br/>
+                            <h:outputText value="#{liste.produit.modele}" />
+                        </h:column>
+
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="prix" />
+                            </f:facet>                   
+                               <h:outputText value="#{liste.produit.prixunitaire}#{msg.symbole}" rendered="#{categorie.verifPromo(liste.produit)=='false'}" />  
+                               <h:outputText style="text-decoration: line-through;" value="#{liste.produit.prixunitaire}#{msg.symbole}" rendered="#{categorie.verifPromo(liste.produit)}"/> <br/>
+                               <h:outputText style="color:red;" value="#{categorie.calculPrix(liste.produit)}#{msg.symbole}" rendered="#{categorie.verifPromo(liste.produit)}"/> <br/>
+                         </h:column>
+                        
+                         <h:column>                                                       
+                              <h:outputText style="color:red;" value="-#{liste.produit.idpromo.pourcentage}%" rendered="#{categorie.verifPromo(liste.produit)}" /><br/>
+                        </h:column>
+                        
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="quantitée" />
+                            </f:facet>
+                            <h:commandButton class="btn-down" action="#{cart.downQte(liste.produit)}"/> 
+                            <h:outputText value="#{liste.quantitee}" /> 
+                            <h:commandButton class="btn-up" action="#{cart.upQte(liste.produit)}"/>
+                            
+                        </h:column>
+
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="total" />
+                            </f:facet>
+                            <h:outputText value="#{cart.calculTotalProduit(liste.produit)}" />
+                        </h:column>
+
+                        <h:column>
+                           <h:commandButton class="btn-supp" action="#{cart.removeItem(liste.produit.idproduit)}"/>                               
+                        </h:column>
+                        
+                    </h:dataTable>
+                    <p style="text-align: right; margin-right: 20px;">
+                        <h:outputText  value="#{msg.cart_total} #{cart.total}#{msg.symbole}" rendered="#{cart.caddie.size() != 0}" /> <br /> <br />                        
+                        <h:commandButton class="buttonLow" value="#{msg.shop_vider}" action="#{cart.caddie.clear()}" rendered="#{cart.caddie.size() != 0}"  /> 
+                        <h:commandButton class="button" value="#{msg.shop_command}" action="#" rendered="#{cart.caddie.size() != 0}"  /> 
+                    </p>
+                </h:form>
+                
             </ui:define>
 
         </ui:composition>

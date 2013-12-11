@@ -40,7 +40,11 @@ import javax.xml.bind.annotation.XmlTransient;
     @NamedQuery(name = "Client.findByNumtelephone", query = "SELECT c FROM Client c WHERE c.numtelephone = :numtelephone"),
     @NamedQuery(name = "Client.findByMail", query = "SELECT c FROM Client c WHERE c.mail = :mail"),
     @NamedQuery(name = "Client.findByMotdepasse", query = "SELECT c FROM Client c WHERE c.motdepasse = :motdepasse"),
-    @NamedQuery(name = "Client.findByPseudo", query = "SELECT c FROM Client c WHERE c.pseudo = :pseudo")})
+    @NamedQuery(name = "Client.findByPseudo", query = "SELECT c FROM Client c WHERE c.pseudo = :pseudo"),
+    @NamedQuery(name = "Client.findByRue", query = "SELECT c FROM Client c WHERE c.rue = :rue"),
+    @NamedQuery(name = "Client.findByNumero", query = "SELECT c FROM Client c WHERE c.numero = :numero"),
+    @NamedQuery(name = "Client.findByBoite", query = "SELECT c FROM Client c WHERE c.boite = :boite"),
+    @NamedQuery(name = "Client.findByCodepostal", query = "SELECT c FROM Client c WHERE c.codepostal = :codepostal")})
 public class Client implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id
@@ -76,9 +80,24 @@ public class Client implements Serializable {
     @Size(min = 1, max = 40)
     @Column(name = "PSEUDO")
     private String pseudo;
-    @JoinColumn(name = "IDADRESSE", referencedColumnName = "IDADRESSE")
+    @Basic(optional = false)
+    @NotNull
+    @Size(min = 1, max = 100)
+    @Column(name = "RUE")
+    private String rue;
+    @Basic(optional = false)
+    @NotNull
+    @Column(name = "NUMERO")
+    private short numero;
+    @Column(name = "BOITE")
+    private Character boite;
+    @Basic(optional = false)
+    @NotNull
+    @Column(name = "CODEPOSTAL")
+    private int codepostal;
+    @JoinColumn(name = "IDPAYS", referencedColumnName = "IDPAYS")
     @ManyToOne(optional = false)
-    private Adresse idadresse;
+    private Pays idpays;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "idclient")
     private Collection<Commande> commandeCollection;
 
@@ -89,13 +108,16 @@ public class Client implements Serializable {
         this.idclient = idclient;
     }
 
-    public Client(Integer idclient, String nom, String prenom, String mail, String motdepasse, String pseudo) {
+    public Client(Integer idclient, String nom, String prenom, String mail, String motdepasse, String pseudo, String rue, short numero, int codepostal) {
         this.idclient = idclient;
         this.nom = nom;
         this.prenom = prenom;
         this.mail = mail;
         this.motdepasse = motdepasse;
         this.pseudo = pseudo;
+        this.rue = rue;
+        this.numero = numero;
+        this.codepostal = codepostal;
     }
 
     public Integer getIdclient() {
@@ -154,12 +176,44 @@ public class Client implements Serializable {
         this.pseudo = pseudo;
     }
 
-    public Adresse getIdadresse() {
-        return idadresse;
+    public String getRue() {
+        return rue;
     }
 
-    public void setIdadresse(Adresse idadresse) {
-        this.idadresse = idadresse;
+    public void setRue(String rue) {
+        this.rue = rue;
+    }
+
+    public short getNumero() {
+        return numero;
+    }
+
+    public void setNumero(short numero) {
+        this.numero = numero;
+    }
+
+    public Character getBoite() {
+        return boite;
+    }
+
+    public void setBoite(Character boite) {
+        this.boite = boite;
+    }
+
+    public int getCodepostal() {
+        return codepostal;
+    }
+
+    public void setCodepostal(int codepostal) {
+        this.codepostal = codepostal;
+    }
+
+    public Pays getIdpays() {
+        return idpays;
+    }
+
+    public void setIdpays(Pays idpays) {
+        this.idpays = idpays;
     }
 
     @XmlTransient

@@ -43,7 +43,7 @@ public class Lignecommande implements Serializable {
     @Basic(optional = false)
     @NotNull
     @Column(name = "PRIXVENTE")
-    private BigDecimal prixvente;
+    private double prixvente;
     @JoinColumn(name = "IDPRODUIT", referencedColumnName = "IDPRODUIT", insertable = false, updatable = false)
     @ManyToOne(optional = false)
     private Produit produit;
@@ -58,8 +58,14 @@ public class Lignecommande implements Serializable {
         this.lignecommandePK = lignecommandePK;
     }
 
-    public Lignecommande(LignecommandePK lignecommandePK, int quantitee, BigDecimal prixvente) {
+    public Lignecommande(LignecommandePK lignecommandePK, int quantitee, double prixvente) {
         this.lignecommandePK = lignecommandePK;
+        this.quantitee = quantitee;
+        this.prixvente = prixvente;
+    }
+    
+    public Lignecommande(Produit prod, int quantitee, double prixvente) {
+        this.produit = prod;
         this.quantitee = quantitee;
         this.prixvente = prixvente;
     }
@@ -84,11 +90,11 @@ public class Lignecommande implements Serializable {
         this.quantitee = quantitee;
     }
 
-    public BigDecimal getPrixvente() {
+    public double getPrixvente() {
         return prixvente;
     }
 
-    public void setPrixvente(BigDecimal prixvente) {
+    public void setPrixvente(double prixvente) {
         this.prixvente = prixvente;
     }
 

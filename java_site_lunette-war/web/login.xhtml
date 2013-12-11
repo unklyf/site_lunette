@@ -20,14 +20,14 @@
 
                         <p>
                             <h:outputLabel value="#{msg.log_login}"></h:outputLabel><br/>
-                            <h:inputText size="20"  value="#{connexion.pseudo}" requiredMessage="#{msg.log_lerror}" required="true" id="login" />
+                            <h:inputText class="inputs" size="20"  value="#{connexion.pseudo}" requiredMessage="#{msg.log_lerror}" required="true" id="login" />
                             <h:message class="red" for="login"/>
 
                         </p>
 
                         <p>
                             <h:outputLabel value="#{msg.log_password}" ></h:outputLabel><br/>
-                            <h:inputSecret size="20"  value="#{connexion.motdepasse}" requiredMessage="#{msg.log_passerror}" required="true" id="motdepasse" />
+                            <h:inputSecret class="inputs" size="20"  value="#{connexion.motdepasse}" requiredMessage="#{msg.log_passerror}" required="true" id="motdepasse" />
                             <h:message class="red" for="motdepasse"/>
                         </p>
 

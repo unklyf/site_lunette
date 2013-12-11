@@ -30,6 +30,5 @@ public interface ClientFacadeLocal {
     int count();
     
     List<Client> connect(String pseudo, String motdepasse);
-    //List<Client> findByLogin(String login);
     
 }

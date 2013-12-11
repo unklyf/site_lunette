@@ -9,33 +9,39 @@
         <ui:composition template="./defaultTemplate.xhtml">
 
 
-            <ui:define name="content">               
-                <p><h:outputText value="#{msg.menu_aboutus_1}"/></p>
-                <p><h:outputText value="#{msg.menu_aboutus_2}"/></p>  
-                <div>
-                   <p>
-                       <h:graphicImage value="../resources/images/jo.jpg" />
-                   <span class="aboutimage">
-                       <h:outputText  value="BELLENGER Jordan"/> 
-                       <br/>
-                       <h:outputText  value="0483/38.44.72"/>
-                       <br/>
-                       <h:outputText  value="bellenger.jordan@gmail.com"/>
-                   </span>
-                   </p>
+            <ui:define name="content">  
+                <div class="backcontent">
+                    <p><h:outputText value="#{msg.menu_aboutus_1}"/><br/></p>
+                    <p><h:outputText value="#{msg.menu_aboutus_2}"/></p>  
                 </div>
-                <div>
-                   <p>
-                       <h:graphicImage value="../resources/images/lo.png.jpg" />
-                   <span class="aboutimage">
-                       <h:outputText  value="SCHMITZ Loic "/> 
-                       <br/>
-                       <h:outputText  value="0494/08.64.24"/>
-                       <br/>
-                       <h:outputText  value="schmitz.loic@gmail.com"/>
-                   </span>
-                   </p>
-                </div>   
+
+                <div style="text-align: center;">
+                    <div style="display:inline-block;">
+                        <p class="focus pic">
+                            <h:graphicImage  value="../resources/images/jo.jpg" />
+                        </p> 
+                        <p class="bubble">                        
+                            <h:outputText  value="BELLENGER Jordan"/> 
+                            <br/>
+                            <h:outputText  value="0483/38.44.72"/>
+                            <br/>
+                            <h:outputText  value="bellenger.jordan@gmail.com"/>
+                        </p>
+                    </div>
+
+                    <div style="display:inline-block; margin-left: 100px;" >
+                        <p class="focus pic" >
+                            <h:graphicImage  value="../resources/images/lo.jpg" />
+                        </p>
+                        <p class="bubble">
+                            <h:outputText  value="SCHMITZ Loic "/> 
+                            <br/>
+                            <h:outputText  value="0494/08.64.24"/>
+                            <br/>
+                            <h:outputText  value="schmitz.loic@gmail.com"/>
+                        </p>
+                    </div>
+                </div>
             </ui:define>
         </ui:composition>
 
