@@ -25,7 +25,7 @@ public class Cart implements Serializable{
     private int quantitee;
 
     /*@ManagedProperty("#{catMB}")
-    private Categorie catMB;*/
+    private Categorie catMB;
 
     public Categorie getCatMB() {
         return catMB;
@@ -33,7 +33,7 @@ public class Cart implements Serializable{
 
     public void setCatMB(Categorie catMB) {
         this.catMB = catMB;
-    }
+    }*/
    
     
     public int getQuantitee() {
