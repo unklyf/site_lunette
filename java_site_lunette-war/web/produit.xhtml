@@ -26,8 +26,14 @@
                             <p style="display: inline-block;">
                                 <h:outputLabel for="genre" class="gras" value="#{msg.prod_genre}" />
                                 <h:graphicImage id="genre" value="resources/images/#{selectProd.produit.genre}.png" /><br/><br/> 
+                                
                                 <h:outputText class="gras" value="#{msg.prod_prix}" />
-                                <h:outputText value="#{selectProd.produit.prixunitaire}#{msg.symbole}" /> <br/> 
+                                <!--promo-->
+                                <h:outputText class="promo2" value="-#{selectProd.produit.idpromo.pourcentage}%" rendered="#{categorie.verifPromo(selectProd.produit)}" />                               
+                                <h:outputText value="#{selectProd.produit.prixunitaire}#{msg.symbole}" rendered="#{categorie.verifPromo(selectProd.produit)=='false'}" />      
+                                <h:outputText style="color:red;" value="#{categorie.calculPrix(selectProd.produit)}#{msg.symbole}" rendered="#{categorie.verifPromo(selectProd.produit)}"/> <br/>
+                                <h:outputText style="text-decoration: line-through;" value="#{selectProd.produit.prixunitaire}#{msg.symbole}" rendered="#{categorie.verifPromo(selectProd.produit)}"/> <br/>
+                                
                                 <h:outputText class="gras" value="#{msg.prod_coulmont}" />
                                 <h:graphicImage value="resources/images/color/#{selectProd.produit.idcouleurmont.idcouleur}.PNG" /><br/>
                                 <h:outputText class="gras" value="#{msg.prod_coulverre}" />
