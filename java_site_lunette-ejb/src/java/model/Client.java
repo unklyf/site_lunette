@@ -5,9 +5,7 @@
 package model;
 
 import java.io.Serializable;
-import java.util.Collection;
 import javax.persistence.Basic;
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -17,12 +15,10 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
-import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
-import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
@@ -32,7 +28,6 @@ import javax.xml.bind.annotation.XmlTransient;
 @Table(name = "CLIENT")
 @XmlRootElement
 @NamedQueries({
-    @NamedQuery(name = "Client.connect", query = "SELECT c FROM Client c WHERE c.pseudo = :pseudo AND c.motdepasse = :motdepasse"),
     @NamedQuery(name = "Client.findAll", query = "SELECT c FROM Client c"),
     @NamedQuery(name = "Client.findByIdclient", query = "SELECT c FROM Client c WHERE c.idclient = :idclient"),
     @NamedQuery(name = "Client.findByNom", query = "SELECT c FROM Client c WHERE c.nom = :nom"),
@@ -44,7 +39,8 @@ import javax.xml.bind.annotation.XmlTransient;
     @NamedQuery(name = "Client.findByRue", query = "SELECT c FROM Client c WHERE c.rue = :rue"),
     @NamedQuery(name = "Client.findByNumero", query = "SELECT c FROM Client c WHERE c.numero = :numero"),
     @NamedQuery(name = "Client.findByBoite", query = "SELECT c FROM Client c WHERE c.boite = :boite"),
-    @NamedQuery(name = "Client.findByCodepostal", query = "SELECT c FROM Client c WHERE c.codepostal = :codepostal")})
+    @NamedQuery(name = "Client.findByCodepostal", query = "SELECT c FROM Client c WHERE c.codepostal = :codepostal"),
+    @NamedQuery(name = "Client.findByVille", query = "SELECT c FROM Client c WHERE c.ville = :ville")})
 public class Client implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id
@@ -95,11 +91,14 @@ public class Client implements Serializable {
     @NotNull
     @Column(name = "CODEPOSTAL")
     private int codepostal;
+    @Basic(optional = false)
+    @NotNull
+    @Size(min = 1, max = 100)
+    @Column(name = "VILLE")
+    private String ville;
     @JoinColumn(name = "IDPAYS", referencedColumnName = "IDPAYS")
     @ManyToOne(optional = false)
     private Pays idpays;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "idclient")
-    private Collection<Commande> commandeCollection;
 
     public Client() {
     }
@@ -108,7 +107,7 @@ public class Client implements Serializable {
         this.idclient = idclient;
     }
 
-    public Client(Integer idclient, String nom, String prenom, String mail, String motdepasse, String pseudo, String rue, short numero, int codepostal) {
+    public Client(Integer idclient, String nom, String prenom, String mail, String motdepasse, String pseudo, String rue, short numero, int codepostal, String ville) {
         this.idclient = idclient;
         this.nom = nom;
         this.prenom = prenom;
@@ -118,6 +117,7 @@ public class Client implements Serializable {
         this.rue = rue;
         this.numero = numero;
         this.codepostal = codepostal;
+        this.ville = ville;
     }
 
     public Integer getIdclient() {
@@ -208,21 +208,20 @@ public class Client implements Serializable {
         this.codepostal = codepostal;
     }
 
+    public String getVille() {
+        return ville;
+    }
+
+    public void setVille(String ville) {
+        this.ville = ville;
+    }
+
     public Pays getIdpays() {
         return idpays;
     }
 
     public void setIdpays(Pays idpays) {
         this.idpays = idpays;
-    }
-
-    @XmlTransient
-    public Collection<Commande> getCommandeCollection() {
-        return commandeCollection;
-    }
-
-    public void setCommandeCollection(Collection<Commande> commandeCollection) {
-        this.commandeCollection = commandeCollection;
     }
 
     @Override

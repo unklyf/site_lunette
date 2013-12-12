@@ -67,7 +67,7 @@
                     <p style="text-align: right; margin-right: 20px;">
                         <h:outputText  value="#{msg.cart_total} #{cart.total}#{msg.symbole}" rendered="#{cart.caddie.size() != 0}" /> <br /> <br />                        
                         <h:commandButton class="buttonLow" value="#{msg.shop_vider}" action="#{cart.caddie.clear()}" rendered="#{cart.caddie.size() != 0}"  /> 
-                        <h:commandButton class="button" value="#{msg.shop_command}" action="#" rendered="#{cart.caddie.size() != 0}"  /> 
+                        <h:commandButton class="button" value="#{msg.shop_command}" action="#{connexion.commander()}" rendered="#{cart.caddie.size() != 0}"  /> 
                     </p>
                 </h:form>
                 

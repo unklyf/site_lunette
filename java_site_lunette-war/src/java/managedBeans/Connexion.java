@@ -130,5 +130,12 @@ public class Connexion implements Serializable{
             
     }
     
+    public String commander(){
+       if(isConnected())
+           return "commande";
+       else
+           return "login";
+    }
+    
     
 }
