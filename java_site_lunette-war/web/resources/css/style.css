@@ -550,3 +550,24 @@ article:hover{
 .gras{
     font-weight:bolder;
 }
+
+.caddie2{
+    width : 650px;
+    text-align:center;
+    border-collapse: collapse
+}
+
+.caddie2 td{
+    padding: 15px;
+    border-bottom: 1px solid rgba(0,0,0,0.45);
+    background-color: rgba(185,185,185,0.35);
+}
+
+.caddie2 tr:hover{
+    background-color: rgba(224,126,0,0.35);
+}
+
+.caddie2 th{
+    padding-bottom: 10px;
+    border-bottom: 1px solid rgba(0,0,0,0.45);
+}
