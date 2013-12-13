@@ -1,7 +1,10 @@
 <?xml version='1.0' encoding='UTF-8' ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:ui="http://java.sun.com/jsf/facelets">
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:c="http://java.sun.com/jsp/jstl/core">
 
     <body>
 
@@ -9,7 +12,25 @@
 
       
             <ui:define name="content">
-               PROMO
+                <c:forEach items="#{promo.promoList()}" var="promotion">
+                    <h2><h:outputText value="> #{promotion.datedebut.day+1}/#{promotion.datedebut.month+1}/#{promotion.datedebut.year+2000-100}  -  #{promotion.datefin.day+1}/#{promotion.datefin.month+1}/#{promotion.datefin.year+2000-100} "/></h2>
+                    <c:forEach items="#{promotion.produitCollection}" var="produit">
+                        <article>  
+                            <h:form>
+                                <h:outputText value="#{produit.marque}" /> 
+                                <h:outputText class="label" value="#{msg.new}" rendered="#{produit.nouveautee =='true'}" />
+                                <h:graphicImage class="thumbsimg" value="#{produit.image}" /><br/>
+                                
+                                <!--promo-->
+                                <h:outputText class="promo" value="-#{produit.idpromo.pourcentage}%" rendered="#{categorie.verifPromo(produit)}" /><br/>                                
+                                <h:outputText value="#{produit.prixunitaire}#{msg.symbole}" rendered="#{categorie.verifPromo(produit)=='false'}" />      
+                                <h:outputText style="color:red;" value="#{categorie.calculPrix(produit)}#{msg.symbole}" rendered="#{categorie.verifPromo(produit)}"/> <br/>
+                                <h:outputText style="text-decoration: line-through;" value="#{produit.prixunitaire}#{msg.symbole}" rendered="#{categorie.verifPromo(produit)}"/> <br/>
+                                <h:commandButton class="button" value="#{msg.shop_more}" action="#{selectProd.selectProduit(produit.idproduit)}" />  <br/>                                 
+                             </h:form>
+                        </article>
+                      </c:forEach>  
+                    </c:forEach>  
             </ui:define>
 
           

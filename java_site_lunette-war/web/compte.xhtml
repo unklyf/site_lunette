@@ -11,47 +11,107 @@
            
             <ui:define name="content">
                  <div class="backcontent">
-                     <p>
-                         <h:outputLabel value="#{msg.create_nom}"/>
-                         <h:outputText value="#{connexion.cli.nom}"/><br/>
-                     </p>  
-                     <p>
-                         <h:outputLabel value="#{msg.create_prenom}"/>
-                         <h:outputText value="#{connexion.cli.prenom}"/><br/>
-                     </p>           
-                     <p>
-                         <h:outputLabel value="#{msg.create_mail}"/>
-                         <h:outputText value="#{connexion.cli.mail}"/><br/>
-                     </p>
-                     <p>
-                         <h:outputLabel value="#{msg.create_rue}"/>
-                         <h:outputText value="#{connexion.cli.rue}"/><br/>
-                     </p>
-                     <p>
-                         <h:outputLabel value="#{msg.create_numero}"/>
-                         <h:outputText value="#{connexion.cli.numero}"/><br/>
-                     </p>
-                     <p>
-                         <h:outputLabel value="#{msg.create_boite}"/>
-                         <h:outputText value="#{connexion.cli.boite}"/><br/>
-                     </p>
-                     <p>
-                         <h:outputLabel value="#{msg.create_codepostal}"/>
-                         <h:outputText value="#{connexion.cli.codepostal}"/><br/>
-                     </p>                  
-                     <p>
-                         <h:outputLabel value="#{msg.create_ville}"/>
-                         <h:outputText value="#{connexion.cli.ville}"/><br/>
-                     </p>
-                     <p>
-                         <h:outputLabel value="#{msg.create_pays}"/>
-                         <h:outputText value="#{connexion.tradpays.libelle}"/><br/>
-                     </p>
-                     <p>
-                         <h:outputLabel value="#{msg.create_numtel}"/>
-                         <h:outputText value="#{connexion.cli.numtelephone}"/><br/>
-                     </p>
-                     
+                     <h2><CAPTION><h:outputLabel value="#{msg.compte_titretableau1}" for="pays" /></CAPTION></h2>
+                     <table class="caddie2">
+                         <tr>
+                            <th>
+                               <h:outputLabel value="#{msg.create_nom}"/>
+                            </th>
+                            <td>
+                               <h:outputText value="#{connexion.cli.nom}"/><br/>
+                            </td>
+                         </tr>
+                         <tr>
+                            <th>
+                                <h:outputLabel value="#{msg.create_prenom}"/>
+                            </th>
+                            <td>
+                               <h:outputText value="#{connexion.cli.prenom}"/><br/>
+                            </td>
+                         </tr>
+                         <tr>
+                            <th>
+                                <h:outputLabel value="#{msg.create_mail}"/>
+                            </th>
+                             <td>
+                                <h:outputText value="#{connexion.cli.mail}"/><br/>
+                            </td>
+                         </tr>
+                         <tr>
+                            <th>
+                               <h:outputLabel value="#{msg.create_rue}"/>
+                            </th>
+                            <td>
+                               <h:outputText value="#{connexion.cli.rue}"/><br/>
+                            </td>
+                         </tr>
+                         <tr>
+                            <th>
+                               <h:outputLabel value="#{msg.create_numero}"/>
+                            </th>
+                            <td>
+                               <h:outputText value="#{connexion.cli.numero}"/><br/>
+                            </td>
+                         </tr>
+                         <tr>
+                            <th>
+                               <h:outputLabel value="#{msg.create_boite}"/>
+                            </th>
+                            <td>
+                               <h:outputText value="#{connexion.cli.boite}"/><br/>
+                            </td>
+                         </tr>
+                         <tr>
+                            <th>
+                               <h:outputLabel value="#{msg.create_codepostal}"/>
+                            </th>
+                            <td>
+                               <h:outputText value="#{connexion.cli.codepostal}"/><br/>
+                            </td>
+                         </tr>
+                         <tr>
+                            <th>
+                               <h:outputLabel value="#{msg.create_ville}"/>
+                            </th>
+                            <td>
+                                <h:outputText value="#{connexion.cli.ville}"/><br/>
+                            </td>
+                         </tr>
+                         <tr>
+                            <th>
+                               <h:outputLabel value="#{msg.create_pays}"/>
+                            </th>
+                            <td>
+                               <h:outputText value="#{connexion.tradpays.libelle}"/><br/>
+                            </td>
+                         </tr>
+                         <tr>
+                            <th>
+                               <h:outputLabel value="#{msg.create_numtel}"/>
+                            </th>
+                            <td>
+                               <h:outputText value="#{connexion.cli.numtelephone}"/><br/>
+                            </td>
+                         </tr>
+                         <tr>
+                            <th>
+                               <h:outputLabel value="#{msg.create_pseudo}"/>
+                            </th>
+                            <td>
+                               <h:outputText value="#{connexion.cli.pseudo}"/><br/>
+                            </td>
+                         </tr>
+                         <tr>
+                            <th>
+                               <h:outputLabel value="#{msg.create_motdepasse}"/>
+                            </th>
+                            <td>
+                               <h:outputText value="#{connexion.cli.motdepasse}"/><br/>
+                            </td>
+                         </tr>
+                     </table>
+                     <br/>
+                     <h2><CAPTION><h:outputLabel value="#{msg.compte_titretableau2}" for="pays" /></CAPTION></h2>
                 </div>
             </ui:define>
 
