@@ -1,7 +1,8 @@
 <?xml version='1.0' encoding='UTF-8' ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html">
 
     <body>
 
@@ -9,7 +10,49 @@
 
            
             <ui:define name="content">
-                COMPTE
+                 <div class="backcontent">
+                     <p>
+                         <h:outputLabel value="#{msg.create_nom}"/>
+                         <h:outputText value="#{connexion.cli.nom}"/><br/>
+                     </p>  
+                     <p>
+                         <h:outputLabel value="#{msg.create_prenom}"/>
+                         <h:outputText value="#{connexion.cli.prenom}"/><br/>
+                     </p>           
+                     <p>
+                         <h:outputLabel value="#{msg.create_mail}"/>
+                         <h:outputText value="#{connexion.cli.mail}"/><br/>
+                     </p>
+                     <p>
+                         <h:outputLabel value="#{msg.create_rue}"/>
+                         <h:outputText value="#{connexion.cli.rue}"/><br/>
+                     </p>
+                     <p>
+                         <h:outputLabel value="#{msg.create_numero}"/>
+                         <h:outputText value="#{connexion.cli.numero}"/><br/>
+                     </p>
+                     <p>
+                         <h:outputLabel value="#{msg.create_boite}"/>
+                         <h:outputText value="#{connexion.cli.boite}"/><br/>
+                     </p>
+                     <p>
+                         <h:outputLabel value="#{msg.create_codepostal}"/>
+                         <h:outputText value="#{connexion.cli.codepostal}"/><br/>
+                     </p>                  
+                     <p>
+                         <h:outputLabel value="#{msg.create_ville}"/>
+                         <h:outputText value="#{connexion.cli.ville}"/><br/>
+                     </p>
+                     <p>
+                         <h:outputLabel value="#{msg.create_pays}"/>
+                         <h:outputText value="#{connexion.tradpays.libelle}"/><br/>
+                     </p>
+                     <p>
+                         <h:outputLabel value="#{msg.create_numtel}"/>
+                         <h:outputText value="#{connexion.cli.numtelephone}"/><br/>
+                     </p>
+                     
+                </div>
             </ui:define>
 
            

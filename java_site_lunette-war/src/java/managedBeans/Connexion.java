@@ -9,8 +9,11 @@ import java.util.List;
 import model.Client;
 import javax.ejb.EJB;
 import javax.faces.bean.ManagedBean;
+import javax.faces.bean.ManagedProperty;
 import javax.faces.bean.SessionScoped;
+import model.Tradpays;
 import sessionBeans.ClientFacadeLocal;
+import sessionBeans.TradpaysFacadeLocal;
 
 
 /**
@@ -22,13 +25,37 @@ import sessionBeans.ClientFacadeLocal;
 
 public class Connexion implements Serializable{
     
+    
+    @EJB
+    private TradpaysFacadeLocal tradPaysFacade;
+    
     @EJB
     private ClientFacadeLocal clientFacade;
+    
+    @ManagedProperty("#{language}")
+    private Language lang;
+
+    public Language getLang() {
+        return lang;
+    }
+
+    public void setLang(Language lang) {
+        this.lang = lang;
+    }
 
     private String pseudo;    
     private String motdepasse;
     private boolean connected = false;
     private boolean erreur = false;
+    private Client cli;
+
+    public Client getCli() {
+        return cli;
+    }
+
+    public void setCli(Client cli) {
+        this.cli = cli;
+    }
     
     /**
     * Creates a new instance of connexion
@@ -93,8 +120,8 @@ public class Connexion implements Serializable{
     }
   
     public String login() {
-        List<Client> cli = clientFacade.connect(this.getPseudo(), this.getMotdepasse());
-        if (!cli.isEmpty()) {
+        cli = clientFacade.connect(this.getPseudo(), this.getMotdepasse());
+        if (cli!= null) {
             setErreur(false);
             setConnected(true);
             return "index";
@@ -130,12 +157,9 @@ public class Connexion implements Serializable{
             
     }
     
-    public String commander(){
-       if(isConnected())
-           return "commande";
-       else
-           return "login";
-    }
+      public Tradpays getTradpays(){
+        return tradPaysFacade.findPays(cli.getIdpays().getIdpays(),lang.getId());
+    } 
     
     
 }

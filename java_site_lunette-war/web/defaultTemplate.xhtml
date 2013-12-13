@@ -42,7 +42,7 @@
                             <!-- Login -->
                             <span class="right">
                                 <h:outputText value="#{msg.menu_welcome}" rendered="#{connexion.afficherCompte() == 'connected'}"></h:outputText>
-                                <h:link value=" #{connexion.pseudo}"  rendered="#{connexion.afficherCompte() == 'connected'}" outcome="compte.xhtml"></h:link>
+                                <h:link value=" #{connexion.cli.pseudo}"  rendered="#{connexion.afficherCompte() == 'connected'}" outcome="compte.xhtml"></h:link>
                                 <h:link class="visuellink" value="#{msg.menu_login}" rendered="#{connexion.afficherCompte() == 'guest'}" outcome="login.xhtml"></h:link>                                
                                 <h:outputText value=" | " rendered="#{connexion.afficherCompte() == 'connected'}" />
                                 <h:commandButton class="visuel" value="#{msg.menu_logout}" action="#{connexion.logout()}" rendered="#{connexion.afficherCompte() == 'connected'}" /> 
@@ -64,7 +64,6 @@
 
         <!-- Start container  -->
         <div id="container"> 
-                
                 <!-- Logo -->
                 <span style="margin-bottom:5px;" class="left">
                     <h:graphicImage value="resources/images/logo.png" />

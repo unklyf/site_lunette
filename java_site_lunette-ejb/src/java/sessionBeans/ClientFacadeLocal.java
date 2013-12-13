@@ -10,7 +10,7 @@ import model.Client;
 
 /**
  *
- * @author Unklyf
+ * @author Home
  */
 @Local
 public interface ClientFacadeLocal {
@@ -29,6 +29,8 @@ public interface ClientFacadeLocal {
 
     int count();
     
-    List<Client> connect(String pseudo, String motdepasse);
+    Client connect(String pseudo, String motdepasse);
+    
+    List<Client> findByLogin(String pseudo);
     
 }

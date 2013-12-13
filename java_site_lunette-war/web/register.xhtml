@@ -4,7 +4,6 @@
       xmlns:ui="http://java.sun.com/jsf/facelets"
       xmlns:h="http://java.sun.com/jsf/html"
       xmlns:f="http://java.sun.com/jsf/core">
-
     <body>
 
         <ui:composition template="./defaultTemplate.xhtml">
@@ -12,9 +11,10 @@
      
             <ui:define name="content">
                 <h:form>
-                    <p class="createintro">Vos coordonnées</p>
-                    <div>
-                        <p>
+                    
+                    <p class="createintro "><h:outputLabel value="#{msg.create_form}"/></p>
+                      <div>
+                      <p>
                             <h:outputLabel value="#{msg.create_nom}" for="nom"> <span class="small"><h:outputText value="*"/></span></h:outputLabel> 
                             <br/>
                             <h:inputText size="20"  value="#{createClient.nom}" id="nom" required="true" requiredMessage="#{msg.register_name_required}" validatorMessage="#{msg.register_password_validator}">
@@ -37,6 +37,7 @@
                                 <f:validateLength minimum="2" maximum="50" />
                             </h:inputText>
                              <h:message class="red" for="mail"/>
+                             <h:outputText class="red" value="#{msg.register_error_email}" rendered="#{createClient.setBoldErreurMail() == 'erreur'}" />
                         </p>                        
                         <p>
                             <h:outputLabel value="#{msg.create_rue}" for="rue"><span class="small"><h:outputText value="*"/></span></h:outputLabel>
@@ -49,7 +50,7 @@
                         <p>
                             <h:outputLabel value="#{msg.create_numero}" for="numero"><span class="small"><h:outputText value="*"/></span></h:outputLabel>
                             <br/>
-                            <h:inputText size="20"  value="#{createClient.numero}" id="numero" required="true" requiredMessage="#{msg.register_numero_required}" validatorMessage="#{msg.register_password_validator}">
+                            <h:inputText size="20"  value="#{createClient.numero}" id="numero" required="true" requiredMessage="#{msg.register_numero_required}" validatorMessage="#{msg.register_numero_validator}">
                                    <f:validateDoubleRange minimum="1" />
                             </h:inputText>
                              <h:message class="red" for="numero"/>
@@ -64,7 +65,7 @@
                         <p>
                             <h:outputLabel value="#{msg.create_codepostal}" for="codepostal"><span class="small"><h:outputText value="*"/></span></h:outputLabel>
                             <br/>
-                            <h:inputText size="20"  value="#{createClient.codepostal}" id="codepostal" required="true" requiredMessage="#{msg.register_codepostal_required}" validatorMessage="#{msg.register_password_validator}">
+                            <h:inputText size="20"  value="#{createClient.codepostal}" id="codepostal" required="true" requiredMessage="#{msg.register_codepostal_required}" validatorMessage="#{msg.register_codepostal_validator}">
                                    <f:validateDoubleRange minimum="1" />
                             </h:inputText>
                              <h:message class="red" for="codepostal"/>
@@ -80,48 +81,59 @@
                         <p>
                             <h:outputLabel value="#{msg.create_pays}" for="pays" ><span class="small"><h:outputText value="*"/></span></h:outputLabel><br/>
                             <h:selectOneMenu id="pays" value="#{createClient.pays}">
+                                    <f:selectItem itemValue="1" itemLabel="Belgique" />
                                     <f:selectItem itemValue="2" itemLabel="France" />
-                                    <f:selectItem itemValue="3" itemLabel="Belgique" />
-                                    <f:selectItem itemValue="4" itemLabel="Angleterre" />
+                                    <f:selectItem itemValue="3" itemLabel="Angleterre" />
                            </h:selectOneMenu>  
                                                            
                         </p> 
                         <p>
                             <h:outputText value="#{msg.create_numtel}" />
                             <br/>
-                            <h:inputText size="20"  value=""/>                            
+                            <h:inputText size="20"  value="#{createClient.tel}"/>                            
                         </p>
                     </div>
                     
-                    <p class="createintro">Pseudo et mot de passe </p>
+                    <p class="createintro "><h:outputLabel value="#{msg.create_formmdp}"/></p>
                     
                     <p>
+                        
                         <h:outputLabel value="#{msg.create_pseudo}" for="pseudo"> <span class="small"><h:outputText value="*"/></span></h:outputLabel><br/>
-                        <h:inputText id="pseudo" value="#{createClient.pays}" required="true" requiredMessage="#{msg.register_pseudo_required}" validatorMessage="#{msg.register_pseudo_validator}">
+                        <h:inputText id="pseudo" value="#{createClient.pseudo}" required="true" requiredMessage="#{msg.register_pseudo_required}" validatorMessage="#{msg.register_pseudo_validator}">                               
                                 <f:validateLength minimum="4" maximum="25" />
-                        </h:inputText>
-                        <h:message class="red" for="pseudo"/>                         
+                        </h:inputText>                    
+                        <h:message class="red" for="pseudo"/>        
+                        <h:outputText  class="red" value="#{msg.register_error_register}" rendered="#{createClient.setBoldErreurPseudo() == 'erreur'}"/>
                     </p>
                     
-                    <p>
-                        <h:outputText value="#{msg.create_motdepasse}" />
-                        <br/>
-                        <h:inputText size="20"  value=""/>                                   
+                     <p>
+                        
+                        <h:outputLabel value="#{msg.create_motdepasse}" for="motdepasse" ><span class="small"><h:outputText value="*"/></span></h:outputLabel><br/>
+                        <h:inputSecret id="motdepasse" value="#{createClient.motdepasse}" required="true" requiredMessage="#{msg.register_password_required}" validatorMessage="#{msg.register_password_validator}">
+                                    <f:validateLength minimum="4" maximum="25" />
+                                    
+                        </h:inputSecret>
+                        <h:message class="red" for="motdepasse"/>
+                        <h:outputText class="red" value="#{msg.register_error_confirm}" rendered="#{createClient.setBoldErreurPassword() == 'erreur'}" />
                     </p>
                     
-                    <p>
-                        <h:outputText value="#{msg.create_motdepassedeux}" />
-                        <br/>
-                        <h:inputText size="20"  value=""/>                                   
+                     <p>
+                       
+                        <h:outputLabel value="#{msg.create_motdepasseverif}" for="motdepasseverif" ><span class="small"><h:outputText value="*"/></span></h:outputLabel><br/>
+                        <h:inputSecret id="motdepasseverif" value="#{createClient.motdepasseverif}" required="true" requiredMessage="#{msg.register_confirm_required}" validatorMessage="#{msg.register_confirm_validator}">
+                                    <f:validateLength minimum="4" maximum="25" />
+                        </h:inputSecret>
+                        <h:message class="red" for="motdepasseverif"/>
+                        <h:outputText class="red" value="#{msg.register_error_confirm}" rendered="#{createClient.setBoldErreurPassword() == 'erreur'}" />
                     </p>
+       
                     <p align="left"  ><br/>
-                        <h:commandButton class="button" id="button" value="S'inscrire" action="#{register.addCustomer}" /><br/>
-                        <span id="qte"><h:outputText value="*"/></span> <h:outputText value=" #{msg.register_required}" class="required"/><br/>                       
+                        <h:commandButton class="button" id="button" value="#{msg.create_button}" action="#{createClient.addClient()}" /><br/><br/>
+                        <span id="qte"><h:outputText value="*"/></span> <h:outputText value="#{msg.register_required}" class="required"/><br/>                        
                     </p>  
-         
+
                 </h:form>
-                
-                
+       
             </ui:define>
 
          

@@ -7,6 +7,7 @@ package sessionBeans;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.persistence.Query;
 import model.Tradpays;
 
 /**
@@ -25,6 +26,16 @@ public class TradpaysFacade extends AbstractFacade<Tradpays> implements Tradpays
 
     public TradpaysFacade() {
         super(Tradpays.class);
+    }
+    
+    @Override
+    public Tradpays findPays(int idpays, int idlangue)
+    {
+        Query query;
+        query = em.createNamedQuery("Tradpays.findPays");
+        query.setParameter("idpays", idpays);
+        query.setParameter("idlangue", idlangue);
+        return (Tradpays) query.getSingleResult();
     }
     
 }

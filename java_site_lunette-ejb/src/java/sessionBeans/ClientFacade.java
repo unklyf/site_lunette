@@ -4,12 +4,13 @@
  */
 package sessionBeans;
 
-import java.util.List;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 import model.Client;
+import java.util.List;
+
 
 /**
  *
@@ -24,18 +25,32 @@ public class ClientFacade extends AbstractFacade<Client> implements ClientFacade
     protected EntityManager getEntityManager() {
         return em;
     }
+    
+    @Override
+    public void create (Client cli) {
+        
+        em.persist(cli);
+    }
 
     public ClientFacade() {
         super(Client.class);
     }
     
     @Override
-    public List<Client> connect(String pseudo,String motdepasse)
+    public Client connect(String pseudo,String motdepasse)
     {
         Query query;
         query = em.createNamedQuery("Client.connect");
         query.setParameter("pseudo", pseudo);
         query.setParameter("motdepasse", motdepasse);
+        return (Client)query.getSingleResult();
+    }
+    
+    @Override
+    public List<Client> findByLogin(String pseudo) {
+        Query query;
+        query = em.createNamedQuery("Client.findByPseudo");
+        query.setParameter("pseudo", pseudo);
         return query.getResultList();
     }
     

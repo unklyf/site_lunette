@@ -29,4 +29,6 @@ public interface TradpaysFacadeLocal {
 
     int count();
     
+    Tradpays findPays(int idpays, int idlangue);
+    
 }

@@ -28,6 +28,7 @@ import javax.xml.bind.annotation.XmlRootElement;
 @Table(name = "CLIENT")
 @XmlRootElement
 @NamedQueries({
+    @NamedQuery(name = "Client.connect", query = "SELECT c FROM Client c WHERE c.pseudo = :pseudo AND c.motdepasse = :motdepasse"),
     @NamedQuery(name = "Client.findAll", query = "SELECT c FROM Client c"),
     @NamedQuery(name = "Client.findByIdclient", query = "SELECT c FROM Client c WHERE c.idclient = :idclient"),
     @NamedQuery(name = "Client.findByNom", query = "SELECT c FROM Client c WHERE c.nom = :nom"),
@@ -118,6 +119,19 @@ public class Client implements Serializable {
         this.numero = numero;
         this.codepostal = codepostal;
         this.ville = ville;
+    }
+    
+    public Client(String nom, String prenom, String mail, String motdepasse, String pseudo, String rue, short numero, int codepostal, String ville,int pays) {    
+        this.nom = nom;
+        this.prenom = prenom;
+        this.mail = mail;
+        this.motdepasse = motdepasse;
+        this.pseudo = pseudo;
+        this.rue = rue;
+        this.numero = numero;
+        this.codepostal = codepostal;
+        this.ville = ville;
+        this.idpays = new Pays(pays);
     }
 
     public Integer getIdclient() {
