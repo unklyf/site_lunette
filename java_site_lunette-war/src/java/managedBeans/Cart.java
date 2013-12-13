@@ -9,8 +9,11 @@ import java.util.List;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ManagedProperty;
 import javax.faces.bean.SessionScoped;
+import model.Commande;
 import model.Lignecommande;
 import model.Produit;
+import sessionBeans.CommandeFacadeLocal;
+import sessionBeans.LignecommandeFacadeLocal;
 /**
  *
  * @author Unklyf
@@ -19,22 +22,27 @@ import model.Produit;
 @SessionScoped
 public class Cart implements Serializable{
 
+    @ManagedProperty("#{connexion}")
+    private Connexion connexion;
+   
+    @EJB
+    private CommandeFacadeLocal commFacade;
+    
+    @EJB
+    private LignecommandeFacadeLocal licommFacade;
     
     private HashMap caddie = new HashMap <Integer, Lignecommande> ();
+    private Commande com;
     private double total;
     private int quantitee;
 
-    /*@ManagedProperty("#{catMB}")
-    private Categorie catMB;
-
-    public Categorie getCatMB() {
-        return catMB;
+    public Connexion getConnexion() {
+        return connexion;
     }
 
-    public void setCatMB(Categorie catMB) {
-        this.catMB = catMB;
-    }*/
-   
+    public void setConnexion(Connexion connexion) {
+        this.connexion = connexion;
+    }
     
     public int getQuantitee() {
         return quantitee;
@@ -98,8 +106,7 @@ public class Cart implements Serializable{
     }
     
     public double calculTotalProduit(Produit prod){
-        double total;
-        
+               
         if(prod.getIdpromo()!=null){
            total = 0;
            if(verifPromo(prod)){
@@ -114,7 +121,7 @@ public class Cart implements Serializable{
     }
     
     public double CalculTotal(){
-        double total=0;
+        total=0;
         List <Lignecommande> liste =getMapAsList();
         for(int i=0; i< liste.size();i++){
             total += calculTotalProduit(liste.get(i).getProduit());
@@ -140,8 +147,26 @@ public class Cart implements Serializable{
         return verif;
     }
     
-    public double calculPrix(Produit p){
-        return (p.getPrixunitaire())- (p.getIdpromo().getPourcentage()* p.getPrixunitaire()/100);
+    public double calculPrix(Produit prod){        
+        double prix =(prod.getPrixunitaire())- (prod.getIdpromo().getPourcentage()* prod.getPrixunitaire()/100);
+        caddie.remove(prod.getIdproduit());
+        caddie.put(prod.getIdproduit(),new Lignecommande(prod, quantitee,prix));
+        return prix;
+    }
+    
+    public String cloturerCommande(){
+        com= new Commande(new Date(),"En cours de traitement","Paye", connexion.getCli() );
+        commFacade.create(com);
+        for(int i=0;i < getMapAsList().size();i++){            
+            //ajout coll
+            Lignecommande ligneCom = getMapAsList().get(i);
+            com.getLignecommandeCollection().add(ligneCom);
+            //set id
+            ligneCom.setCommande(com);
+            //create ligne            
+            licommFacade.create(ligneCom);
+        }
+        return "compte";
     }
 }
 

@@ -1,7 +1,10 @@
 <?xml version='1.0' encoding='UTF-8' ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:c="http://java.sun.com/jsp/jstl/core">
 
     <body>
 
@@ -10,11 +13,92 @@
            
 
             <ui:define name="content">
-                Recap
+                <h:form>
+                    <div style="float: left">
+                        <h2><h:outputText value="#{msg.commande_adresse}" /></h2>
+
+                        <p class="backcontent2">
+                            <h:outputText class="gras" value="#{connexion.cli.prenom} "/>
+                            <h:outputText class="gras" value="#{connexion.cli.nom}"/><br/>
+
+
+                            <h:outputLabel value="#{connexion.cli.numero} "/>
+                            <h:outputText value="#{connexion.cli.boite} " rendered="#{connexion.cli.boite != null}"/>
+                            <h:outputText value="#{connexion.cli.rue}"/><br/>             
+
+
+                            <h:outputText value="#{connexion.cli.codepostal} "/>
+                            <h:outputText value="#{connexion.cli.ville}"/><br/>
+                            <h:outputText value="#{connexion.tradpays.libelle}"/><br/>
+                        </p> 
+                    </div>
+                        
+                    <div style="display: inline-block; margin-left: 120px;">
+                        <h2><h:outputText value="#{msg.commande_paiement}" /></h2>
+
+                        <p class="backcontent2">
+                            <input  type ="radio" name ="visa" id ="sizeMed" value="visa" checked="true"/>
+                            <label for = "sizeMed"><h:graphicImage value="resources/images/visa.png" /></label><br />
+
+                            <input type ="radio" name ="bancontact" id ="bancontact" value="bancontact" />
+                            <label for = "sizeMed"><h:graphicImage value="resources/images/bancontact.png" /></label><br />
+
+                            <input type ="radio" name ="mastercard" id ="mastercard" value="mastercard" />
+                            <label for = "sizeMed"><h:graphicImage value="resources/images/mastercard.png" /></label><br />
+                        </p>
+                    </div>
+                
+                    <div>
+                        <h2><h:outputText value="#{msg.commande_recap}" /></h2>
+
+                        <h:dataTable class="caddie" value="#{cart.mapAsList}" rendered="#{cart.caddie.size() != 0}" var="liste">
+                           <h:column>
+                               <h:graphicImage class="mini" value="#{liste.produit.image}" />
+                           </h:column>
+
+                           <h:column class="larger">
+                               <f:facet name="header">
+                                   <h:outputText value="#{msg.cart_produit}" />
+                               </f:facet>
+                               <h:outputText value="#{liste.produit.marque}" /><br/>
+                               <h:outputText value="#{liste.produit.modele}" />
+                           </h:column>
+
+                           <h:column>
+                               <f:facet name="header">
+                                   <h:outputText value="#{msg.cart_prix}" />
+                               </f:facet>                   
+                                  <h:outputText value="#{liste.produit.prixunitaire}#{msg.symbole}" rendered="#{categorie.verifPromo(liste.produit)=='false'}" />  
+                                  <h:outputText style="text-decoration: line-through;" value="#{liste.produit.prixunitaire}#{msg.symbole}" rendered="#{categorie.verifPromo(liste.produit)}"/> <br/>
+                                  <h:outputText style="color:red;" value="#{categorie.calculPrix(liste.produit)}#{msg.symbole}" rendered="#{categorie.verifPromo(liste.produit)}"/> <br/>
+                            </h:column>
+
+                            <h:column>                                                       
+                                 <h:outputText style="color:red;" value="-#{liste.produit.idpromo.pourcentage}%" rendered="#{categorie.verifPromo(liste.produit)}" /><br/>
+                           </h:column>
+
+                           <h:column>
+                               <f:facet name="header">
+                                   <h:outputText value="#{msg.cart_qte}" />
+                               </f:facet>
+                               <h:outputText value="#{liste.quantitee}" /> 
+                           </h:column>
+
+                           <h:column>
+                               <f:facet name="header">
+                                   <h:outputText value="Total" />
+                               </f:facet>
+                               <h:outputText value="#{cart.calculTotalProduit(liste.produit)}" />
+                           </h:column>                         
+                       </h:dataTable>
+                        <p>
+                        <h:outputText  class="gras" value="#{msg.cart_total} #{cart.total}#{msg.symbole}"  /> <br />   <br /> 
+                        <h:commandButton class="buttonLow" value="#{msg.shop_back}" action="cart" /> 
+                        <h:commandButton class="button" value="#{msg.cart_confirm}" action="#{cart.cloturerCommande()}" /> 
+                    </p>
+                    </div>             
+                </h:form>
             </ui:define>
-
-        
-
         </ui:composition>
 
     </body>

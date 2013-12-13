@@ -81,6 +81,13 @@ public class Commande implements Serializable {
         this.etat = etat;
         this.etatpaiement = etatpaiement;
     }
+    
+    public Commande(Date datecommande, String etat, String etatpaiement, Client idclient) {
+        this.datecommande = datecommande;
+        this.etat = etat;
+        this.etatpaiement = etatpaiement;
+        this.idclient= idclient;
+    }
 
     public Integer getIdcommande() {
         return idcommande;

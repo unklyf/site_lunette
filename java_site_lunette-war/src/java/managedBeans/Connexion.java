@@ -157,9 +157,17 @@ public class Connexion implements Serializable{
             
     }
     
-      public Tradpays getTradpays(){
-        return tradPaysFacade.findPays(cli.getIdpays().getIdpays(),lang.getId());
+    
+    public Tradpays getTradpays(){
+      return tradPaysFacade.findPays(cli.getIdpays().getIdpays(),lang.getId());
     } 
+    
+    public String commander(){
+       if(isConnected())
+           return "commande";
+       else
+           return "login";
+    }
     
     
 }

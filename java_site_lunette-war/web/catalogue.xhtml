@@ -13,7 +13,9 @@
    
             <ui:define name="content">
                 <h2><h:outputText value="#{msg.title_allcat}" /></h2>
-                 <c:forEach items="#{categorie.prodList()}" var="produit">
+                <c:forEach items="#{categorie.catList()}" var="cat">
+                    <hr /><br/>
+                    <c:forEach items="#{cat.produitCollection}" var="produit">
                         <article>  
                             <h:form>
                                 <h:outputText value="#{produit.marque}" /> 
@@ -29,6 +31,7 @@
                              </h:form>
                         </article>
                     </c:forEach>  
+                 </c:forEach> 
             </ui:define>
 
 
