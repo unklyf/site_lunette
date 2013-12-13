@@ -23,7 +23,7 @@
 
                         <h:column class="larger">
                             <f:facet name="header">
-                                <h:outputText value="produit" />
+                                <h:outputText value="#{msg.cart_produit}" />
                             </f:facet>
                             <h:outputText value="#{liste.produit.marque}" /><br/>
                             <h:outputText value="#{liste.produit.modele}" />
@@ -31,7 +31,7 @@
 
                         <h:column>
                             <f:facet name="header">
-                                <h:outputText value="prix" />
+                                <h:outputText value="#{msg.cart_prix}" />
                             </f:facet>                   
                                <h:outputText value="#{liste.produit.prixunitaire}#{msg.symbole}" rendered="#{categorie.verifPromo(liste.produit)=='false'}" />  
                                <h:outputText style="text-decoration: line-through;" value="#{liste.produit.prixunitaire}#{msg.symbole}" rendered="#{categorie.verifPromo(liste.produit)}"/> <br/>
@@ -44,7 +44,7 @@
                         
                         <h:column>
                             <f:facet name="header">
-                                <h:outputText value="quantitée" />
+                                <h:outputText value="#{msg.cart_qte}" />
                             </f:facet>
                             <h:commandButton class="btn-down" action="#{cart.downQte(liste.produit)}"/> 
                             <h:outputText value="#{liste.quantitee}" /> 
@@ -54,7 +54,7 @@
 
                         <h:column>
                             <f:facet name="header">
-                                <h:outputText value="total" />
+                                <h:outputText value="Total" />
                             </f:facet>
                             <h:outputText value="#{cart.calculTotalProduit(liste.produit)}" />
                         </h:column>

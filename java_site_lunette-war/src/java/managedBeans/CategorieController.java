@@ -12,6 +12,7 @@ import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
 import sessionBeans.CategorieFacadeLocal;
 import model.Produit;
+import model.Categorie;
 import sessionBeans.ProduitFacadeLocal;
 
 
@@ -21,21 +22,23 @@ import sessionBeans.ProduitFacadeLocal;
  */
 @ManagedBean (name="categorie")
 @ViewScoped
-public class Categorie implements Serializable {
+public class CategorieController implements Serializable {
 
  
-    /*
+    
     @EJB
     private CategorieFacadeLocal catFacade; 
-    */
+    
+    
     @EJB
     private ProduitFacadeLocal prodFacade; 
       
     
-    public List<Produit> prodList(){
-        List<Produit> prod = prodFacade.findAll();
-        return prod;
+    public List<Categorie> catList(){
+        List<Categorie> cat = catFacade.findAll();
+        return cat;
     }
+    
     
     public List<Produit> prodCatList(int idcategorie){
         List<Produit> prod = prodFacade.findByCategorie(idcategorie);

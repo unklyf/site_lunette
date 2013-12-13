@@ -439,7 +439,16 @@ article:hover{
     padding : 30px;
     -webkit-box-shadow: 2px 2px 2px rgba( 0,0,0,0.25);
             box-shadow: 2px 2px 2px rgba( 0,0,0,0.35); 
-}		 
+}
+
+.backcontent2{
+    background : rgba( 255,255,255,0.35 ); 
+    width: 150px;
+    height: 100px;
+    padding : 30px;
+    -webkit-box-shadow: 2px 2px 2px rgba( 0,0,0,0.15);
+            box-shadow: 2px 2px 2px rgba( 0,0,0,0.25); 
+}
 		 
 
 .mini{
@@ -449,7 +458,7 @@ article:hover{
 .btn-supp{
     background-image: url(../images/bt-supprimer.gif);
     background-repeat: no-repeat;
-    border:none;
+    border:none;    
     width:10px;
     height:10px;
     margin:0;
