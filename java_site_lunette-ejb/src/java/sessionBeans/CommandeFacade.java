@@ -4,10 +4,13 @@
  */
 package sessionBeans;
 
+import java.util.List;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.persistence.Query;
 import model.Commande;
+import model.Client;
 
 /**
  *
@@ -27,4 +30,12 @@ public class CommandeFacade extends AbstractFacade<Commande> implements Commande
         super(Commande.class);
     }
     
+    @Override
+    public List<Commande> findByClient(Client idclient)
+    {
+        Query query;
+        query = em.createNamedQuery("Commande.findByClient");
+        query.setParameter("idclient", idclient);
+        return query.getResultList();
+    }
 }

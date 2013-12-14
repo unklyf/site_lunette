@@ -6,6 +6,8 @@ package managedBeans;
 
 
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 import javax.ejb.EJB;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ManagedProperty;
@@ -64,6 +66,16 @@ public class ProduitController implements Serializable{
     
     public Traddescription getTraddescription(){
         return descFacade.findDescription(getProduit().getIddescription().getIddescription(),lang.getId());
-    }   
+    }
+    
+    public ArrayList<Produit> getLastProd(int i){
+        List<Produit> prod = prodFacade.findAll();
+        ArrayList<Produit> lastProd = new ArrayList<Produit>();        
+        for(int j= 0; j < prod.size();j++){
+            if(prod.get(j).getNouveautee() && lastProd.size() < i)
+                lastProd.add(prod.get(j));
+        }
+        return lastProd;
+    }
 
 }

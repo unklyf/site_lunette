@@ -7,6 +7,7 @@ package sessionBeans;
 import java.util.List;
 import javax.ejb.Local;
 import model.Commande;
+import model.Client;
 
 /**
  *
@@ -28,5 +29,7 @@ public interface CommandeFacadeLocal {
     List<Commande> findRange(int[] range);
 
     int count();
+    
+    List<Commande> findByClient(Client idclient);
     
 }

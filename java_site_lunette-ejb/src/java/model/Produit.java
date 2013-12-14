@@ -6,11 +6,13 @@ package model;
 
 import java.io.Serializable;
 import java.math.BigDecimal;
+import java.util.ArrayList;
 import java.util.Collection;
 import javax.persistence.Basic;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -78,7 +80,7 @@ public class Produit implements Serializable {
     @Column(name = "GENRE")
     private char genre;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "produit")
-    private Collection<Lignecommande> lignecommandeCollection;
+    private Collection<Lignecommande> lignecommandeCollection;  
     @JoinColumn(name = "IDPROMO", referencedColumnName = "IDPROMO")
     @ManyToOne
     private Promotion idpromo;
@@ -97,6 +99,7 @@ public class Produit implements Serializable {
     @JoinColumn(name = "IDCATEGORIE", referencedColumnName = "IDCATEGORIE")
     @ManyToOne(optional = false)
     private Categorie idcategorie;
+    
 
     public Produit() {
     }
@@ -115,6 +118,7 @@ public class Produit implements Serializable {
         this.genre = genre;
     }
 
+    
     public Integer getIdproduit() {
         return idproduit;
     }
@@ -252,5 +256,6 @@ public class Produit implements Serializable {
     public String toString() {
         return "model.Produit[ idproduit=" + idproduit + " ]";
     }
+    
     
 }

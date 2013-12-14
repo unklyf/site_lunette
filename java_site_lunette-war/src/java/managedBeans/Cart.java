@@ -6,11 +6,13 @@ import java.util.Date;
 import javax.ejb.EJB;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Map.Entry;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ManagedProperty;
 import javax.faces.bean.SessionScoped;
 import model.Commande;
 import model.Lignecommande;
+import model.LignecommandePK;
 import model.Produit;
 import sessionBeans.CommandeFacadeLocal;
 import sessionBeans.LignecommandeFacadeLocal;
@@ -31,10 +33,20 @@ public class Cart implements Serializable{
     @EJB
     private LignecommandeFacadeLocal licommFacade;
     
-    private HashMap caddie = new HashMap <Integer, Lignecommande> ();
+    private HashMap <Integer, Lignecommande> caddie = new HashMap <Integer, Lignecommande> ();
+
     private Commande com;
     private double total;
     private int quantitee;
+    private boolean cache;
+
+    public boolean isCache() {
+        return cache;
+    }
+
+    public void setCache(boolean cache) {
+        this.cache = cache;
+    }
 
     public Connexion getConnexion() {
         return connexion;
@@ -55,6 +67,10 @@ public class Cart implements Serializable{
 
     public double getTotal() {
         return this.CalculTotal();
+    }
+    
+    public void setCaddie(HashMap caddie) {
+        this.caddie = caddie;
     }
 
     public void setTotal(double total) {
@@ -81,7 +97,6 @@ public class Cart implements Serializable{
     
     public String addItem(Produit prod){
         caddie.put(prod.getIdproduit(),new Lignecommande(prod, quantitee, prod.getPrixunitaire()));
-        setQuantitee(0);
         return "cart";
     }
     
@@ -89,7 +104,6 @@ public class Cart implements Serializable{
         quantitee=getElmt(prod.getIdproduit()).getQuantitee()+1;
         caddie.remove(prod.getIdproduit());
         caddie.put(prod.getIdproduit(),new Lignecommande(prod, quantitee, prod.getPrixunitaire()));
-        setQuantitee(0);
         return "cart";
     }
     
@@ -106,22 +120,22 @@ public class Cart implements Serializable{
     }
     
     public double calculTotalProduit(Produit prod){
-               
+        double totprod;   
         if(prod.getIdpromo()!=null){
-           total = 0;
+           totprod = 0;
            if(verifPromo(prod)){
-               total = calculPrix(prod) * getElmt(prod.getIdproduit()).getQuantitee();
+               totprod = calculPrix(prod) * getElmt(prod.getIdproduit()).getQuantitee();
            }
         }
         else{
-            total = prod.getPrixunitaire() * getElmt(prod.getIdproduit()).getQuantitee();
+            totprod = prod.getPrixunitaire() * getElmt(prod.getIdproduit()).getQuantitee();
         }
         
-        return total;
+        return totprod;
     }
     
     public double CalculTotal(){
-        total=0;
+        double total=0;
         List <Lignecommande> liste =getMapAsList();
         for(int i=0; i< liste.size();i++){
             total += calculTotalProduit(liste.get(i).getProduit());
@@ -155,18 +169,32 @@ public class Cart implements Serializable{
     }
     
     public String cloturerCommande(){
-        com= new Commande(new Date(),"En cours de traitement","Paye", connexion.getCli() );
+        Date today = new Date();
+        com= new Commande(today,"En cours de traitement","Paye", connexion.getCli() );
         commFacade.create(com);
-        for(int i=0;i < getMapAsList().size();i++){            
+        
+        for(Entry<Integer,Lignecommande> select :caddie.entrySet()){    
+            
             //ajout coll
-            Lignecommande ligneCom = getMapAsList().get(i);
+            Lignecommande ligneCom = select.getValue();
             com.getLignecommandeCollection().add(ligneCom);
+            
             //set id
             ligneCom.setCommande(com);
+            ligneCom.setLignecommandePK(new LignecommandePK(com.getIdcommande(), ligneCom.getProduit().getIdproduit()));
+            
             //create ligne            
             licommFacade.create(ligneCom);
         }
-        return "compte";
+        //vider panier
+        caddie.clear();
+        return "compte"; 
     }
+    
+    
+    public List <Commande> getAllCommande(){
+        return commFacade.findByClient(connexion.getCli());
+    }
+    
 }
 

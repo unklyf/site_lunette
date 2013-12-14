@@ -54,6 +54,7 @@ public class Lignecommande implements Serializable {
     public Lignecommande() {
     }
 
+    
     public Lignecommande(LignecommandePK lignecommandePK) {
         this.lignecommandePK = lignecommandePK;
     }

@@ -10,12 +10,32 @@
     <f:loadBundle basename="language.lang" var="msg" />
     
     <h:head>
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />  
         <link href="./resources/css/style.css" rel="stylesheet" type="text/css" />
-        <link href="./resources/css/cssLayout.css" rel="stylesheet" type="text/css" />
-        <link rel="shortcut icon" type="image/x-icon" href="resources/images/favicon.ico"/>
+        <link rel="shortcut icon" type="image/x-icon" href="./resources/images/favicon.ico"/> 
+        <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+        <script src="./resources/js/jquery.slides.js"></script>
+        <script>
+            $(function(){
+                   $("#slides").slidesjs({
+                     width: 940,
+                     height: 528
+                   });
+                 });
+           function afficher_cacher(id)
+            {
+            if(document.getElementById(id).style.display === "none")
+            {
+            document.getElementById(id).style.display="block";
+            }
+            else
+            {
+            document.getElementById(id).style.display="none";           }
+            return true;
+            } 
+        </script>
         <title>Have a Look</title>
-        <!--[if !IE]> <-->
+        <!--[if !IE]> <-->        
         <style type="text/CSS">
         #menu li ul {
          position:absolute;

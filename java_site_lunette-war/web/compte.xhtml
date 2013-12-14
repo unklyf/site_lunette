@@ -2,7 +2,9 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:ui="http://java.sun.com/jsf/facelets"
-      xmlns:h="http://java.sun.com/jsf/html">
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
 
     <body>
 
@@ -111,7 +113,22 @@
                          </tr>
                      </table>
                      <br/>
-                     <h2><CAPTION><h:outputLabel value="#{msg.compte_titretableau2}" for="pays" /></CAPTION></h2>
+                     
+                     <h2><h:outputLabel value="#{msg.compte_titretableau2}" for="pays" /></h2>
+                     <c:forEach items="#{cart.getAllCommande()}" var="comm">
+                        <hr /><br/>
+                        <h:commandButton class="show-hide" value="#{comm.idcommande}" onclick="return afficher_cacher(#{comm.idcommande});">
+                        </h:commandButton>
+                       <div id="#{comm.idcommande}" style="display:none;"> 
+                            <c:forEach items="#{comm.lignecommandeCollection}" var="ligne"> 
+                                 
+                                <h:outputText value="#{ligne.prixvente}"/><br/>
+                                <h:outputText value="#{ligne.quantitee}"/><br/>
+                                <h:outputText value="#{ligne.getLignecommandePK().idproduit}"/><br/>   
+                                
+                            </c:forEach>
+                       </div>
+                     </c:forEach>
                 </div>
             </ui:define>
 
