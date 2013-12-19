@@ -31,8 +31,8 @@ public class ProduitController implements Serializable{
     private ProduitFacadeLocal prodFacade; 
     
     @EJB
-    private TraddescriptionFacadeLocal descFacade;; 
-    
+    private TraddescriptionFacadeLocal descFacade;
+        
     @ManagedProperty("#{language}")
     private Language lang;
 
@@ -63,7 +63,8 @@ public class ProduitController implements Serializable{
     public Produit getProduit(){
         return prodFacade.findByIdproduit(getProdID());
     }
-    
+       
+     
     public Traddescription getTraddescription(){
         return descFacade.findDescription(getProduit().getIddescription().getIddescription(),lang.getId());
     }

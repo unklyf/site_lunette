@@ -675,3 +675,11 @@ article:hover{
     float:right;
 }
 
+.orders span{
+   padding-right: 15px;
+   height:20px;
+}
+
+.orders span:hover{
+   background-color: rgba(185,185,185,0.35);
+}

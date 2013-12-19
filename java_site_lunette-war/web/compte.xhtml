@@ -114,21 +114,55 @@
                      </table>
                      <br/>
                      
+                     
+                     
                      <h2><h:outputLabel value="#{msg.compte_titretableau2}" for="pays" /></h2>
-                     <c:forEach items="#{cart.getAllCommande()}" var="comm">
-                        <hr /><br/>
-                        <h:commandButton class="show-hide" value="#{comm.idcommande}" onclick="return afficher_cacher(#{comm.idcommande});">
-                        </h:commandButton>
-                       <div id="#{comm.idcommande}" style="display:none;"> 
-                            <c:forEach items="#{comm.lignecommandeCollection}" var="ligne"> 
-                                 
-                                <h:outputText value="#{ligne.prixvente}"/><br/>
-                                <h:outputText value="#{ligne.quantitee}"/><br/>
-                                <h:outputText value="#{ligne.getLignecommandePK().idproduit}"/><br/>   
-                                
-                            </c:forEach>
-                       </div>
-                     </c:forEach>
+       
+                            <h:form>
+                                <h:dataTable class="caddie2" value="#{cart.getAllCommande()}" var="comm">
+                                    <h:column>
+                                        <f:facet name="header"><h:outputText value="" /></f:facet>
+                                        <h:outputText value="#{comm.datecommande.date}/#{comm.datecommande.month+1}/#{comm.datecommande.year+1900}"/>
+                                    
+                                    </h:column>
+                                   
+                                    <h:column>
+                                        <f:facet name="header"><h:outputText value="Etat:" /></f:facet>
+                                        <h:outputText value="#{comm.etat}"/>                                     
+                                    </h:column> 
+                                    
+                                    <h:column>
+                                        <f:facet name="header"><h:outputText value="Paiement: " /></f:facet>
+                                        <h:graphicImage value="resources/images/#{comm.etatpaiement}.png"/> 
+                                    </h:column> 
+                                    
+                                    <h:column>
+                                        <f:facet name="header"><h:outputText value="Nbre de produits: " /></f:facet>
+                                        <h:outputText value="#{comm.lignecommandeCollection.size()}"/>
+                                    </h:column>
+                                    <h:column>
+                                        <a rel="superbox[test]" >
+                                            aa<h:graphicImage value="resources/images/info.png"/> 
+                                        </a>
+                                    </h:column>
+                                </h:dataTable> 
+                            </h:form>                          
+                     
+                         <div id="superbox" class="test">
+                                <c:forEach items="#{comm.lignecommandeCollection}" var="ligne">
+
+                                     <h:outputText value="#{categorie.getProduit(ligne.getLignecommandePK().idproduit).marque} "/>
+                                     <h:outputText value="#{categorie.getProduit(ligne.getLignecommandePK().idproduit).modele} "/>
+                                     <h:outputText value="#{ligne.prixvente}#{msg.symbole} "/>
+                                     <h:outputText value="#{ligne.quantitee} "/>
+                                     <h:outputText value="Total: ...€"/><br/>
+
+                                 </c:forEach>
+                        </div>
+                           
+                  
+
+                    
                 </div>
             </ui:define>
 

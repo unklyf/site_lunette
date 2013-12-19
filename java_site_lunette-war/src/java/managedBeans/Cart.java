@@ -177,11 +177,13 @@ public class Cart implements Serializable{
             
             //ajout coll
             Lignecommande ligneCom = select.getValue();
-            com.getLignecommandeCollection().add(ligneCom);
             
             //set id
             ligneCom.setCommande(com);
             ligneCom.setLignecommandePK(new LignecommandePK(com.getIdcommande(), ligneCom.getProduit().getIdproduit()));
+            ligneCom.getCommande().addLignecommande(ligneCom);
+            com.addLignecommande(ligneCom);
+            //com.getLignecommandeCollection().add(ligneCom);
             
             //create ligne            
             licommFacade.create(ligneCom);
@@ -190,7 +192,6 @@ public class Cart implements Serializable{
         caddie.clear();
         return "compte"; 
     }
-    
     
     public List <Commande> getAllCommande(){
         return commFacade.findByClient(connexion.getCli());

@@ -126,6 +126,13 @@ public class Commande implements Serializable {
     public Collection<Lignecommande> getLignecommandeCollection() {
         return lignecommandeCollection;
     }
+    
+    public void addLignecommande (Lignecommande lc){
+        lignecommandeCollection.add(lc);
+        /*if (lc.getCommande() != this) {
+            lc.setCommande(this);
+        }*/
+    }
 
     public void setLignecommandeCollection(Collection<Lignecommande> lignecommandeCollection) {
         this.lignecommandeCollection = lignecommandeCollection;

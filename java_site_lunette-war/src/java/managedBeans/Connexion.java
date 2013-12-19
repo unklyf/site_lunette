@@ -5,12 +5,16 @@
 package managedBeans;
 
 import java.io.Serializable;
-import java.util.List;
 import model.Client;
 import javax.ejb.EJB;
+import javax.ejb.EJBException;
+import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ManagedProperty;
 import javax.faces.bean.SessionScoped;
+import javax.faces.context.FacesContext;
+import javax.faces.validator.FacesValidator;
+import javax.faces.validator.ValidatorException;
 import model.Tradpays;
 import sessionBeans.ClientFacadeLocal;
 import sessionBeans.TradpaysFacadeLocal;
@@ -119,7 +123,7 @@ public class Connexion implements Serializable{
         this.connected = connected;
     }
   
-    public String login() {
+    /*public String login() {
         cli = clientFacade.connect(this.getPseudo(), this.getMotdepasse());
         if (cli!= null) {
             setErreur(false);
@@ -128,11 +132,31 @@ public class Connexion implements Serializable{
         }
         else {
             setErreur(true);
-            return null;
+            return throw new ;
         }
           
+    }*/
+    
+     public String login() throws ValidatorException {
+        // coerce the value to an int
+            try {
+                cli = clientFacade.connect(this.getPseudo(), this.getMotdepasse());
+                if (cli!= null) {
+                    setErreur(false);
+                    setConnected(true);
+                    return "index";
+                }      
+            }
+            catch(EJBException e){
+                setErreur(true);
+                /*FacesMessage msg = new FacesMessage("Erreur login/mot de passe");
+                FacesContext.getCurrentInstance().addMessage(pseudo, msg);*/
+            }
+            return "login";
+            
     }
     
+            
     public String logout() {
         setConnected(false);
         return "index";

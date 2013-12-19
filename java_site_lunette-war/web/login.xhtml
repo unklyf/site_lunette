@@ -15,18 +15,19 @@
                  <div id="bande_center">
                     <h:form>
                         <p>
-                            <h:outputText class="red2" value="#{msg.log_erreur}" rendered="#{connexion.afficherErreur()== 'erreur'}" />
+                            <h:outputText  class="red2" value="#{msg.log_erreur}" rendered="#{connexion.afficherErreur()== 'erreur'}" />
                         </p>
 
                         <p>
-                            <h:outputLabel value="#{msg.log_login}"></h:outputLabel><br/>
-                            <h:inputText class="inputs" size="20"  value="#{connexion.pseudo}" requiredMessage="#{msg.log_lerror}" required="true" id="login" />
-                            <h:message class="red" for="login"/>
+                            <h:outputLabel value="#{msg.log_login}" for="pseudo"></h:outputLabel><br/>
+                            <h:inputText class="inputs" size="20"  value="#{connexion.pseudo}" requiredMessage="#{msg.log_lerror}" required="true" id="pseudo" >
+                            </h:inputText>
+                            <h:message class="red" for="pseudo" id="check"/>
 
                         </p>
 
                         <p>
-                            <h:outputLabel value="#{msg.log_password}" ></h:outputLabel><br/>
+                            <h:outputLabel value="#{msg.log_password}" for="motdepasse" ></h:outputLabel><br/>
                             <h:inputSecret class="inputs" size="20"  value="#{connexion.motdepasse}" requiredMessage="#{msg.log_passerror}" required="true" id="motdepasse" />
                             <h:message class="red" for="motdepasse"/>
                         </p>

@@ -12,27 +12,25 @@
     <h:head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />  
         <link href="./resources/css/style.css" rel="stylesheet" type="text/css" />
+        <link href="resources/css/bootstrap-lightbox.css" rel="stylesheet" />
         <link rel="shortcut icon" type="image/x-icon" href="./resources/images/favicon.ico"/> 
         <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
-        <script src="./resources/js/jquery.slides.js"></script>
+        <script src="resources/js/jquery.slides.js"></script>
+        <link rel="stylesheet" href="resources/css/jquery.superbox.css" type="text/css" media="all" />
+        <script type="text/javascript" src="resources/js/jquery-min.js"></script>
+        <script type="text/javascript" src="resources/js/jquery.superbox-min.js"></script>
         <script>
             $(function(){
                    $("#slides").slidesjs({
                      width: 940,
                      height: 528
                    });
-                 });
-           function afficher_cacher(id)
-            {
-            if(document.getElementById(id).style.display === "none")
-            {
-            document.getElementById(id).style.display="block";
-            }
-            else
-            {
-            document.getElementById(id).style.display="none";           }
-            return true;
-            } 
+             });
+             
+             $(function(){
+                    $.superbox();
+            });
+             
         </script>
         <title>Have a Look</title>
         <!--[if !IE]> <-->        
@@ -63,7 +61,8 @@
                             <span class="right">
                                 <h:outputText value="#{msg.menu_welcome}" rendered="#{connexion.afficherCompte() == 'connected'}"></h:outputText>
                                 <h:link value=" #{connexion.cli.pseudo}"  rendered="#{connexion.afficherCompte() == 'connected'}" outcome="compte.xhtml"></h:link>
-                                <h:link class="visuellink" value="#{msg.menu_login}" rendered="#{connexion.afficherCompte() == 'guest'}" outcome="login.xhtml"></h:link>                                
+                                <h:link class="visuellink" value="#{msg.menu_login}" rendered="#{connexion.afficherCompte() == 'guest'}" outcome="login.xhtml"></h:link> 
+                                <h:link class="visuellink" style="margin-left:10px; background-color: dodgerblue;" value="#{msg.menu_register}" rendered="#{connexion.afficherCompte() == 'guest'}" outcome="register.xhtml"></h:link> 
                                 <h:outputText value=" | " rendered="#{connexion.afficherCompte() == 'connected'}" />
                                 <h:commandButton class="visuel" value="#{msg.menu_logout}" action="#{connexion.logout()}" rendered="#{connexion.afficherCompte() == 'connected'}" /> 
                             </span>

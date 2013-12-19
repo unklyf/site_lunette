@@ -113,6 +113,9 @@ public class Lignecommande implements Serializable {
 
     public void setCommande(Commande commande) {
         this.commande = commande;
+        if (!commande.getLignecommandeCollection().contains(this)) {
+            commande.getLignecommandeCollection().add(this);
+        }
     }
 
     @Override
