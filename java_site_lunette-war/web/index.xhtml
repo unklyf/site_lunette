@@ -32,16 +32,15 @@
                 <c:forEach items="#{promo.getLastPromo(3)}" var="promotion">
                     <c:forEach items="#{promotion.produitCollection}" var="produit">
                         <article style="margin-top: 90px;">  
-                            <h:form>
+                            <h:form rendered="#{categorie.verifPromo(produit)}">
                                 <h:outputText value="#{produit.marque}" /> 
                                 <h:outputText class="label" value="#{msg.new}" rendered="#{produit.nouveautee =='true'}" />
                                 <h:graphicImage class="thumbsimg" value="#{produit.image}" /><br/>
                                 
                                 <!--promo-->
-                                <h:outputText class="promo" value="-#{produit.idpromo.pourcentage}%" rendered="#{categorie.verifPromo(produit)}" /><br/>                                
-                                <h:outputText value="#{produit.prixunitaire}#{msg.symbole}" rendered="#{categorie.verifPromo(produit)=='false'}" />      
-                                <h:outputText style="color:red;" value="#{categorie.calculPrix(produit)}#{msg.symbole}" rendered="#{categorie.verifPromo(produit)}"/> <br/>
-                                <h:outputText style="text-decoration: line-through;" value="#{produit.prixunitaire}#{msg.symbole}" rendered="#{categorie.verifPromo(produit)}"/> <br/>
+                                <h:outputText class="promo" value="-#{produit.idpromo.pourcentage}%"  /><br/>
+                                <h:outputText style="color:red;" value="#{categorie.calculPrix(produit)}#{msg.symbole}" /> <br/>
+                                <h:outputText style="text-decoration: line-through;" value="#{produit.prixunitaire}#{msg.symbole}"/> <br/>
                                 <h:commandButton class="button" value="#{msg.shop_more}" action="#{selectProd.selectProduit(produit.idproduit)}" />  <br/>                                 
                              </h:form>
                         </article>

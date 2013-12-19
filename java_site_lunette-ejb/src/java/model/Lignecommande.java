@@ -5,7 +5,6 @@
 package model;
 
 import java.io.Serializable;
-import java.math.BigDecimal;
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.EmbeddedId;
@@ -112,10 +111,7 @@ public class Lignecommande implements Serializable {
     }
 
     public void setCommande(Commande commande) {
-        this.commande = commande;
-        if (!commande.getLignecommandeCollection().contains(this)) {
-            commande.getLignecommandeCollection().add(this);
-        }
+        this.commande = commande;        
     }
 
     @Override

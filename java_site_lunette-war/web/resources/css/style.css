@@ -683,3 +683,16 @@ article:hover{
 .orders span:hover{
    background-color: rgba(185,185,185,0.35);
 }
+
+.tableaucompte{
+    background-color: rgba(242,242,242,0.85);
+    color: #333333;
+    padding : 10px;
+    width : 600px;
+}
+
+.tableaucompte td{
+    padding-left : 50px;
+    text-align : center;
+    width : 100px;   
+}

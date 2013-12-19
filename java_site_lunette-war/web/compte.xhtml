@@ -119,54 +119,30 @@
                      <h2><h:outputLabel value="#{msg.compte_titretableau2}" for="pays" /></h2>
        
                             <h:form>
-                                <h:dataTable class="caddie2" value="#{cart.getAllCommande()}" var="comm">
-                                    <h:column>
-                                        <f:facet name="header"><h:outputText value="" /></f:facet>
-                                        <h:outputText value="#{comm.datecommande.date}/#{comm.datecommande.month+1}/#{comm.datecommande.year+1900}"/>
-                                    
-                                    </h:column>
-                                   
-                                    <h:column>
-                                        <f:facet name="header"><h:outputText value="Etat:" /></f:facet>
-                                        <h:outputText value="#{comm.etat}"/>                                     
-                                    </h:column> 
-                                    
-                                    <h:column>
-                                        <f:facet name="header"><h:outputText value="Paiement: " /></f:facet>
-                                        <h:graphicImage value="resources/images/#{comm.etatpaiement}.png"/> 
-                                    </h:column> 
-                                    
-                                    <h:column>
-                                        <f:facet name="header"><h:outputText value="Nbre de produits: " /></f:facet>
-                                        <h:outputText value="#{comm.lignecommandeCollection.size()}"/>
-                                    </h:column>
-                                    <h:column>
-                                        <a rel="superbox[test]" >
-                                            aa<h:graphicImage value="resources/images/info.png"/> 
-                                        </a>
-                                    </h:column>
-                                </h:dataTable> 
+                                 <c:forEach items="#{cart.getAllCommande()}" var="comm"> 
+                                        <table class="caddie2" > 
+                                            <tr>
+                                                <td><h:outputText value="#{comm.datecommande.date}/#{comm.datecommande.month+1}/#{comm.datecommande.year+1900}"/></td>
+                                                <td><h:outputText value="#{msg.etat}" />  <h:graphicImage value="resources/images/#{comm.etat}.png"/></td>
+                                                <td><h:outputText value="#{msg.paiement}" /> <h:graphicImage value="resources/images/#{comm.etatpaiement}.png"/> </td>
+                                               
+                                            </tr>
+                                       </table> 
+                                        <c:forEach items="#{comm.lignecommandeCollection}" var="ligne">
+                                            <table  class="tableaucompte" > 
+                                                <tr id="#{comm.idcommande}" >
+                                                    <td><h:outputText value="#{categorie.getProduit(ligne.getLignecommandePK().idproduit).marque}"/> <br/>
+                                                    <h:outputText value="  #{categorie.getProduit(ligne.getLignecommandePK().idproduit).modele}"/></td> 
+                                                    <td><h:outputText value="#{ligne.prixvente}#{msg.symbole}"/></td>
+                                                    <td><h:outputText value="x#{ligne.quantitee}"/></td>
+                                                </tr>
+                                            </table>
+                                        </c:forEach>
+                                   </c:forEach> 
                             </h:form>                          
                      
-                         <div id="superbox" class="test">
-                                <c:forEach items="#{comm.lignecommandeCollection}" var="ligne">
-
-                                     <h:outputText value="#{categorie.getProduit(ligne.getLignecommandePK().idproduit).marque} "/>
-                                     <h:outputText value="#{categorie.getProduit(ligne.getLignecommandePK().idproduit).modele} "/>
-                                     <h:outputText value="#{ligne.prixvente}#{msg.symbole} "/>
-                                     <h:outputText value="#{ligne.quantitee} "/>
-                                     <h:outputText value="Total: ...€"/><br/>
-
-                                 </c:forEach>
-                        </div>
-                           
-                  
-
-                    
-                </div>
-            </ui:define>
-
-           
+                        </div>                  
+           </ui:define>
 
         </ui:composition>
 

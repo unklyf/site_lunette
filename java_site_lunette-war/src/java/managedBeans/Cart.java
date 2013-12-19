@@ -7,6 +7,7 @@ import javax.ejb.EJB;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map.Entry;
+import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ManagedProperty;
 import javax.faces.bean.SessionScoped;
@@ -35,11 +36,27 @@ public class Cart implements Serializable{
     
     private HashMap <Integer, Lignecommande> caddie = new HashMap <Integer, Lignecommande> ();
 
+    @PostConstruct
+    public void init() {
+       paiment="Non paye"; 
+    }
+
+    
     private Commande com;
     private double total;
     private int quantitee;
     private boolean cache;
+    private String paiment;
 
+    public String getPaiment() {
+        return paiment;
+    }
+
+    public void setPaiment(String paiment) {
+        this.paiment = paiment;
+    }
+
+    
     public boolean isCache() {
         return cache;
     }
@@ -135,7 +152,7 @@ public class Cart implements Serializable{
     }
     
     public double CalculTotal(){
-        double total=0;
+        total=0;
         List <Lignecommande> liste =getMapAsList();
         for(int i=0; i< liste.size();i++){
             total += calculTotalProduit(liste.get(i).getProduit());
@@ -170,32 +187,33 @@ public class Cart implements Serializable{
     
     public String cloturerCommande(){
         Date today = new Date();
-        com= new Commande(today,"En cours de traitement","Paye", connexion.getCli() );
+        com= new Commande(today,"En cours de traitement",getPaiment(), connexion.getCli());     
         commFacade.create(com);
-        
+      
         for(Entry<Integer,Lignecommande> select :caddie.entrySet()){    
             
             //ajout coll
             Lignecommande ligneCom = select.getValue();
-            
-            //set id
+             
             ligneCom.setCommande(com);
-            ligneCom.setLignecommandePK(new LignecommandePK(com.getIdcommande(), ligneCom.getProduit().getIdproduit()));
-            ligneCom.getCommande().addLignecommande(ligneCom);
-            com.addLignecommande(ligneCom);
-            //com.getLignecommandeCollection().add(ligneCom);
-            
+            ligneCom.setLignecommandePK(new LignecommandePK(com.getIdcommande(), ligneCom.getProduit().getIdproduit()));          
+            com.getLignecommandeCollection().add(ligneCom);
+      
             //create ligne            
             licommFacade.create(ligneCom);
+            commFacade.edit(com);
         }
         //vider panier
         caddie.clear();
         return "compte"; 
     }
-    
-    public List <Commande> getAllCommande(){
+   
+    public List <Commande> getAllCommande(){                
         return commFacade.findByClient(connexion.getCli());
     }
+    
+    
+    
     
 }
 
