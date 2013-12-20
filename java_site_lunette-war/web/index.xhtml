@@ -3,7 +3,6 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:ui="http://java.sun.com/jsf/facelets"
       xmlns:h="http://java.sun.com/jsf/html"
-      xmlns:f="http://java.sun.com/jsf/core"
       xmlns:c="http://xmlns.jcp.org/jsp/jstl/core"> 
     
    
@@ -12,7 +11,8 @@
         <ui:composition template="./defaultTemplate.xhtml">
 
             <ui:define name="content">
-                 <h2><h:outputText  class="titrenews" value="#{msg.new}"/></h2>
+                <!--news-->
+                <h2><h:outputText  class="titrenews" value="#{msg.new}"/></h2>
                 <div id="slides">
                     <c:forEach items="#{selectProd.getLastProd(5)}" var="produit">
                         <h:form>   
@@ -28,6 +28,8 @@
                        </h:form>
                     </c:forEach>     
                  </div>
+                 
+                 <!--promo-->
                 <h2><h:outputText  class="titrenews" value="#{msg.lastpromo}"/></h2>
                 <c:forEach items="#{promo.getLastPromo(3)}" var="promotion">
                     <c:forEach items="#{promotion.produitCollection}" var="produit">

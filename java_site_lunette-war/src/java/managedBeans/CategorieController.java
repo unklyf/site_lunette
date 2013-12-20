@@ -158,10 +158,10 @@ public class CategorieController implements Serializable {
         return (p.getPrixunitaire())- (p.getIdpromo().getPourcentage()* p.getPrixunitaire()/100);
     }
     
-    /*
+    
     public Produit getProduit(int id){
         return prodFacade.findByIdproduit(id);
-    }*/
+    }
     
     
     /**
