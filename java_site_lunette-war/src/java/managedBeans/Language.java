@@ -6,17 +6,23 @@ import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 
 
-/**
- *
- * @author Unklyf
- */
 @ManagedBean (name="language")
 @SessionScoped
 public class Language implements Serializable{
 
     private Locale locale = new Locale("en");
-    private int id=2;
+    private int id=2; //libelle des produit traduits correspond aux id dans la bd
+    private boolean boolfr = false;
+    private boolean boolen = true;
+    
 
+    /**
+     * Creates a new instance of language
+     */
+    public Language() {
+    }
+    
+    //GETTER / SETTER
     /**
      *
      * @return
@@ -32,8 +38,7 @@ public class Language implements Serializable{
     public void setId(int id) {
         this.id = id;
     }
-    private boolean boolfr = false;
-    private boolean boolen = true;
+   
     
     /**
      *
@@ -43,14 +48,9 @@ public class Language implements Serializable{
         return locale;
     }
     
-    /**
-     * Creates a new instance of language
-     */
-    public Language() {
-    }
     
     /**
-     *
+     * Mettre en anglais
      */
     public void setToEnglish() {
         locale = new Locale("en");
@@ -59,7 +59,7 @@ public class Language implements Serializable{
         this.boolfr = false;
     }
     /**
-     *
+     * Mettre en francais
      */
     public void setToFrench() {
         locale = new Locale("fr");

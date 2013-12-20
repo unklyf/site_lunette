@@ -1,7 +1,3 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
 package managedBeans;
 
 import java.io.Serializable;
@@ -20,17 +16,11 @@ import sessionBeans.TradcategorieFacadeLocal;
 import model.Tradcategorie;
 
 
-/**
- *
- * @author Unklyf
- */
+
 @ManagedBean (name="categorie")
 @ViewScoped
 public class CategorieController implements Serializable {
 
-    private int CatID;
-    private Boolean bool=true;
-    private List<Produit> listProduit;
     
     @EJB
     private CategorieFacadeLocal catFacade; 
@@ -45,8 +35,15 @@ public class CategorieController implements Serializable {
     @ManagedProperty("#{language}")
     private Language lang;
     
+    //private int CatID;
+    private Boolean bool=true;
+    private List<Produit> listProduit;
+    
+    
+    //GETTER / SETTER
+    
     /**
-     *
+     * Initialiser le catalogue avec tous les articles
      */
     @PostConstruct    
     public void init() {
@@ -57,6 +54,8 @@ public class CategorieController implements Serializable {
     /**
      *
      * @param listProduit
+     * @see List
+     * @see Produit
      */
     public void setListProduit(List<Produit> listProduit) {
         this.listProduit = listProduit;
@@ -65,14 +64,19 @@ public class CategorieController implements Serializable {
     /**
      *
      * @return
+     * @see List
+     * @see Produit
      */
     public List<Produit> getListProduit() {
         return listProduit;
     }
     
     /**
-     *
+     * Obtenir tous les produits (init)
+     * 
      * @return
+     * @see List
+     * @see Produit
      */
     public List<Produit> getAllProduit() {
         return prodFacade.findAll();
@@ -95,34 +99,35 @@ public class CategorieController implements Serializable {
     }
  
     /**
-     *
-     * @return
-     */
     public int getCatID() {
         return CatID;
     }
-
-    /**
-     *
-     * @param CatID
-     */
     public void setCatID(int CatID) {
         this.CatID = CatID;
     }
+    */
+    
+    //METHODES
     
     /**
      *
-     * @return
+     * @return la liste de toutes les categories
+     * @see List
+     * @see Categorie
      */
     public List<Categorie> catList(){
         List<Categorie> cat = catFacade.findAll(); 
         return cat;
     }
     
+    
     /**
+     * Verification promo correspond à ajourd hui
      *
-     * @param prod
-     * @return
+     * @param prod le produit sur lequel on doit verifier la validite de la promo
+     * @return booleen qui renvoie la validite de la promo actuelle
+     * @see Produit
+     * @see Boolean
      */
     public boolean verifPromo (Produit prod){
         boolean verif;
@@ -143,26 +148,26 @@ public class CategorieController implements Serializable {
     }
     
     /**
+     * Calcul du prix promo d un produit
      *
-     * @param p
-     * @return
+     * @param p produit sur lequel on calcule la promo
+     * @return le prix du produit en promotion
+     * @see Double
      */
     public double calculPrix(Produit p){
         return (p.getPrixunitaire())- (p.getIdpromo().getPourcentage()* p.getPrixunitaire()/100);
     }
     
-    /**
-     *
-     * @param id
-     * @return
-     */
+    /*
     public Produit getProduit(int id){
         return prodFacade.findByIdproduit(id);
-    }
+    }*/
+    
     
     /**
-     *
-     * @param id
+     * Selectionner une categorie a afficher
+     * 
+     * @param id de la categorie selectionnee
      */
     public void selectCategorie (int id) {
         listProduit= prodFacade.findByCategorie(id);
@@ -170,12 +175,15 @@ public class CategorieController implements Serializable {
     }
     
     /**
-     *
-     * @return
+     * Cacher le titre Tous les artices quand article selectionne
+     * 
+     * @return la page xhtml du catalogue ou hide qui sera une class css pour cacher un titre texte
+     * @see String
      */
     public String setHide(){
         if(bool== false){
-            return "hide";        }
+            return "hide";        
+        }
         else 
         {
             return "catalogue";

@@ -38,6 +38,8 @@ public class ProduitController implements Serializable{
 
     private int prodID; 
     
+    //GETTER / SETTER
+    
     /**
      *
      * @return
@@ -70,17 +72,6 @@ public class ProduitController implements Serializable{
         this.prodID = prodID;
     }
     
-    
-    /**
-     *
-     * @param id
-     * @return
-     */
-    public String selectProduit (int id) {
-        setProdID(id);
-        return "produit";
-    }
-    
     /**
      *
      * @return
@@ -88,20 +79,39 @@ public class ProduitController implements Serializable{
     public Produit getProduit(){
         return prodFacade.findByIdproduit(getProdID());
     }
-       
-     
+    
+    
+    //METHODES
+    
     /**
-     *
-     * @return
+     * Obtenir plus d infos sur un produit
+     * 
+     * @param id du produit que l on veut selectionner
+     * @return la page xhtml du produit
+     * @see String
+     */
+    public String selectProduit (int id) {
+        setProdID(id);
+        return "produit";
+    }
+      
+    /**
+     * Obtenir la traduction de la description du produit 
+     * 
+     * @return la traduction de la description du produit 
+     * @see Traddescription
      */
     public Traddescription getTraddescription(){
         return descFacade.findDescription(getProduit().getIddescription().getIddescription(),lang.getId());
     }
     
     /**
-     *
-     * @param i
-     * @return
+     * Obtenir les dernieres nouveautee de produit
+     * 
+     * @param i nbre de produit desiree
+     * @return liste de nouveaux produit
+     * @see Produit
+     * @see ArrayList
      */
     public ArrayList<Produit> getLastProd(int i){
         List<Produit> prod = prodFacade.findAll();

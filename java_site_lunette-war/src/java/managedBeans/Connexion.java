@@ -1,29 +1,18 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
 package managedBeans;
 
 import java.io.Serializable;
 import model.Client;
 import javax.ejb.EJB;
 import javax.ejb.EJBException;
-import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ManagedProperty;
 import javax.faces.bean.SessionScoped;
-import javax.faces.context.FacesContext;
-import javax.faces.validator.FacesValidator;
 import javax.faces.validator.ValidatorException;
 import model.Tradpays;
 import sessionBeans.ClientFacadeLocal;
 import sessionBeans.TradpaysFacadeLocal;
 
 
-/**
- *
- * @author Unklyf
- */
 @ManagedBean (name="connexion")
 @SessionScoped
 
@@ -38,7 +27,21 @@ public class Connexion implements Serializable{
     
     @ManagedProperty("#{language}")
     private Language lang;
+    
+    private String pseudo;    
+    private String motdepasse;
+    private boolean connected = false;
+    private boolean erreur = false;
+    private Client cli;
+    
+    /**
+    * Creates a new instance of connexion
+    */
+    public Connexion() {
+    }
 
+    //GETTER / SETTER
+    
     /**
      *
      * @return
@@ -55,12 +58,6 @@ public class Connexion implements Serializable{
         this.lang = lang;
     }
 
-    private String pseudo;    
-    private String motdepasse;
-    private boolean connected = false;
-    private boolean erreur = false;
-    private Client cli;
-
     /**
      *
      * @return
@@ -75,12 +72,6 @@ public class Connexion implements Serializable{
      */
     public void setCli(Client cli) {
         this.cli = cli;
-    }
-    
-    /**
-    * Creates a new instance of connexion
-    */
-    public Connexion() {
     }
 
     /**
@@ -111,7 +102,9 @@ public class Connexion implements Serializable{
         this.motdepasse = motdepasse;
     }
     
+    
     /**
+     * 
     * @return the erreur
     */
     public boolean isErreur() {
@@ -139,27 +132,17 @@ public class Connexion implements Serializable{
         this.connected = connected;
     }
   
-    /*public String login() {
-        cli = clientFacade.connect(this.getPseudo(), this.getMotdepasse());
-        if (cli!= null) {
-            setErreur(false);
-            setConnected(true);
-            return "index";
-        }
-        else {
-            setErreur(true);
-            return throw new ;
-        }
-          
-    }*/
+    
+     //METHODES
     
      /**
-     *
-     * @return
+     * Connection du client
+     * 
+     * @return page xhtml index si connection reussie sinon re page xhtml login
      * @throws ValidatorException
+     * @see String
      */
     public String login() throws ValidatorException {
-        // coerce the value to an int
             try {
                 cli = clientFacade.connect(this.getPseudo(), this.getMotdepasse());
                 if (cli!= null) {
@@ -173,14 +156,15 @@ public class Connexion implements Serializable{
                 /*FacesMessage msg = new FacesMessage("Erreur login/mot de passe");
                 FacesContext.getCurrentInstance().addMessage(pseudo, msg);*/
             }
-            return "login";
-            
+            return "login";         
     }
     
             
     /**
+     * Deconnection du client
      *
-     * @return
+     * @return la page xhtml index
+     * @see String
      */
     public String logout() {
         setConnected(false);
@@ -188,8 +172,10 @@ public class Connexion implements Serializable{
     }
     
     /**
+     * Banniere client adapte connection
      *
-     * @return
+     * @return interface pour un visiteur ou pour un client connecte
+     * @see String
      */
     public String afficherCompte(){
        if(isConnected())
@@ -200,8 +186,10 @@ public class Connexion implements Serializable{
     
     
     /**
+     * Affiche les erreurs de connection
      *
-     * @return
+     * @return une class css afin d afficher l erreur
+     * @see String
      */
     public String afficherErreur() {
         if (erreur) {            
@@ -216,16 +204,20 @@ public class Connexion implements Serializable{
     
     
     /**
-     *
-     * @return
+     * Affiche le libelle du pays du client en fonction de la langue du site
+     * 
+     * @return la traduction du pays du client
+     * @see Tradpays
      */
     public Tradpays getTradpays(){
       return tradPaysFacade.findPays(cli.getIdpays().getIdpays(),lang.getId());
     } 
     
     /**
+     * Verification connection client pour confirmer une commande
      *
-     * @return
+     * @return page xhtml login si non connecte et confirmation commande si connecte
+     * @see String
      */
     public String commander(){
        if(isConnected())

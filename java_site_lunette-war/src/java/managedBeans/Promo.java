@@ -1,7 +1,3 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
 package managedBeans;
 
 import java.io.Serializable;
@@ -11,14 +7,10 @@ import java.util.List;
 import javax.ejb.EJB;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
-import model.Produit;
 import model.Promotion;
 import sessionBeans.PromotionFacadeLocal;
 
-/**
- *
- * @author Home
- */
+
 @ManagedBean (name="promo")
 @ViewScoped
 public class Promo implements Serializable{
@@ -28,6 +20,7 @@ public class Promo implements Serializable{
     private PromotionFacadeLocal promFacade; 
     
     
+    //GETTER / SETTER
      /**
      *
      * @return
@@ -37,10 +30,16 @@ public class Promo implements Serializable{
         return promo;
     }
      
+    
+    //METHODES
+    
     /**
-     *
-     * @param i
-     * @return
+     * Obtenir les dernieres promotions
+     * 
+     * @param i nbre de promo souhaitee
+     * @return une liste de promo en cours
+     * @see ArrayList
+     * @see Promotion
      */
     public ArrayList<Promotion> getLastPromo(int i){
        List<Promotion> prod = promFacade.findAll();
@@ -52,9 +51,12 @@ public class Promo implements Serializable{
     }
     
     /**
+     * Verifier si une promo est en d actualite
      *
-     * @param prom
+     * @param prom a verifier
      * @return
+     * @see Boolean
+     * @see Promotion
      */
     public boolean verifPromoDate (Promotion prom){
         boolean verif;

@@ -19,15 +19,16 @@ public class Research {
     private ProduitFacadeLocal produitFacade;
 
     private List<Produit> listItems;
+    private String marque;
 
+    //GETTER / SETTER
+    
     /**
      * Creates a new instance of research
      */
     public Research() {
     }
     
-    private String marque;
-
     /**
      *
      * @return
@@ -44,39 +45,46 @@ public class Research {
         this.marque = marque;
     }
     
-     /**
-     *
-     * @return
+    /**
+     * @param listItems 
      */
-    public String searchItem () {
-        getItems();
-        return "research";
+    public void setListItems(List<Produit> listItems) {
+        this.listItems = produitFacade.findByMarque(marque);
     }
-     
-     /**
-     *
-     * @return
-     */
-    public List<Produit> getItems () {        
-        return produitFacade.findByMarque(marque);
-        
-    }
-
-   
+       
     /**
      *
      * @return
      */
     public List<Produit> getListItems() {
         return listItems;
+        
     }
 
+    //METHODES
    
+    
+    
     /**
+     * Afficher la recherche
      *
-     * @param listItems
+     * @return la page xhtml de la recherche
+     * @see String
      */
-    public void setListItems(List<Produit> listItems) {
-        this.listItems = produitFacade.findByMarque(marque);
+    public String searchItem () {
+        getItems();
+        return "research";
+    }
+    
+    /**
+     * Obtenir la liste de produit par marque en fonction de la recherche
+     *
+     * @return une liste de produit en fonction de la recherche
+     * @see Produit
+     * @see List
+     */
+    public List<Produit> getItems () {        
+        return produitFacade.findByMarque(marque);
+        
     }
 }

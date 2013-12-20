@@ -1,7 +1,3 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
 package managedBeans;
 
 import java.io.Serializable;
@@ -17,11 +13,6 @@ import javax.faces.validator.ValidatorException;
 
 
 
-
-/**
- *
- * @author Home
- */
 @ManagedBean (name="createClient")
 @RequestScoped
 public class CreateClient implements Serializable{
@@ -30,30 +21,11 @@ public class CreateClient implements Serializable{
     
     @ManagedProperty("#{connexion}")
     private Connexion connexion;
-
-    /**
-     *
-     * @return
-     */
-    public Connexion getConnexion() {
-        return connexion;
-    }
-
-    /**
-     *
-     * @param connexion
-     */
-    public void setConnexion(Connexion connexion) {
-        this.connexion = connexion;
-    }
-    
-    
     
     @EJB
     private ClientFacadeLocal clientFacade;
     
  
-    
     private String nom;
     private String prenom;
     private String mail;
@@ -71,6 +43,24 @@ public class CreateClient implements Serializable{
     private boolean erreurPseudo;
     private boolean erreurPassword;
     private boolean erreurMail;
+            
+    //GETTER / SETTER
+    
+    /**
+     *
+     * @return
+     */
+    public Connexion getConnexion() {
+        return connexion;
+    }
+
+    /**
+     *
+     * @param connexion
+     */
+    public void setConnexion(Connexion connexion) {
+        this.connexion = connexion;
+    }
 
     /**
      *
@@ -284,7 +274,62 @@ public class CreateClient implements Serializable{
     /**
      *
      * @return
+     */
+    public boolean isErreurPassword() {
+        return erreurPassword;
+    }
+
+    
+    /**
+     *
+     * @param erreur
+     */
+    public void setErreurPassword (boolean erreur) {
+        this.erreurPassword = erreur;
+    }
+    
+    /**
+     *
+     * @return
+     */
+    public boolean isErreurPseudo() {
+        return erreurPseudo;
+    }
+     
+     /**
+     *
+     * @param erreur
+     */
+    public void setErreurPseudo (boolean erreur) {
+        this.erreurPseudo = erreur;
+    }
+    
+    /**
+     *
+     * @return
+     */
+    public boolean isErreurMail() {
+        return erreurMail;
+    }
+
+    
+    /**
+     *
+     * @param erreur
+     */
+    public void setErreurMail (boolean erreur) {
+        this.erreurMail = erreur;
+    }
+    
+    
+    //METHODES
+    
+    /**
+     * Creation d un compte client
+     *
+     * @return la page xhtml de son compte si creation reussie
      * @throws ValidatorException
+     * @see String
      */
     public String addClient()throws ValidatorException {   
       if (Pattern.matches("^[_a-z0-9-]+(\\.[_a-z0-9-]+)*@[a-z0-9-]+(\\.[a-z0-9-]+)+$", mail)) {
@@ -316,61 +361,29 @@ public class CreateClient implements Serializable{
         }   
     }
     
-    
-
-    
-    /**
-     *
-     * @return
-     */
-    public boolean isErreurPassword() {
-        return erreurPassword;
-    }
-
-    
-    /**
-     *
-     * @param erreur
-     */
-    public void setErreurPassword (boolean erreur) {
-        this.erreurPassword = erreur;
-    }
-    
+  
      /**
-     *
-     * @return
+     * @return la page xhtml class css pour afficher erreur si necessaire
+     * @see String
      */
     public String setBoldErreurPassword () {
         if (isErreurPassword()) {
-           // setErreurPassword(false);
+            // setErreurPassword(false);
             return "erreur";
         }
         else {
-           // setErreurPassword(false);
+            // setErreurPassword(false);
             return "hide";
         }
             
     }
      
-     /**
-     *
-     * @return
-     */
-    public boolean isErreurPseudo() {
-        return erreurPseudo;
-    }
+     
      
      /**
      *
-     * @param erreur
-     */
-    public void setErreurPseudo (boolean erreur) {
-        this.erreurPseudo = erreur;
-    }
-     
-     /**
-     *
-     * @return
+     * @return la page xhtml class css pour afficher erreur si necessaire
+     * @see String
      */
     public String setBoldErreurPseudo () {
         if (isErreurPseudo()) {          
@@ -382,27 +395,12 @@ public class CreateClient implements Serializable{
         // setErreurPseudo(false);
             
     }
-
-    /**
-     *
-     * @return
-     */
-    public boolean isErreurMail() {
-        return erreurMail;
-    }
-
     
-    /**
-     *
-     * @param erreur
-     */
-    public void setErreurMail (boolean erreur) {
-        this.erreurMail = erreur;
-    }
-    
+
      /**
      *
-     * @return
+     * @return la page xhtml class css pour afficher erreur si necessaire
+     * @see String
      */
     public String setBoldErreurMail () {
         if (isErreurMail()) {

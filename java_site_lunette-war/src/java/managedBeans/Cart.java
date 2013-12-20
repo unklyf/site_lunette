@@ -19,10 +19,6 @@ import sessionBeans.CommandeFacadeLocal;
 import sessionBeans.LignecommandeFacadeLocal;
 
 
-/**
- *
- * @author Unklyf
- */
 @ManagedBean (name="cart")
 @SessionScoped
 public class Cart implements Serializable{
@@ -37,28 +33,20 @@ public class Cart implements Serializable{
     private LignecommandeFacadeLocal licommFacade;
     
     private HashMap <Integer, Lignecommande> caddie = new HashMap <Integer, Lignecommande> ();
-
       
     private Commande com;
     private int quantitee;
-    private boolean cache;
+    //private boolean cache;
 
     
+    //GETTER/SETTER
     /**
-     *
-     * @return
-     */
     public boolean isCache() {
         return cache;
     }
-
-    /**
-     *
-     * @param cache
-     */
     public void setCache(boolean cache) {
         this.cache = cache;
-    }
+    }*/
 
     /**
      *
@@ -119,27 +107,29 @@ public class Cart implements Serializable{
         return caddie;
     }
     
+    //METHODES
+    
     /**
      *
-     * @return
+     * @return  le cpanier en tant que list
+     * @see List
+     * @see Lignecommande
      */
     public List<Lignecommande> getMapAsList (){
          return new ArrayList<Lignecommande> (caddie.values());       
     }
     
-    /**
-     *
-     * @param id
-     * @return
-     */
+    /** 
     public Lignecommande getElmt (int id){
          return (Lignecommande) caddie.get(id);       
-    }
+    }*/
    
     /**
-     *
-     * @param id
-     * @return
+     * Enlever un article du panier
+     * 
+     * @param id du produit a supprimer
+     * @return la page xhtml du panier
+     * @see String
      */
     public String removeItem(Integer id){
         caddie.remove(id);
@@ -147,9 +137,12 @@ public class Cart implements Serializable{
     }
     
     /**
-     *
-     * @param prod
-     * @return
+     * Ajouter un produit au panier
+     * 
+     * @param prod a ajouter au panier
+     * @return la page xhtml du panier
+     * @see Produit
+     * @see String
      */
     public String addItem(Produit prod){
         caddie.put(prod.getIdproduit(),new Lignecommande(prod, quantitee, prod.getPrixunitaire()));
@@ -157,9 +150,11 @@ public class Cart implements Serializable{
     }
     
     /**
-     *
-     * @param id
-     * @return
+     * Augmenter la qte du panier
+     * 
+     * @param id du produit a augmenter
+     * @return la page xhtml du panier
+     * @see String
      */
     public String upQte(int id){
         quantitee= caddie.get(id).getQuantitee();
@@ -169,9 +164,11 @@ public class Cart implements Serializable{
     }
     
     /**
-     *
-     * @param id
-     * @return
+     * Diminuer la qte du panier
+     * 
+     * @param id du produit a diminuer
+     * @return la page xhtml du panier
+     * @see String
      */
     public String downQte(int id){
         quantitee= caddie.get(id).getQuantitee();
@@ -186,9 +183,11 @@ public class Cart implements Serializable{
     }
     
     /**
+     * Calcul du prix promo d un produit
      *
-     * @param prod
-     * @return
+     * @param prod produit sur lequel on calcule la promo
+     * @return le prix du produit en promotion
+     * @see Double
      */
     public double calculPrix(Produit prod){        
         double prix =(prod.getPrixunitaire()) - (prod.getIdpromo().getPourcentage()* prod.getPrixunitaire()/100);
@@ -196,10 +195,13 @@ public class Cart implements Serializable{
         return prix;
     }
     
+    
     /**
-     *
-     * @param prod
-     * @return
+     * Calcul total d un produit multiplie par sa quantitee
+     * 
+     * @param prod produit sur lequel on calcule le prix
+     * @return le prix du produit
+     * @see Double
      */
     public double calculTotalProduit(Produit prod){
         double totprod=0;   
@@ -215,9 +217,12 @@ public class Cart implements Serializable{
         return totprod;
     }
     
+    
     /**
-     *
-     * @return
+     * Calcul du total a payer pour le panier
+     * 
+     * @return le total du panier
+     * @see Double
      */
     public double CalculTotal(){
         double totalc=0;
@@ -229,9 +234,12 @@ public class Cart implements Serializable{
     }
     
     /**
+     * Verification promo correspond à ajourd hui
      *
-     * @param prod
-     * @return
+     * @param prod le produit sur lequel on doit verifier la validite de la promo
+     * @return booleen qui renvoie la validite de la promo actuelle
+     * @see Produit
+     * @see Boolean
      */
     public boolean verifPromo (Produit prod){
         boolean verif=false;
@@ -248,8 +256,10 @@ public class Cart implements Serializable{
     
     
     /**
+     * Enregistrement de la commande dans la BD
      *
-     * @return
+     * @return La page web du compte avec le recapitulatif commande
+     * @see String
      */
     public String cloturerCommande(){
         Date today = new Date();
@@ -275,8 +285,11 @@ public class Cart implements Serializable{
     }
    
     /**
+     * Afficher les commandes
      *
-     * @return
+     * @return Une liste de toutes les commandes du client connecte
+     * @see List
+     * @see Commande
      */
     public List <Commande> getAllCommande(){                
         return commFacade.findByClient(connexion.getCli());
