@@ -21,15 +21,27 @@ public class CommandeFacade extends AbstractFacade<Commande> implements Commande
     @PersistenceContext(unitName = "java_site_lunette-ejbPU")
     private EntityManager em;
 
+    /**
+     *
+     * @return
+     */
     @Override
     protected EntityManager getEntityManager() {
         return em;
     }
 
+    /**
+     *
+     */
     public CommandeFacade() {
         super(Commande.class);
     }
     
+    /**
+     *
+     * @param idclient
+     * @return
+     */
     @Override
     public List<Commande> findByClient(Client idclient)
     {

@@ -54,66 +54,126 @@ public class Languetrans implements Serializable {
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "languetrans")
     private Collection<Traddescription> traddescriptionCollection;
 
+    /**
+     *
+     */
     public Languetrans() {
     }
 
+    /**
+     *
+     * @param idlangue
+     */
     public Languetrans(Integer idlangue) {
         this.idlangue = idlangue;
     }
 
+    /**
+     *
+     * @param idlangue
+     * @param libelle
+     */
     public Languetrans(Integer idlangue, String libelle) {
         this.idlangue = idlangue;
         this.libelle = libelle;
     }
 
+    /**
+     *
+     * @return
+     */
     public Integer getIdlangue() {
         return idlangue;
     }
 
+    /**
+     *
+     * @param idlangue
+     */
     public void setIdlangue(Integer idlangue) {
         this.idlangue = idlangue;
     }
 
+    /**
+     *
+     * @return
+     */
     public String getLibelle() {
         return libelle;
     }
 
+    /**
+     *
+     * @param libelle
+     */
     public void setLibelle(String libelle) {
         this.libelle = libelle;
     }
 
+    /**
+     *
+     * @return
+     */
     @XmlTransient
     public Collection<Tradpays> getTradpaysCollection() {
         return tradpaysCollection;
     }
 
+    /**
+     *
+     * @param tradpaysCollection
+     */
     public void setTradpaysCollection(Collection<Tradpays> tradpaysCollection) {
         this.tradpaysCollection = tradpaysCollection;
     }
 
+    /**
+     *
+     * @return
+     */
     @XmlTransient
     public Collection<Tradcategorie> getTradcategorieCollection() {
         return tradcategorieCollection;
     }
 
+    /**
+     *
+     * @param tradcategorieCollection
+     */
     public void setTradcategorieCollection(Collection<Tradcategorie> tradcategorieCollection) {
         this.tradcategorieCollection = tradcategorieCollection;
     }
 
+    /**
+     *
+     * @return
+     */
     @XmlTransient
     public Collection<Tradcouleur> getTradcouleurCollection() {
         return tradcouleurCollection;
     }
 
+    /**
+     *
+     * @param tradcouleurCollection
+     */
     public void setTradcouleurCollection(Collection<Tradcouleur> tradcouleurCollection) {
         this.tradcouleurCollection = tradcouleurCollection;
     }
 
+    /**
+     *
+     * @return
+     */
     @XmlTransient
     public Collection<Traddescription> getTraddescriptionCollection() {
         return traddescriptionCollection;
     }
 
+    /**
+     *
+     * @param traddescriptionCollection
+     */
     public void setTraddescriptionCollection(Collection<Traddescription> traddescriptionCollection) {
         this.traddescriptionCollection = traddescriptionCollection;
     }

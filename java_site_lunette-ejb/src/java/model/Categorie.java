@@ -42,35 +42,66 @@ public class Categorie implements Serializable {
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "idcategorie")
     private Collection<Produit> produitCollection;
 
+    /**
+     *
+     */
     public Categorie() {
     }
 
+    /**
+     *
+     * @param idcategorie
+     */
     public Categorie(Integer idcategorie) {
         this.idcategorie = idcategorie;
     }
 
+    /**
+     *
+     * @return
+     */
     public Integer getIdcategorie() {
         return idcategorie;
     }
 
+    /**
+     *
+     * @param idcategorie
+     */
     public void setIdcategorie(Integer idcategorie) {
         this.idcategorie = idcategorie;
     }
 
+    /**
+     *
+     * @return
+     */
     @XmlTransient
     public Collection<Tradcategorie> getTradcategorieCollection() {
         return tradcategorieCollection;
     }
 
+    /**
+     *
+     * @param tradcategorieCollection
+     */
     public void setTradcategorieCollection(Collection<Tradcategorie> tradcategorieCollection) {
         this.tradcategorieCollection = tradcategorieCollection;
     }
 
+    /**
+     *
+     * @return
+     */
     @XmlTransient
     public Collection<Produit> getProduitCollection() {
         return produitCollection;
     }
 
+    /**
+     *
+     * @param produitCollection
+     */
     public void setProduitCollection(Collection<Produit> produitCollection) {
         this.produitCollection = produitCollection;
     }

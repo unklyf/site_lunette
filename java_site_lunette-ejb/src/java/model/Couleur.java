@@ -44,44 +44,83 @@ public class Couleur implements Serializable {
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "idcouleurverre")
     private Collection<Produit> produitCollection1;
 
+    /**
+     *
+     */
     public Couleur() {
     }
 
+    /**
+     *
+     * @param idcouleur
+     */
     public Couleur(Integer idcouleur) {
         this.idcouleur = idcouleur;
     }
 
+    /**
+     *
+     * @return
+     */
     public Integer getIdcouleur() {
         return idcouleur;
     }
 
+    /**
+     *
+     * @param idcouleur
+     */
     public void setIdcouleur(Integer idcouleur) {
         this.idcouleur = idcouleur;
     }
 
+    /**
+     *
+     * @return
+     */
     @XmlTransient
     public Collection<Tradcouleur> getTradcouleurCollection() {
         return tradcouleurCollection;
     }
 
+    /**
+     *
+     * @param tradcouleurCollection
+     */
     public void setTradcouleurCollection(Collection<Tradcouleur> tradcouleurCollection) {
         this.tradcouleurCollection = tradcouleurCollection;
     }
 
+    /**
+     *
+     * @return
+     */
     @XmlTransient
     public Collection<Produit> getProduitCollection() {
         return produitCollection;
     }
 
+    /**
+     *
+     * @param produitCollection
+     */
     public void setProduitCollection(Collection<Produit> produitCollection) {
         this.produitCollection = produitCollection;
     }
 
+    /**
+     *
+     * @return
+     */
     @XmlTransient
     public Collection<Produit> getProduitCollection1() {
         return produitCollection1;
     }
 
+    /**
+     *
+     * @param produitCollection1
+     */
     public void setProduitCollection1(Collection<Produit> produitCollection1) {
         this.produitCollection1 = produitCollection1;
     }

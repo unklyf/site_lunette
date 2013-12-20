@@ -15,18 +15,48 @@ import model.Pays;
 @Local
 public interface PaysFacadeLocal {
 
+    /**
+     *
+     * @param pays
+     */
     void create(Pays pays);
 
+    /**
+     *
+     * @param pays
+     */
     void edit(Pays pays);
 
+    /**
+     *
+     * @param pays
+     */
     void remove(Pays pays);
 
+    /**
+     *
+     * @param id
+     * @return
+     */
     Pays find(Object id);
 
+    /**
+     *
+     * @return
+     */
     List<Pays> findAll();
 
+    /**
+     *
+     * @param range
+     * @return
+     */
     List<Pays> findRange(int[] range);
 
+    /**
+     *
+     * @return
+     */
     int count();
     
 }

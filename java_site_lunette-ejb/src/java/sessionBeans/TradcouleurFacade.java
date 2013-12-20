@@ -18,11 +18,18 @@ public class TradcouleurFacade extends AbstractFacade<Tradcouleur> implements Tr
     @PersistenceContext(unitName = "java_site_lunette-ejbPU")
     private EntityManager em;
 
+    /**
+     *
+     * @return
+     */
     @Override
     protected EntityManager getEntityManager() {
         return em;
     }
 
+    /**
+     *
+     */
     public TradcouleurFacade() {
         super(Tradcouleur.class);
     }

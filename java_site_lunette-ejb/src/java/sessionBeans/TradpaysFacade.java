@@ -19,15 +19,28 @@ public class TradpaysFacade extends AbstractFacade<Tradpays> implements Tradpays
     @PersistenceContext(unitName = "java_site_lunette-ejbPU")
     private EntityManager em;
 
+    /**
+     *
+     * @return
+     */
     @Override
     protected EntityManager getEntityManager() {
         return em;
     }
 
+    /**
+     *
+     */
     public TradpaysFacade() {
         super(Tradpays.class);
     }
     
+    /**
+     *
+     * @param idpays
+     * @param idlangue
+     * @return
+     */
     @Override
     public Tradpays findPays(int idpays, int idlangue)
     {

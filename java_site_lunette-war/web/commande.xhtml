@@ -37,11 +37,14 @@
                         <h2><h:outputText value="#{msg.commande_paiement}" /></h2>
 
                         <p class="backcontent2">
-                            <h:selectOneListbox   value="#{cart.paiment}">
-                                <f:selectItem itemValue="Paye" itemLabel="Visa"/>
-                                <f:selectItem itemValue="Paye" itemLabel="Bancontact" />
-                                <f:selectItem itemValue="Paye" itemLabel="Mastercard" />
-                            </h:selectOneListbox>                           
+                            <input  type ="radio" name ="paiement" id ="sizeMed" value="visa" checked="true"/>
+                            <label for = "sizeMed"><h:graphicImage value="resources/images/visa.png" /></label><br />
+
+                            <input type ="radio" name ="paiement" id ="bancontact" value="bancontact" />
+                            <label for = "sizeMed"><h:graphicImage value="resources/images/bancontact.png" /></label><br />
+
+                            <input type ="radio" name ="paiement" id ="mastercard" value="mastercard" />
+                            <label for = "sizeMed"><h:graphicImage value="resources/images/mastercard.png" /></label><br />
                         </p>
                     </div>
                 

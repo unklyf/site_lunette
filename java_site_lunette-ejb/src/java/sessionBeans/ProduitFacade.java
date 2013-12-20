@@ -20,15 +20,27 @@ public class ProduitFacade extends AbstractFacade<Produit> implements ProduitFac
     @PersistenceContext(unitName = "java_site_lunette-ejbPU")
     private EntityManager em;
 
+    /**
+     *
+     * @return
+     */
     @Override
     protected EntityManager getEntityManager() {
         return em;
     }
 
+    /**
+     *
+     */
     public ProduitFacade() {
         super(Produit.class);
     }
     
+    /**
+     *
+     * @param idcategorie
+     * @return
+     */
     @Override
     public List<Produit> findByCategorie(int idcategorie)
     {
@@ -38,6 +50,11 @@ public class ProduitFacade extends AbstractFacade<Produit> implements ProduitFac
         return query.getResultList();
     }
     
+    /**
+     *
+     * @param idproduit
+     * @return
+     */
     @Override
     public Produit findByIdproduit(int idproduit)
     {
@@ -45,6 +62,19 @@ public class ProduitFacade extends AbstractFacade<Produit> implements ProduitFac
         query = em.createNamedQuery("Produit.findByIdproduit");
         query.setParameter("idproduit", idproduit);
         return (Produit) query.getSingleResult();
+    }
+    
+    /**
+     *
+     * @param marque
+     * @return
+     */
+    @Override
+    public List<Produit> findByMarque (String marque) {
+        Query query;
+        query = em.createNamedQuery("Produit.findByMarque");
+        query.setParameter("marque", marque);
+        return query.getResultList();
     }
     
     

@@ -251,6 +251,7 @@ footer table{
     padding: 5px; 
     background-color: rgba(238,59,59,0.75); 
     position: absolute; 
+    width:180px;
 }
 
 .red2{ 
@@ -352,10 +353,15 @@ article:hover{
     border: 1px lightyellow groove;
 }
 
+.cadre{
+    width : 170px;
+    height :130px;
+}
+
 .thumbsimg{
-    padding: 15px;;
-    width : 170px; 
-    /*height: 190px;*/
+    padding: 15px;
+    max-width : 170px; 
+    max-height : 130px;
     border-radius: 2px;
 }
 
@@ -666,11 +672,12 @@ article:hover{
     margin-bottom: -50px;
     padding: 20px;
     height : 200px;
+    width: 700px;
 }
 
 .imagenews{
     width: 450px;
-    margin-top: 50px;
+    margin-top: -50px;
     margin-right: 50px;
     float:right;
 }
@@ -695,4 +702,35 @@ article:hover{
     padding-left : 50px;
     text-align : center;
     width : 100px;   
+}
+
+.menucat{
+    position:absolute;
+    margin-left: -300px;
+    width: 210px;
+    background-color: rgba(213, 215,215, 0.35);
+    padding:20px;
+     -webkit-box-shadow: 2px 2px 2px rgba( 0,0,0,0.25);
+            box-shadow: 2px 2px 2px rgba( 0,0,0,0.35); 
+    border-radius:5px;
+}
+
+.menucat li{
+    border:none;
+    list-style: circle;
+    padding:5px;
+
+}
+
+.menucat a{
+    text-decoration: none;
+    color:black;
+}
+
+.hide{
+    display:none;
+}
+
+.espace p{
+    margin-top:22px;
 }

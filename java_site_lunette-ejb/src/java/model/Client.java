@@ -101,13 +101,33 @@ public class Client implements Serializable {
     @ManyToOne(optional = false)
     private Pays idpays;
 
+    /**
+     *
+     */
     public Client() {
     }
 
+    /**
+     *
+     * @param idclient
+     */
     public Client(Integer idclient) {
         this.idclient = idclient;
     }
 
+    /**
+     *
+     * @param idclient
+     * @param nom
+     * @param prenom
+     * @param mail
+     * @param motdepasse
+     * @param pseudo
+     * @param rue
+     * @param numero
+     * @param codepostal
+     * @param ville
+     */
     public Client(Integer idclient, String nom, String prenom, String mail, String motdepasse, String pseudo, String rue, short numero, int codepostal, String ville) {
         this.idclient = idclient;
         this.nom = nom;
@@ -121,7 +141,21 @@ public class Client implements Serializable {
         this.ville = ville;
     }
     
-    public Client(String nom, String prenom, String mail, String motdepasse, String pseudo, String rue, short numero, int codepostal, String ville,int pays) {    
+    /**
+     *
+     * @param nom
+     * @param prenom
+     * @param mail
+     * @param motdepasse
+     * @param pseudo
+     * @param rue
+     * @param numero
+     * @param codepostal
+     * @param ville
+     * @param pays
+     * @param tel
+     */
+    public Client(String nom, String prenom, String mail, String motdepasse, String pseudo, String rue, short numero, int codepostal, String ville,int pays,String tel) {    
         this.nom = nom;
         this.prenom = prenom;
         this.mail = mail;
@@ -132,108 +166,213 @@ public class Client implements Serializable {
         this.codepostal = codepostal;
         this.ville = ville;
         this.idpays = new Pays(pays);
+        this.numtelephone =tel;
     }
 
+    /**
+     *
+     * @return
+     */
     public Integer getIdclient() {
         return idclient;
     }
 
+    /**
+     *
+     * @param idclient
+     */
     public void setIdclient(Integer idclient) {
         this.idclient = idclient;
     }
 
+    /**
+     *
+     * @return
+     */
     public String getNom() {
         return nom;
     }
 
+    /**
+     *
+     * @param nom
+     */
     public void setNom(String nom) {
         this.nom = nom;
     }
 
+    /**
+     *
+     * @return
+     */
     public String getPrenom() {
         return prenom;
     }
 
+    /**
+     *
+     * @param prenom
+     */
     public void setPrenom(String prenom) {
         this.prenom = prenom;
     }
 
+    /**
+     *
+     * @return
+     */
     public String getNumtelephone() {
         return numtelephone;
     }
 
+    /**
+     *
+     * @param numtelephone
+     */
     public void setNumtelephone(String numtelephone) {
         this.numtelephone = numtelephone;
     }
 
+    /**
+     *
+     * @return
+     */
     public String getMail() {
         return mail;
     }
 
+    /**
+     *
+     * @param mail
+     */
     public void setMail(String mail) {
         this.mail = mail;
     }
 
+    /**
+     *
+     * @return
+     */
     public String getMotdepasse() {
         return motdepasse;
     }
 
+    /**
+     *
+     * @param motdepasse
+     */
     public void setMotdepasse(String motdepasse) {
         this.motdepasse = motdepasse;
     }
 
+    /**
+     *
+     * @return
+     */
     public String getPseudo() {
         return pseudo;
     }
 
+    /**
+     *
+     * @param pseudo
+     */
     public void setPseudo(String pseudo) {
         this.pseudo = pseudo;
     }
 
+    /**
+     *
+     * @return
+     */
     public String getRue() {
         return rue;
     }
 
+    /**
+     *
+     * @param rue
+     */
     public void setRue(String rue) {
         this.rue = rue;
     }
 
+    /**
+     *
+     * @return
+     */
     public short getNumero() {
         return numero;
     }
 
+    /**
+     *
+     * @param numero
+     */
     public void setNumero(short numero) {
         this.numero = numero;
     }
 
+    /**
+     *
+     * @return
+     */
     public Character getBoite() {
         return boite;
     }
 
+    /**
+     *
+     * @param boite
+     */
     public void setBoite(Character boite) {
         this.boite = boite;
     }
 
+    /**
+     *
+     * @return
+     */
     public int getCodepostal() {
         return codepostal;
     }
 
+    /**
+     *
+     * @param codepostal
+     */
     public void setCodepostal(int codepostal) {
         this.codepostal = codepostal;
     }
 
+    /**
+     *
+     * @return
+     */
     public String getVille() {
         return ville;
     }
 
+    /**
+     *
+     * @param ville
+     */
     public void setVille(String ville) {
         this.ville = ville;
     }
 
+    /**
+     *
+     * @return
+     */
     public Pays getIdpays() {
         return idpays;
     }
 
+    /**
+     *
+     * @param idpays
+     */
     public void setIdpays(Pays idpays) {
         this.idpays = idpays;
     }

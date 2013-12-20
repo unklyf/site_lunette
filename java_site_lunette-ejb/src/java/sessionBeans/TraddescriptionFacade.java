@@ -19,15 +19,28 @@ public class TraddescriptionFacade extends AbstractFacade<Traddescription> imple
     @PersistenceContext(unitName = "java_site_lunette-ejbPU")
     private EntityManager em;
 
+    /**
+     *
+     * @return
+     */
     @Override
     protected EntityManager getEntityManager() {
         return em;
     }
 
+    /**
+     *
+     */
     public TraddescriptionFacade() {
         super(Traddescription.class);
     }
     
+    /**
+     *
+     * @param iddescription
+     * @param idlangue
+     * @return
+     */
     @Override
     public Traddescription findDescription(int iddescription, int idlangue)
     {

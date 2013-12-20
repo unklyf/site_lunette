@@ -16,20 +16,55 @@ import model.Client;
 @Local
 public interface CommandeFacadeLocal {
 
+    /**
+     *
+     * @param commande
+     */
     void create(Commande commande);
 
+    /**
+     *
+     * @param commande
+     */
     void edit(Commande commande);
 
+    /**
+     *
+     * @param commande
+     */
     void remove(Commande commande);
 
+    /**
+     *
+     * @param id
+     * @return
+     */
     Commande find(Object id);
 
+    /**
+     *
+     * @return
+     */
     List<Commande> findAll();
 
+    /**
+     *
+     * @param range
+     * @return
+     */
     List<Commande> findRange(int[] range);
 
+    /**
+     *
+     * @return
+     */
     int count();
     
+    /**
+     *
+     * @param idclient
+     * @return
+     */
     List<Commande> findByClient(Client idclient);
     
 }

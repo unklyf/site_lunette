@@ -67,13 +67,28 @@ public class Promotion implements Serializable {
     @OneToMany(mappedBy = "idpromo")
     private Collection<Produit> produitCollection;
 
+    /**
+     *
+     */
     public Promotion() {
     }
 
+    /**
+     *
+     * @param idpromo
+     */
     public Promotion(Integer idpromo) {
         this.idpromo = idpromo;
     }
 
+    /**
+     *
+     * @param idpromo
+     * @param pourcentage
+     * @param description
+     * @param datedebut
+     * @param datefin
+     */
     public Promotion(Integer idpromo, short pourcentage, String description, Date datedebut, Date datefin) {
         this.idpromo = idpromo;
         this.pourcentage = pourcentage;
@@ -82,51 +97,99 @@ public class Promotion implements Serializable {
         this.datefin = datefin;
     }
 
+    /**
+     *
+     * @return
+     */
     public Integer getIdpromo() {
         return idpromo;
     }
 
+    /**
+     *
+     * @param idpromo
+     */
     public void setIdpromo(Integer idpromo) {
         this.idpromo = idpromo;
     }
 
+    /**
+     *
+     * @return
+     */
     public short getPourcentage() {
         return pourcentage;
     }
 
+    /**
+     *
+     * @param pourcentage
+     */
     public void setPourcentage(short pourcentage) {
         this.pourcentage = pourcentage;
     }
 
+    /**
+     *
+     * @return
+     */
     public String getDescription() {
         return description;
     }
 
+    /**
+     *
+     * @param description
+     */
     public void setDescription(String description) {
         this.description = description;
     }
 
+    /**
+     *
+     * @return
+     */
     public Date getDatedebut() {
         return datedebut;
     }
 
+    /**
+     *
+     * @param datedebut
+     */
     public void setDatedebut(Date datedebut) {
         this.datedebut = datedebut;
     }
 
+    /**
+     *
+     * @return
+     */
     public Date getDatefin() {
         return datefin;
     }
 
+    /**
+     *
+     * @param datefin
+     */
     public void setDatefin(Date datefin) {
         this.datefin = datefin;
     }
 
+    /**
+     *
+     * @return
+     */
     @XmlTransient
     public Collection<Produit> getProduitCollection() {
         return produitCollection;
     }
 
+    /**
+     *
+     * @param produitCollection
+     */
     public void setProduitCollection(Collection<Produit> produitCollection) {
         this.produitCollection = produitCollection;
     }

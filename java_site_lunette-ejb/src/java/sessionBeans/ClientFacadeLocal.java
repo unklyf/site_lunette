@@ -15,22 +15,63 @@ import model.Client;
 @Local
 public interface ClientFacadeLocal {
 
+    /**
+     *
+     * @param client
+     */
     void create(Client client);
 
+    /**
+     *
+     * @param client
+     */
     void edit(Client client);
 
+    /**
+     *
+     * @param client
+     */
     void remove(Client client);
 
+    /**
+     *
+     * @param id
+     * @return
+     */
     Client find(Object id);
 
+    /**
+     *
+     * @return
+     */
     List<Client> findAll();
 
+    /**
+     *
+     * @param range
+     * @return
+     */
     List<Client> findRange(int[] range);
 
+    /**
+     *
+     * @return
+     */
     int count();
     
+    /**
+     *
+     * @param pseudo
+     * @param motdepasse
+     * @return
+     */
     Client connect(String pseudo, String motdepasse);
     
+    /**
+     *
+     * @param pseudo
+     * @return
+     */
     List<Client> findByLogin(String pseudo);
     
 }

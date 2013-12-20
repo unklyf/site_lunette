@@ -32,6 +32,9 @@ import javax.xml.bind.annotation.XmlRootElement;
     @NamedQuery(name = "Tradcouleur.findByLibelle", query = "SELECT t FROM Tradcouleur t WHERE t.libelle = :libelle")})
 public class Tradcouleur implements Serializable {
     private static final long serialVersionUID = 1L;
+    /**
+     *
+     */
     @EmbeddedId
     protected TradcouleurPK tradcouleurPK;
     @Basic(optional = false)
@@ -46,50 +49,99 @@ public class Tradcouleur implements Serializable {
     @ManyToOne(optional = false)
     private Couleur couleur;
 
+    /**
+     *
+     */
     public Tradcouleur() {
     }
 
+    /**
+     *
+     * @param tradcouleurPK
+     */
     public Tradcouleur(TradcouleurPK tradcouleurPK) {
         this.tradcouleurPK = tradcouleurPK;
     }
 
+    /**
+     *
+     * @param tradcouleurPK
+     * @param libelle
+     */
     public Tradcouleur(TradcouleurPK tradcouleurPK, String libelle) {
         this.tradcouleurPK = tradcouleurPK;
         this.libelle = libelle;
     }
 
+    /**
+     *
+     * @param idcouleur
+     * @param idlangue
+     */
     public Tradcouleur(int idcouleur, int idlangue) {
         this.tradcouleurPK = new TradcouleurPK(idcouleur, idlangue);
     }
 
+    /**
+     *
+     * @return
+     */
     public TradcouleurPK getTradcouleurPK() {
         return tradcouleurPK;
     }
 
+    /**
+     *
+     * @param tradcouleurPK
+     */
     public void setTradcouleurPK(TradcouleurPK tradcouleurPK) {
         this.tradcouleurPK = tradcouleurPK;
     }
 
+    /**
+     *
+     * @return
+     */
     public String getLibelle() {
         return libelle;
     }
 
+    /**
+     *
+     * @param libelle
+     */
     public void setLibelle(String libelle) {
         this.libelle = libelle;
     }
 
+    /**
+     *
+     * @return
+     */
     public Languetrans getLanguetrans() {
         return languetrans;
     }
 
+    /**
+     *
+     * @param languetrans
+     */
     public void setLanguetrans(Languetrans languetrans) {
         this.languetrans = languetrans;
     }
 
+    /**
+     *
+     * @return
+     */
     public Couleur getCouleur() {
         return couleur;
     }
 
+    /**
+     *
+     * @param couleur
+     */
     public void setCouleur(Couleur couleur) {
         this.couleur = couleur;
     }

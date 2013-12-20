@@ -60,13 +60,27 @@ public class Fournisseur implements Serializable {
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "idfournisseur")
     private Collection<Produit> produitCollection;
 
+    /**
+     *
+     */
     public Fournisseur() {
     }
 
+    /**
+     *
+     * @param idfournisseur
+     */
     public Fournisseur(Integer idfournisseur) {
         this.idfournisseur = idfournisseur;
     }
 
+    /**
+     *
+     * @param idfournisseur
+     * @param nom
+     * @param numtelephone
+     * @param mail
+     */
     public Fournisseur(Integer idfournisseur, String nom, String numtelephone, String mail) {
         this.idfournisseur = idfournisseur;
         this.nom = nom;
@@ -74,43 +88,83 @@ public class Fournisseur implements Serializable {
         this.mail = mail;
     }
 
+    /**
+     *
+     * @return
+     */
     public Integer getIdfournisseur() {
         return idfournisseur;
     }
 
+    /**
+     *
+     * @param idfournisseur
+     */
     public void setIdfournisseur(Integer idfournisseur) {
         this.idfournisseur = idfournisseur;
     }
 
+    /**
+     *
+     * @return
+     */
     public String getNom() {
         return nom;
     }
 
+    /**
+     *
+     * @param nom
+     */
     public void setNom(String nom) {
         this.nom = nom;
     }
 
+    /**
+     *
+     * @return
+     */
     public String getNumtelephone() {
         return numtelephone;
     }
 
+    /**
+     *
+     * @param numtelephone
+     */
     public void setNumtelephone(String numtelephone) {
         this.numtelephone = numtelephone;
     }
 
+    /**
+     *
+     * @return
+     */
     public String getMail() {
         return mail;
     }
 
+    /**
+     *
+     * @param mail
+     */
     public void setMail(String mail) {
         this.mail = mail;
     }
 
+    /**
+     *
+     * @return
+     */
     @XmlTransient
     public Collection<Produit> getProduitCollection() {
         return produitCollection;
     }
 
+    /**
+     *
+     * @param produitCollection
+     */
     public void setProduitCollection(Collection<Produit> produitCollection) {
         this.produitCollection = produitCollection;
     }

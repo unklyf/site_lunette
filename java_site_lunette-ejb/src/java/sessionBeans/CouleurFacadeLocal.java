@@ -15,18 +15,48 @@ import model.Couleur;
 @Local
 public interface CouleurFacadeLocal {
 
+    /**
+     *
+     * @param couleur
+     */
     void create(Couleur couleur);
 
+    /**
+     *
+     * @param couleur
+     */
     void edit(Couleur couleur);
 
+    /**
+     *
+     * @param couleur
+     */
     void remove(Couleur couleur);
 
+    /**
+     *
+     * @param id
+     * @return
+     */
     Couleur find(Object id);
 
+    /**
+     *
+     * @return
+     */
     List<Couleur> findAll();
 
+    /**
+     *
+     * @param range
+     * @return
+     */
     List<Couleur> findRange(int[] range);
 
+    /**
+     *
+     * @return
+     */
     int count();
     
 }

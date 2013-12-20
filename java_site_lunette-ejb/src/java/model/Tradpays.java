@@ -33,6 +33,9 @@ import javax.xml.bind.annotation.XmlRootElement;
     @NamedQuery(name = "Tradpays.findByLibelle", query = "SELECT t FROM Tradpays t WHERE t.libelle = :libelle")})
 public class Tradpays implements Serializable {
     private static final long serialVersionUID = 1L;
+    /**
+     *
+     */
     @EmbeddedId
     protected TradpaysPK tradpaysPK;
     @Basic(optional = false)
@@ -47,50 +50,99 @@ public class Tradpays implements Serializable {
     @ManyToOne(optional = false)
     private Languetrans languetrans;
 
+    /**
+     *
+     */
     public Tradpays() {
     }
 
+    /**
+     *
+     * @param tradpaysPK
+     */
     public Tradpays(TradpaysPK tradpaysPK) {
         this.tradpaysPK = tradpaysPK;
     }
 
+    /**
+     *
+     * @param tradpaysPK
+     * @param libelle
+     */
     public Tradpays(TradpaysPK tradpaysPK, String libelle) {
         this.tradpaysPK = tradpaysPK;
         this.libelle = libelle;
     }
 
+    /**
+     *
+     * @param idlangue
+     * @param idpays
+     */
     public Tradpays(int idlangue, int idpays) {
         this.tradpaysPK = new TradpaysPK(idlangue, idpays);
     }
 
+    /**
+     *
+     * @return
+     */
     public TradpaysPK getTradpaysPK() {
         return tradpaysPK;
     }
 
+    /**
+     *
+     * @param tradpaysPK
+     */
     public void setTradpaysPK(TradpaysPK tradpaysPK) {
         this.tradpaysPK = tradpaysPK;
     }
 
+    /**
+     *
+     * @return
+     */
     public String getLibelle() {
         return libelle;
     }
 
+    /**
+     *
+     * @param libelle
+     */
     public void setLibelle(String libelle) {
         this.libelle = libelle;
     }
 
+    /**
+     *
+     * @return
+     */
     public Pays getPays() {
         return pays;
     }
 
+    /**
+     *
+     * @param pays
+     */
     public void setPays(Pays pays) {
         this.pays = pays;
     }
 
+    /**
+     *
+     * @return
+     */
     public Languetrans getLanguetrans() {
         return languetrans;
     }
 
+    /**
+     *
+     * @param languetrans
+     */
     public void setLanguetrans(Languetrans languetrans) {
         this.languetrans = languetrans;
     }

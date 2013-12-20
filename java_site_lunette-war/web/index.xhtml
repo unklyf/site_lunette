@@ -20,8 +20,8 @@
                                 <h:link outcome="catalogue.xhtml">                         
                                     <h:graphicImage class="imagenews" value="#{produit.image}" /> 
                                     <p class="titreinfo">
-                                        <h:outputText value="#{produit.marque}"/> <br />
-                                        <h:outputText style="font-size:38px;" value="> #{produit.prixunitaire}#{msg.symbole}"/>
+                                        <h:outputText value="#{produit.marque} #{produit.modele}"/> <br />                                      
+                                        <h:outputText style="font-size:38px;" value="#{produit.prixunitaire}#{msg.symbole}"/>
                                     </p>
                                 </h:link>
                             </ul>
@@ -31,19 +31,23 @@
                 <h2><h:outputText  class="titrenews" value="#{msg.lastpromo}"/></h2>
                 <c:forEach items="#{promo.getLastPromo(3)}" var="promotion">
                     <c:forEach items="#{promotion.produitCollection}" var="produit">
-                        <article style="margin-top: 90px;">  
-                            <h:form rendered="#{categorie.verifPromo(produit)}">
+                       
+                            <h:form rendered="#{categorie.verifPromo(produit)}" style=" display:inline-block">
+                               <article style="margin-top: 90px;">  
                                 <h:outputText value="#{produit.marque}" /> 
                                 <h:outputText class="label" value="#{msg.new}" rendered="#{produit.nouveautee =='true'}" />
-                                <h:graphicImage class="thumbsimg" value="#{produit.image}" /><br/>
+                                <p class="cadre">
+                                    <h:graphicImage class="thumbsimg" value="#{produit.image}" /><br/>
+                                </p>
                                 
                                 <!--promo-->
                                 <h:outputText class="promo" value="-#{produit.idpromo.pourcentage}%"  /><br/>
                                 <h:outputText style="color:red;" value="#{categorie.calculPrix(produit)}#{msg.symbole}" /> <br/>
                                 <h:outputText style="text-decoration: line-through;" value="#{produit.prixunitaire}#{msg.symbole}"/> <br/>
                                 <h:commandButton class="button" value="#{msg.shop_more}" action="#{selectProd.selectProduit(produit.idproduit)}" />  <br/>                                 
-                             </h:form>
-                        </article>
+                                </article>
+                            </h:form>
+                        
                       </c:forEach>  
                     </c:forEach>  
             </ui:define>

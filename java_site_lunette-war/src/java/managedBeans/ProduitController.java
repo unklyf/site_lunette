@@ -38,37 +38,71 @@ public class ProduitController implements Serializable{
 
     private int prodID; 
     
+    /**
+     *
+     * @return
+     */
     public Language getLang() {
         return lang;
     }
 
+    /**
+     *
+     * @param lang
+     */
     public void setLang(Language lang) {
         this.lang = lang;
     }
     
+    /**
+     *
+     * @return
+     */
     public int getProdID() {
         return prodID;
     }
 
+    /**
+     *
+     * @param prodID
+     */
     public void setProdID(int prodID) {
         this.prodID = prodID;
     }
     
     
+    /**
+     *
+     * @param id
+     * @return
+     */
     public String selectProduit (int id) {
         setProdID(id);
         return "produit";
     }
     
+    /**
+     *
+     * @return
+     */
     public Produit getProduit(){
         return prodFacade.findByIdproduit(getProdID());
     }
        
      
+    /**
+     *
+     * @return
+     */
     public Traddescription getTraddescription(){
         return descFacade.findDescription(getProduit().getIddescription().getIddescription(),lang.getId());
     }
     
+    /**
+     *
+     * @param i
+     * @return
+     */
     public ArrayList<Produit> getLastProd(int i){
         List<Produit> prod = prodFacade.findAll();
         ArrayList<Produit> lastProd = new ArrayList<Produit>();        

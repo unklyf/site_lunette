@@ -18,11 +18,18 @@ public class DescriptionFacade extends AbstractFacade<Description> implements De
     @PersistenceContext(unitName = "java_site_lunette-ejbPU")
     private EntityManager em;
 
+    /**
+     *
+     * @return
+     */
     @Override
     protected EntityManager getEntityManager() {
         return em;
     }
 
+    /**
+     *
+     */
     public DescriptionFacade() {
         super(Description.class);
     }

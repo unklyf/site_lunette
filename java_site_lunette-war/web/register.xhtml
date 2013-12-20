@@ -12,8 +12,9 @@
             <ui:define name="content">
                 <h:form>
                     
-                    <p class="createintro "><h:outputLabel value="#{msg.create_form}"/></p>
-                      <div>
+                     <div class="espace">
+                         <h2><h:outputLabel value="#{msg.create_form}"/></h2>
+                     
                       <p>
                             <h:outputLabel value="#{msg.create_nom}" for="nom"> <span class="small"><h:outputText value="*"/></span></h:outputLabel> 
                             <br/>
@@ -54,9 +55,8 @@
                                    <f:validateDoubleRange minimum="1" />
                             </h:inputText>
                              <h:message class="red" for="numero"/>
-                        </p> 
-                    </div>
-                    <div >
+                        </p>
+                         
                         <p>   
                              <h:outputLabel value="#{msg.create_boite}"/>
                              <br/>
@@ -88,13 +88,17 @@
                                                            
                         </p> 
                         <p>
-                            <h:outputText value="#{msg.create_numtel}" />
-                            <br/>
-                            <h:inputText size="20"  value="#{createClient.tel}"/>                            
-                        </p>
+                            <h:outputLabel value="#{msg.create_numtel}" for="numtel"><span class="small"><h:outputText value="*"/></span></h:outputLabel><br/>
+                            <h:inputText size="20"  value="#{createClient.tel}" id="numtel" required="true" requiredMessage="#{msg.register_numtel_required}" validatorMessage="#{msg.register_numtel_validator}">
+                                   <f:validateDoubleRange minimum="1" />
+                            </h:inputText>
+                            <h:message class="red" for="numtel"/>
+                        </p> 
                     </div>
+                    <br/>
                     
-                    <p class="createintro "><h:outputLabel value="#{msg.create_formmdp}"/></p>
+                    <div style="position:absolute; margin-top : -727px; margin-left:370px;">
+                    <h2><h:outputLabel value="#{msg.create_formmdp}"/></h2>
                     
                     <p>
                         
@@ -114,26 +118,27 @@
                                     
                         </h:inputSecret>
                         <h:message class="red" for="motdepasse"/>
-                        <h:outputText class="red" value="#{msg.register_error_confirm}" rendered="#{createClient.setBoldErreurPassword() == 'erreur'}" />
+                        <h:outputText  class="red" value="#{msg.register_error_confirm}" rendered="#{createClient.setBoldErreurPassword() == 'erreur'}" />
                     </p>
                     
                      <p>
                        
                         <h:outputLabel value="#{msg.create_motdepasseverif}" for="motdepasseverif" ><span class="small"><h:outputText value="*"/></span></h:outputLabel><br/>
-                        <h:inputSecret id="motdepasseverif" value="#{createClient.motdepasseverif}" required="true" requiredMessage="#{msg.register_confirm_required}" validatorMessage="#{msg.register_confirm_validator}">
+                        <h:inputSecret id="motdepasseverif" value="#{createClient.motdepasseverif}" required="true" requiredMessage="#{msg.register_confirm_required}" validatorMessage="#{msg.register_confirm_validator}" onkeyup="validationMDP();">
                                     <f:validateLength minimum="4" maximum="25" />
                         </h:inputSecret>
                         <h:message class="red" for="motdepasseverif"/>
                         <h:outputText class="red" value="#{msg.register_error_confirm}" rendered="#{createClient.setBoldErreurPassword() == 'erreur'}" />
+                        <span id="check" style="color: white; font-size: 14px;border-radius: 4px; background-color: rgba(238,59,59,0.75); position: absolute; width:80px; margin-left: 10px; heigh:20px;"></span>
                     </p>
-       
+                
                     <p align="left"  ><br/>
                         <h:commandButton class="button" id="button" value="#{msg.create_button}" action="#{createClient.addClient()}" /><br/><br/>
                         <span id="qte"><h:outputText value="*"/></span> <h:outputText value="#{msg.register_required}" class="required"/><br/>                        
                     </p>  
-
+                   </div>
                 </h:form>
-       
+                
             </ui:define>
 
          

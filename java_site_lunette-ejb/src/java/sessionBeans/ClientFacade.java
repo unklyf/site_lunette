@@ -21,21 +21,38 @@ public class ClientFacade extends AbstractFacade<Client> implements ClientFacade
     @PersistenceContext(unitName = "java_site_lunette-ejbPU")
     private EntityManager em;
 
+    /**
+     *
+     * @return
+     */
     @Override
     protected EntityManager getEntityManager() {
         return em;
     }
     
+    /**
+     *
+     * @param cli
+     */
     @Override
     public void create (Client cli) {
         
         em.persist(cli);
     }
 
+    /**
+     *
+     */
     public ClientFacade() {
         super(Client.class);
     }
     
+    /**
+     *
+     * @param pseudo
+     * @param motdepasse
+     * @return
+     */
     @Override
     public Client connect(String pseudo,String motdepasse)
     {
@@ -46,6 +63,11 @@ public class ClientFacade extends AbstractFacade<Client> implements ClientFacade
         return (Client)query.getSingleResult();
     }
     
+    /**
+     *
+     * @param pseudo
+     * @return
+     */
     @Override
     public List<Client> findByLogin(String pseudo) {
         Query query;

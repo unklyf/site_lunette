@@ -15,18 +15,48 @@ import model.Promotion;
 @Local
 public interface PromotionFacadeLocal {
 
+    /**
+     *
+     * @param promotion
+     */
     void create(Promotion promotion);
 
+    /**
+     *
+     * @param promotion
+     */
     void edit(Promotion promotion);
 
+    /**
+     *
+     * @param promotion
+     */
     void remove(Promotion promotion);
 
+    /**
+     *
+     * @param id
+     * @return
+     */
     Promotion find(Object id);
 
+    /**
+     *
+     * @return
+     */
     List<Promotion> findAll();
 
+    /**
+     *
+     * @param range
+     * @return
+     */
     List<Promotion> findRange(int[] range);
 
+    /**
+     *
+     * @return
+     */
     int count();
     
 }

@@ -18,11 +18,18 @@ public class LanguetransFacade extends AbstractFacade<Languetrans> implements La
     @PersistenceContext(unitName = "java_site_lunette-ejbPU")
     private EntityManager em;
 
+    /**
+     *
+     * @return
+     */
     @Override
     protected EntityManager getEntityManager() {
         return em;
     }
 
+    /**
+     *
+     */
     public LanguetransFacade() {
         super(Languetrans.class);
     }

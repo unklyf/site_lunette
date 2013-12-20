@@ -33,6 +33,9 @@ import javax.xml.bind.annotation.XmlRootElement;
     @NamedQuery(name = "Traddescription.findByDescription", query = "SELECT t FROM Traddescription t WHERE t.description = :description")})
 public class Traddescription implements Serializable {
     private static final long serialVersionUID = 1L;
+    /**
+     *
+     */
     @EmbeddedId
     protected TraddescriptionPK traddescriptionPK;
     @Basic(optional = false)
@@ -47,50 +50,99 @@ public class Traddescription implements Serializable {
     @ManyToOne(optional = false)
     private Description description1;
 
+    /**
+     *
+     */
     public Traddescription() {
     }
 
+    /**
+     *
+     * @param traddescriptionPK
+     */
     public Traddescription(TraddescriptionPK traddescriptionPK) {
         this.traddescriptionPK = traddescriptionPK;
     }
 
+    /**
+     *
+     * @param traddescriptionPK
+     * @param description
+     */
     public Traddescription(TraddescriptionPK traddescriptionPK, String description) {
         this.traddescriptionPK = traddescriptionPK;
         this.description = description;
     }
 
+    /**
+     *
+     * @param iddescription
+     * @param idlangue
+     */
     public Traddescription(int iddescription, int idlangue) {
         this.traddescriptionPK = new TraddescriptionPK(iddescription, idlangue);
     }
 
+    /**
+     *
+     * @return
+     */
     public TraddescriptionPK getTraddescriptionPK() {
         return traddescriptionPK;
     }
 
+    /**
+     *
+     * @param traddescriptionPK
+     */
     public void setTraddescriptionPK(TraddescriptionPK traddescriptionPK) {
         this.traddescriptionPK = traddescriptionPK;
     }
 
+    /**
+     *
+     * @return
+     */
     public String getDescription() {
         return description;
     }
 
+    /**
+     *
+     * @param description
+     */
     public void setDescription(String description) {
         this.description = description;
     }
 
+    /**
+     *
+     * @return
+     */
     public Languetrans getLanguetrans() {
         return languetrans;
     }
 
+    /**
+     *
+     * @param languetrans
+     */
     public void setLanguetrans(Languetrans languetrans) {
         this.languetrans = languetrans;
     }
 
+    /**
+     *
+     * @return
+     */
     public Description getDescription1() {
         return description1;
     }
 
+    /**
+     *
+     * @param description1
+     */
     public void setDescription1(Description description1) {
         this.description1 = description1;
     }

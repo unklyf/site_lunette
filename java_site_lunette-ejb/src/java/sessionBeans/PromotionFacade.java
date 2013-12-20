@@ -18,11 +18,18 @@ public class PromotionFacade extends AbstractFacade<Promotion> implements Promot
     @PersistenceContext(unitName = "java_site_lunette-ejbPU")
     private EntityManager em;
 
+    /**
+     *
+     * @return
+     */
     @Override
     protected EntityManager getEntityManager() {
         return em;
     }
 
+    /**
+     *
+     */
     public PromotionFacade() {
         super(Promotion.class);
     }

@@ -6,6 +6,7 @@ package managedBeans;
 
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import javax.ejb.EJB;
 import javax.faces.bean.ManagedBean;
@@ -27,18 +28,46 @@ public class Promo implements Serializable{
     private PromotionFacadeLocal promFacade; 
     
     
-     public List<Promotion> promoList(){
+     /**
+     *
+     * @return
+     */
+    public List<Promotion> promoList(){
         List<Promotion> promo = promFacade.findAll();
         return promo;
     }
      
+    /**
+     *
+     * @param i
+     * @return
+     */
     public ArrayList<Promotion> getLastPromo(int i){
        List<Promotion> prod = promFacade.findAll();
        ArrayList<Promotion> lastPromo = new ArrayList<Promotion>();        
-       for(int j= 0; j < prod.size();j++){
+       for(int j= 0; j < i;j++){
             lastPromo.add(prod.get(j));
         }
         return lastPromo;
+    }
+    
+    /**
+     *
+     * @param prom
+     * @return
+     */
+    public boolean verifPromoDate (Promotion prom){
+        boolean verif;
+        Date today = new Date();
+        Date promdeb = prom.getDatefin();
+        if(promdeb.after(today) ){   
+            verif=true;    
+        }
+        else{
+              verif = false;
+        }
+        
+        return verif;
     }
      
     

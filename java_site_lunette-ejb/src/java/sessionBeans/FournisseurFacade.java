@@ -18,11 +18,18 @@ public class FournisseurFacade extends AbstractFacade<Fournisseur> implements Fo
     @PersistenceContext(unitName = "java_site_lunette-ejbPU")
     private EntityManager em;
 
+    /**
+     *
+     * @return
+     */
     @Override
     protected EntityManager getEntityManager() {
         return em;
     }
 
+    /**
+     *
+     */
     public FournisseurFacade() {
         super(Fournisseur.class);
     }

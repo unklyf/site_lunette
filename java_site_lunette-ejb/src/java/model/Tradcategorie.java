@@ -26,12 +26,16 @@ import javax.xml.bind.annotation.XmlRootElement;
 @Table(name = "TRADCATEGORIE")
 @XmlRootElement
 @NamedQueries({
+    @NamedQuery(name = "Tradcategorie.findTradLibelle", query = "SELECT t FROM Tradcategorie t WHERE t.tradcategoriePK.idcategorie = :idcategorie AND t.tradcategoriePK.idlangue = :idlangue"),
     @NamedQuery(name = "Tradcategorie.findAll", query = "SELECT t FROM Tradcategorie t"),
     @NamedQuery(name = "Tradcategorie.findByIdcategorie", query = "SELECT t FROM Tradcategorie t WHERE t.tradcategoriePK.idcategorie = :idcategorie"),
     @NamedQuery(name = "Tradcategorie.findByIdlangue", query = "SELECT t FROM Tradcategorie t WHERE t.tradcategoriePK.idlangue = :idlangue"),
     @NamedQuery(name = "Tradcategorie.findByLibelle", query = "SELECT t FROM Tradcategorie t WHERE t.libelle = :libelle")})
 public class Tradcategorie implements Serializable {
     private static final long serialVersionUID = 1L;
+    /**
+     *
+     */
     @EmbeddedId
     protected TradcategoriePK tradcategoriePK;
     @Basic(optional = false)
@@ -46,50 +50,99 @@ public class Tradcategorie implements Serializable {
     @ManyToOne(optional = false)
     private Categorie categorie;
 
+    /**
+     *
+     */
     public Tradcategorie() {
     }
 
+    /**
+     *
+     * @param tradcategoriePK
+     */
     public Tradcategorie(TradcategoriePK tradcategoriePK) {
         this.tradcategoriePK = tradcategoriePK;
     }
 
+    /**
+     *
+     * @param tradcategoriePK
+     * @param libelle
+     */
     public Tradcategorie(TradcategoriePK tradcategoriePK, String libelle) {
         this.tradcategoriePK = tradcategoriePK;
         this.libelle = libelle;
     }
 
+    /**
+     *
+     * @param idcategorie
+     * @param idlangue
+     */
     public Tradcategorie(int idcategorie, int idlangue) {
         this.tradcategoriePK = new TradcategoriePK(idcategorie, idlangue);
     }
 
+    /**
+     *
+     * @return
+     */
     public TradcategoriePK getTradcategoriePK() {
         return tradcategoriePK;
     }
 
+    /**
+     *
+     * @param tradcategoriePK
+     */
     public void setTradcategoriePK(TradcategoriePK tradcategoriePK) {
         this.tradcategoriePK = tradcategoriePK;
     }
 
+    /**
+     *
+     * @return
+     */
     public String getLibelle() {
         return libelle;
     }
 
+    /**
+     *
+     * @param libelle
+     */
     public void setLibelle(String libelle) {
         this.libelle = libelle;
     }
 
+    /**
+     *
+     * @return
+     */
     public Languetrans getLanguetrans() {
         return languetrans;
     }
 
+    /**
+     *
+     * @param languetrans
+     */
     public void setLanguetrans(Languetrans languetrans) {
         this.languetrans = languetrans;
     }
 
+    /**
+     *
+     * @return
+     */
     public Categorie getCategorie() {
         return categorie;
     }
 
+    /**
+     *
+     * @param categorie
+     */
     public void setCategorie(Categorie categorie) {
         this.categorie = categorie;
     }

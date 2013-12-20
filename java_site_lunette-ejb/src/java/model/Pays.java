@@ -42,35 +42,66 @@ public class Pays implements Serializable {
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "pays")
     private Collection<Tradpays> tradpaysCollection;
 
+    /**
+     *
+     */
     public Pays() {
     }
 
+    /**
+     *
+     * @param idpays
+     */
     public Pays(Integer idpays) {
         this.idpays = idpays;
     }
 
+    /**
+     *
+     * @return
+     */
     public Integer getIdpays() {
         return idpays;
     }
 
+    /**
+     *
+     * @param idpays
+     */
     public void setIdpays(Integer idpays) {
         this.idpays = idpays;
     }
 
+    /**
+     *
+     * @return
+     */
     @XmlTransient
     public Collection<Client> getClientCollection() {
         return clientCollection;
     }
 
+    /**
+     *
+     * @param clientCollection
+     */
     public void setClientCollection(Collection<Client> clientCollection) {
         this.clientCollection = clientCollection;
     }
 
+    /**
+     *
+     * @return
+     */
     @XmlTransient
     public Collection<Tradpays> getTradpaysCollection() {
         return tradpaysCollection;
     }
 
+    /**
+     *
+     * @param tradpaysCollection
+     */
     public void setTradpaysCollection(Collection<Tradpays> tradpaysCollection) {
         this.tradpaysCollection = tradpaysCollection;
     }

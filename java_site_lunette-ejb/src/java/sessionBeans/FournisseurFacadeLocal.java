@@ -15,18 +15,48 @@ import model.Fournisseur;
 @Local
 public interface FournisseurFacadeLocal {
 
+    /**
+     *
+     * @param fournisseur
+     */
     void create(Fournisseur fournisseur);
 
+    /**
+     *
+     * @param fournisseur
+     */
     void edit(Fournisseur fournisseur);
 
+    /**
+     *
+     * @param fournisseur
+     */
     void remove(Fournisseur fournisseur);
 
+    /**
+     *
+     * @param id
+     * @return
+     */
     Fournisseur find(Object id);
 
+    /**
+     *
+     * @return
+     */
     List<Fournisseur> findAll();
 
+    /**
+     *
+     * @param range
+     * @return
+     */
     List<Fournisseur> findRange(int[] range);
 
+    /**
+     *
+     * @return
+     */
     int count();
     
 }

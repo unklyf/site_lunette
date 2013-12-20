@@ -18,11 +18,18 @@ public class PaysFacade extends AbstractFacade<Pays> implements PaysFacadeLocal 
     @PersistenceContext(unitName = "java_site_lunette-ejbPU")
     private EntityManager em;
 
+    /**
+     *
+     * @return
+     */
     @Override
     protected EntityManager getEntityManager() {
         return em;
     }
 
+    /**
+     *
+     */
     public PaysFacade() {
         super(Pays.class);
     }

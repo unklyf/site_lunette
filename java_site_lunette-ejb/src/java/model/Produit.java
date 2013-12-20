@@ -98,13 +98,30 @@ public class Produit implements Serializable {
     private Categorie idcategorie;
     
 
+    /**
+     *
+     */
     public Produit() {
     }
 
+    /**
+     *
+     * @param idproduit
+     */
     public Produit(Integer idproduit) {
         this.idproduit = idproduit;
     }
 
+    /**
+     *
+     * @param idproduit
+     * @param image
+     * @param marque
+     * @param modele
+     * @param prixunitaire
+     * @param nouveautee
+     * @param genre
+     */
     public Produit(Integer idproduit, String image, String marque, String modele, double prixunitaire, boolean nouveautee, char genre) {
         this.idproduit = idproduit;
         this.image = image;
@@ -116,115 +133,227 @@ public class Produit implements Serializable {
     }
 
     
+    /**
+     *
+     * @return
+     */
     public Integer getIdproduit() {
         return idproduit;
     }
 
+    /**
+     *
+     * @param idproduit
+     */
     public void setIdproduit(Integer idproduit) {
         this.idproduit = idproduit;
     }
 
+    /**
+     *
+     * @return
+     */
     public String getImage() {
         return image;
     }
 
+    /**
+     *
+     * @param image
+     */
     public void setImage(String image) {
         this.image = image;
     }
 
+    /**
+     *
+     * @return
+     */
     public String getMarque() {
         return marque;
     }
 
+    /**
+     *
+     * @param marque
+     */
     public void setMarque(String marque) {
         this.marque = marque;
     }
 
+    /**
+     *
+     * @return
+     */
     public String getModele() {
         return modele;
     }
 
+    /**
+     *
+     * @param modele
+     */
     public void setModele(String modele) {
         this.modele = modele;
     }
 
+    /**
+     *
+     * @return
+     */
     public double getPrixunitaire() {
         return prixunitaire;
     }
 
+    /**
+     *
+     * @param prixunitaire
+     */
     public void setPrixunitaire(double prixunitaire) {
         this.prixunitaire = prixunitaire;
     }
 
+    /**
+     *
+     * @return
+     */
     public boolean getNouveautee() {
         return nouveautee;
     }
 
+    /**
+     *
+     * @param nouveautee
+     */
     public void setNouveautee(boolean nouveautee) {
         this.nouveautee = nouveautee;
     }
 
+    /**
+     *
+     * @return
+     */
     public char getGenre() {
         return genre;
     }
 
+    /**
+     *
+     * @param genre
+     */
     public void setGenre(char genre) {
         this.genre = genre;
     }
 
+    /**
+     *
+     * @return
+     */
     @XmlTransient
     public Collection<Lignecommande> getLignecommandeCollection() {
         return lignecommandeCollection;
     }
 
+    /**
+     *
+     * @param lignecommandeCollection
+     */
     public void setLignecommandeCollection(Collection<Lignecommande> lignecommandeCollection) {
         this.lignecommandeCollection = lignecommandeCollection;
     }
 
+    /**
+     *
+     * @return
+     */
     public Promotion getIdpromo() {
         return idpromo;
     }
 
+    /**
+     *
+     * @param idpromo
+     */
     public void setIdpromo(Promotion idpromo) {
         this.idpromo = idpromo;
     }
 
+    /**
+     *
+     * @return
+     */
     public Fournisseur getIdfournisseur() {
         return idfournisseur;
     }
 
+    /**
+     *
+     * @param idfournisseur
+     */
     public void setIdfournisseur(Fournisseur idfournisseur) {
         this.idfournisseur = idfournisseur;
     }
 
+    /**
+     *
+     * @return
+     */
     public Description getIddescription() {
         return iddescription;
     }
 
+    /**
+     *
+     * @param iddescription
+     */
     public void setIddescription(Description iddescription) {
         this.iddescription = iddescription;
     }
 
+    /**
+     *
+     * @return
+     */
     public Couleur getIdcouleurmont() {
         return idcouleurmont;
     }
 
+    /**
+     *
+     * @param idcouleurmont
+     */
     public void setIdcouleurmont(Couleur idcouleurmont) {
         this.idcouleurmont = idcouleurmont;
     }
 
+    /**
+     *
+     * @return
+     */
     public Couleur getIdcouleurverre() {
         return idcouleurverre;
     }
 
+    /**
+     *
+     * @param idcouleurverre
+     */
     public void setIdcouleurverre(Couleur idcouleurverre) {
         this.idcouleurverre = idcouleurverre;
     }
 
+    /**
+     *
+     * @return
+     */
     public Categorie getIdcategorie() {
         return idcategorie;
     }
 
+    /**
+     *
+     * @param idcategorie
+     */
     public void setIdcategorie(Categorie idcategorie) {
         this.idcategorie = idcategorie;
     }

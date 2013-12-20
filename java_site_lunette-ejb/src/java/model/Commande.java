@@ -69,13 +69,27 @@ public class Commande implements Serializable {
     @ManyToOne(optional = false)
     private Client idclient;
 
+    /**
+     *
+     */
     public Commande() {
     }
 
+    /**
+     *
+     * @param idcommande
+     */
     public Commande(Integer idcommande) {
         this.idcommande = idcommande;
     }
 
+    /**
+     *
+     * @param idcommande
+     * @param datecommande
+     * @param etat
+     * @param etatpaiement
+     */
     public Commande(Integer idcommande, Date datecommande, String etat, String etatpaiement) {
         this.idcommande = idcommande;
         this.datecommande = datecommande;
@@ -83,6 +97,13 @@ public class Commande implements Serializable {
         this.etatpaiement = etatpaiement;
     }
     
+    /**
+     *
+     * @param datecommande
+     * @param etat
+     * @param etatpaiement
+     * @param idclient
+     */
     public Commande(Date datecommande, String etat, String etatpaiement, Client idclient) {
         this.datecommande = datecommande;
         this.etat = etat;
@@ -90,51 +111,99 @@ public class Commande implements Serializable {
         this.idclient= idclient;
     }
 
+    /**
+     *
+     * @return
+     */
     public Integer getIdcommande() {
         return idcommande;
     }
 
+    /**
+     *
+     * @param idcommande
+     */
     public void setIdcommande(Integer idcommande) {
         this.idcommande = idcommande;
     }
 
+    /**
+     *
+     * @return
+     */
     public Date getDatecommande() {
         return datecommande;
     }
 
+    /**
+     *
+     * @param datecommande
+     */
     public void setDatecommande(Date datecommande) {
         this.datecommande = datecommande;
     }
 
+    /**
+     *
+     * @return
+     */
     public String getEtat() {
         return etat;
     }
 
+    /**
+     *
+     * @param etat
+     */
     public void setEtat(String etat) {
         this.etat = etat;
     }
 
+    /**
+     *
+     * @return
+     */
     public String getEtatpaiement() {
         return etatpaiement;
     }
 
+    /**
+     *
+     * @param etatpaiement
+     */
     public void setEtatpaiement(String etatpaiement) {
         this.etatpaiement = etatpaiement;
     }
 
+    /**
+     *
+     * @return
+     */
     @XmlTransient
     public Collection<Lignecommande> getLignecommandeCollection() {
         return lignecommandeCollection;
     }
     
+    /**
+     *
+     * @param lignecommandeCollection
+     */
     public void setLignecommandeCollection(Collection<Lignecommande> lignecommandeCollection) {
         this.lignecommandeCollection = lignecommandeCollection;
     }
 
+    /**
+     *
+     * @return
+     */
     public Client getIdclient() {
         return idclient;
     }
 
+    /**
+     *
+     * @param idclient
+     */
     public void setIdclient(Client idclient) {
         this.idclient = idclient;
     }

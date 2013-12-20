@@ -25,26 +25,50 @@ public class LignecommandePK implements Serializable {
     @Column(name = "IDPRODUIT")
     private int idproduit;
 
+    /**
+     *
+     */
     public LignecommandePK() {
     }
 
+    /**
+     *
+     * @param idcommande
+     * @param idproduit
+     */
     public LignecommandePK(int idcommande, int idproduit) {
         this.idcommande = idcommande;
         this.idproduit = idproduit;
     }
 
+    /**
+     *
+     * @return
+     */
     public int getIdcommande() {
         return idcommande;
     }
 
+    /**
+     *
+     * @param idcommande
+     */
     public void setIdcommande(int idcommande) {
         this.idcommande = idcommande;
     }
 
+    /**
+     *
+     * @return
+     */
     public int getIdproduit() {
         return idproduit;
     }
 
+    /**
+     *
+     * @param idproduit
+     */
     public void setIdproduit(int idproduit) {
         this.idproduit = idproduit;
     }

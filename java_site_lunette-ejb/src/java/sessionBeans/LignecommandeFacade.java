@@ -18,11 +18,18 @@ public class LignecommandeFacade extends AbstractFacade<Lignecommande> implement
     @PersistenceContext(unitName = "java_site_lunette-ejbPU")
     private EntityManager em;
 
+    /**
+     *
+     * @return
+     */
     @Override
     protected EntityManager getEntityManager() {
         return em;
     }
 
+    /**
+     *
+     */
     public LignecommandeFacade() {
         super(Lignecommande.class);
     }

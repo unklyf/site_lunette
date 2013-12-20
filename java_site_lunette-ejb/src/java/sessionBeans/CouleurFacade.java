@@ -18,11 +18,18 @@ public class CouleurFacade extends AbstractFacade<Couleur> implements CouleurFac
     @PersistenceContext(unitName = "java_site_lunette-ejbPU")
     private EntityManager em;
 
+    /**
+     *
+     * @return
+     */
     @Override
     protected EntityManager getEntityManager() {
         return em;
     }
 
+    /**
+     *
+     */
     public CouleurFacade() {
         super(Couleur.class);
     }

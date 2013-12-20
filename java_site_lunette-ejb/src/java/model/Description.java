@@ -1,7 +1,3 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
 package model;
 
 import java.io.Serializable;
@@ -42,35 +38,66 @@ public class Description implements Serializable {
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "iddescription")
     private Collection<Produit> produitCollection;
 
+    /**
+     *
+     */
     public Description() {
     }
 
+    /**
+     *
+     * @param iddescription
+     */
     public Description(Integer iddescription) {
         this.iddescription = iddescription;
     }
 
+    /**
+     *
+     * @return
+     */
     public Integer getIddescription() {
         return iddescription;
     }
 
+    /**
+     *
+     * @param iddescription
+     */
     public void setIddescription(Integer iddescription) {
         this.iddescription = iddescription;
     }
 
+    /**
+     *
+     * @return
+     */
     @XmlTransient
     public Collection<Traddescription> getTraddescriptionCollection() {
         return traddescriptionCollection;
     }
 
+    /**
+     *
+     * @param traddescriptionCollection
+     */
     public void setTraddescriptionCollection(Collection<Traddescription> traddescriptionCollection) {
         this.traddescriptionCollection = traddescriptionCollection;
     }
 
+    /**
+     *
+     * @return
+     */
     @XmlTransient
     public Collection<Produit> getProduitCollection() {
         return produitCollection;
     }
 
+    /**
+     *
+     * @param produitCollection
+     */
     public void setProduitCollection(Collection<Produit> produitCollection) {
         this.produitCollection = produitCollection;
     }

@@ -25,26 +25,50 @@ public class TradcategoriePK implements Serializable {
     @Column(name = "IDLANGUE")
     private int idlangue;
 
+    /**
+     *
+     */
     public TradcategoriePK() {
     }
 
+    /**
+     *
+     * @param idcategorie
+     * @param idlangue
+     */
     public TradcategoriePK(int idcategorie, int idlangue) {
         this.idcategorie = idcategorie;
         this.idlangue = idlangue;
     }
 
+    /**
+     *
+     * @return
+     */
     public int getIdcategorie() {
         return idcategorie;
     }
 
+    /**
+     *
+     * @param idcategorie
+     */
     public void setIdcategorie(int idcategorie) {
         this.idcategorie = idcategorie;
     }
 
+    /**
+     *
+     * @return
+     */
     public int getIdlangue() {
         return idlangue;
     }
 
+    /**
+     *
+     * @param idlangue
+     */
     public void setIdlangue(int idlangue) {
         this.idlangue = idlangue;
     }

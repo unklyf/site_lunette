@@ -25,26 +25,50 @@ public class TradcouleurPK implements Serializable {
     @Column(name = "IDLANGUE")
     private int idlangue;
 
+    /**
+     *
+     */
     public TradcouleurPK() {
     }
 
+    /**
+     *
+     * @param idcouleur
+     * @param idlangue
+     */
     public TradcouleurPK(int idcouleur, int idlangue) {
         this.idcouleur = idcouleur;
         this.idlangue = idlangue;
     }
 
+    /**
+     *
+     * @return
+     */
     public int getIdcouleur() {
         return idcouleur;
     }
 
+    /**
+     *
+     * @param idcouleur
+     */
     public void setIdcouleur(int idcouleur) {
         this.idcouleur = idcouleur;
     }
 
+    /**
+     *
+     * @return
+     */
     public int getIdlangue() {
         return idlangue;
     }
 
+    /**
+     *
+     * @param idlangue
+     */
     public void setIdlangue(int idlangue) {
         this.idlangue = idlangue;
     }

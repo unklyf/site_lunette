@@ -32,6 +32,9 @@ import javax.xml.bind.annotation.XmlRootElement;
     @NamedQuery(name = "Lignecommande.findByPrixvente", query = "SELECT l FROM Lignecommande l WHERE l.prixvente = :prixvente")})
 public class Lignecommande implements Serializable {
     private static final long serialVersionUID = 1L;
+    /**
+     *
+     */
     @EmbeddedId
     protected LignecommandePK lignecommandePK;
     @Basic(optional = false)
@@ -50,66 +53,130 @@ public class Lignecommande implements Serializable {
     @ManyToOne(optional = false)
     private Commande commande;
 
+    /**
+     *
+     */
     public Lignecommande() {
     }
 
     
+    /**
+     *
+     * @param lignecommandePK
+     */
     public Lignecommande(LignecommandePK lignecommandePK) {
         this.lignecommandePK = lignecommandePK;
     }
 
+    /**
+     *
+     * @param lignecommandePK
+     * @param quantitee
+     * @param prixvente
+     */
     public Lignecommande(LignecommandePK lignecommandePK, int quantitee, double prixvente) {
         this.lignecommandePK = lignecommandePK;
         this.quantitee = quantitee;
         this.prixvente = prixvente;
     }
     
+    /**
+     *
+     * @param prod
+     * @param quantitee
+     * @param prixvente
+     */
     public Lignecommande(Produit prod, int quantitee, double prixvente) {
         this.produit = prod;
         this.quantitee = quantitee;
         this.prixvente = prixvente;
     }
 
+    /**
+     *
+     * @param idcommande
+     * @param idproduit
+     */
     public Lignecommande(int idcommande, int idproduit) {
         this.lignecommandePK = new LignecommandePK(idcommande, idproduit);
     }
 
+    /**
+     *
+     * @return
+     */
     public LignecommandePK getLignecommandePK() {
         return lignecommandePK;
     }
 
+    /**
+     *
+     * @param lignecommandePK
+     */
     public void setLignecommandePK(LignecommandePK lignecommandePK) {
         this.lignecommandePK = lignecommandePK;
     }
 
+    /**
+     *
+     * @return
+     */
     public int getQuantitee() {
         return quantitee;
     }
 
+    /**
+     *
+     * @param quantitee
+     */
     public void setQuantitee(int quantitee) {
         this.quantitee = quantitee;
     }
 
+    /**
+     *
+     * @return
+     */
     public double getPrixvente() {
         return prixvente;
     }
 
+    /**
+     *
+     * @param prixvente
+     */
     public void setPrixvente(double prixvente) {
         this.prixvente = prixvente;
     }
 
+    /**
+     *
+     * @return
+     */
     public Produit getProduit() {
         return produit;
     }
 
+    /**
+     *
+     * @param produit
+     */
     public void setProduit(Produit produit) {
         this.produit = produit;
     }
 
+    /**
+     *
+     * @return
+     */
     public Commande getCommande() {
         return commande;
     }
 
+    /**
+     *
+     * @param commande
+     */
     public void setCommande(Commande commande) {
         this.commande = commande;        
     }

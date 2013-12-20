@@ -25,26 +25,50 @@ public class TradpaysPK implements Serializable {
     @Column(name = "IDPAYS")
     private int idpays;
 
+    /**
+     *
+     */
     public TradpaysPK() {
     }
 
+    /**
+     *
+     * @param idlangue
+     * @param idpays
+     */
     public TradpaysPK(int idlangue, int idpays) {
         this.idlangue = idlangue;
         this.idpays = idpays;
     }
 
+    /**
+     *
+     * @return
+     */
     public int getIdlangue() {
         return idlangue;
     }
 
+    /**
+     *
+     * @param idlangue
+     */
     public void setIdlangue(int idlangue) {
         this.idlangue = idlangue;
     }
 
+    /**
+     *
+     * @return
+     */
     public int getIdpays() {
         return idpays;
     }
 
+    /**
+     *
+     * @param idpays
+     */
     public void setIdpays(int idpays) {
         this.idpays = idpays;
     }

@@ -3,8 +3,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:ui="http://java.sun.com/jsf/facelets"
       xmlns:h="http://java.sun.com/jsf/html"
-      xmlns:f="http://java.sun.com/jsf/core"
-      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
+      xmlns:f="http://java.sun.com/jsf/core">
     
     <f:view locale="#{language.locale}">
     <f:loadBundle basename="language.lang" var="msg" />
@@ -23,6 +22,17 @@
                      height: 528
                    });
              });
+             
+            function validationMDP() {  
+                if ( document.getElementById('j_idt41:motdepasse').value !== document.getElementById('j_idt41:motdepasseverif').value ) {
+                 document.getElementById('check').innerHTML = "#{msg.register_error_confirm}";
+                 document.getElementById('check').style.background = "red";
+                }
+                if (document.getElementById('j_idt41:motdepasse').value === document.getElementById('j_idt41:motdepasseverif').value ) {
+                 document.getElementById('check').innerHTML = "ok";
+                 document.getElementById('check').style.background = "green";
+                }
+            };                                
         </script>
         <title>Have a Look</title>
         <!--[if !IE]> <-->        
@@ -86,8 +96,8 @@
                 <!-- Search -->
                 <span class="range">
                     <h:form>
-                        <h:inputText size="20"  value="#{msg.menu_search}" id="searchInput" />
-                        <h:commandButton action="#" image="resources/images/search.png" />
+                        <h:inputText size="20"  id="searchInput" value="#{research.marque}" required="true"  />
+                        <h:commandButton action="#{research.searchItem()}" image="resources/images/search.png" />
                     </h:form>
                 </span>
 
@@ -104,16 +114,7 @@
                 <nav>
                         <ul>
                             <li><h:link value="#{msg.menu_home}" outcome="index.xhtml"></h:link></li>
-                            <li><h:link value="#{msg.menu_categorie}" outcome="catalogue.xhtml"></h:link>
-                                <ul>
-                                    <li class="liste"><h:link value="#{msg.cat_lunsol}" outcome="catSoleil.xhtml"/></li>
-                                    <li class="liste"><h:link value="#{msg.cat_lunvue}" outcome="catalogue.xhtml"/></li>
-                                    <li class="liste"><h:link value="#{msg.cat_lunsport}" outcome="catSport.xhtml"/></li>
-                                    <li class="liste"><h:link value="#{msg.cat_lunlect}" outcome="catalogue.xhtml"/></li>                                
-                                    <li class="liste"><h:link value="#{msg.cat_lunpiscine}" outcome="catalogue.xhtml"/></li>                                    
-                                </ul>
-                            
-                            </li>
+                            <li><h:link value="#{msg.menu_categorie}" outcome="catalogue.xhtml"></h:link></li>
                             <li><h:link value="#{msg.menu_promo}" outcome="promo.xhtml"></h:link></li>
                             <li><h:link value="#{msg.menu_about}" outcome="about.xhtml"></h:link></li>
                          </ul>

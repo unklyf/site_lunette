@@ -39,10 +39,18 @@ public class Connexion implements Serializable{
     @ManagedProperty("#{language}")
     private Language lang;
 
+    /**
+     *
+     * @return
+     */
     public Language getLang() {
         return lang;
     }
 
+    /**
+     *
+     * @param lang
+     */
     public void setLang(Language lang) {
         this.lang = lang;
     }
@@ -53,10 +61,18 @@ public class Connexion implements Serializable{
     private boolean erreur = false;
     private Client cli;
 
+    /**
+     *
+     * @return
+     */
     public Client getCli() {
         return cli;
     }
 
+    /**
+     *
+     * @param cli
+     */
     public void setCli(Client cli) {
         this.cli = cli;
     }
@@ -89,8 +105,8 @@ public class Connexion implements Serializable{
     }
 
     /**
-    * @param password the password to set
-    */
+     * @param motdepasse 
+     */
     public void setMotdepasse(String motdepasse) {
         this.motdepasse = motdepasse;
     }
@@ -137,7 +153,12 @@ public class Connexion implements Serializable{
           
     }*/
     
-     public String login() throws ValidatorException {
+     /**
+     *
+     * @return
+     * @throws ValidatorException
+     */
+    public String login() throws ValidatorException {
         // coerce the value to an int
             try {
                 cli = clientFacade.connect(this.getPseudo(), this.getMotdepasse());
@@ -157,11 +178,19 @@ public class Connexion implements Serializable{
     }
     
             
+    /**
+     *
+     * @return
+     */
     public String logout() {
         setConnected(false);
         return "index";
     }
     
+    /**
+     *
+     * @return
+     */
     public String afficherCompte(){
        if(isConnected())
            return "connected";
@@ -170,6 +199,10 @@ public class Connexion implements Serializable{
     }
     
     
+    /**
+     *
+     * @return
+     */
     public String afficherErreur() {
         if (erreur) {            
             return "erreur";
@@ -182,10 +215,18 @@ public class Connexion implements Serializable{
     }
     
     
+    /**
+     *
+     * @return
+     */
     public Tradpays getTradpays(){
       return tradPaysFacade.findPays(cli.getIdpays().getIdpays(),lang.getId());
     } 
     
+    /**
+     *
+     * @return
+     */
     public String commander(){
        if(isConnected())
            return "commande";

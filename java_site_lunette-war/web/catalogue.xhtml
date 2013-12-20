@@ -11,27 +11,42 @@
         <ui:composition template="./defaultTemplate.xhtml">
 
    
-            <ui:define name="content">
-                <h2><h:outputText value="#{msg.title_allcat}" /></h2>
-                <c:forEach items="#{categorie.catList()}" var="cat">
-                    <hr /><br/>
-                    <c:forEach items="#{cat.produitCollection}" var="produit">
-                        <article>  
-                            <h:form>
-                                <h:outputText value="#{produit.marque}" /> 
-                                <h:outputText class="label" value="#{msg.new}" rendered="#{produit.nouveautee =='true'}" />
-                                <h:graphicImage class="thumbsimg" value="#{produit.image}" /><br/>
-                                
-                                <!--promo-->
-                                <h:outputText class="promo" value="-#{produit.idpromo.pourcentage}%" rendered="#{categorie.verifPromo(produit)}" /><br/>                                
-                                <h:outputText value="#{produit.prixunitaire}#{msg.symbole}" rendered="#{categorie.verifPromo(produit)=='false'}" />      
-                                <h:outputText style="color:red;" value="#{categorie.calculPrix(produit)}#{msg.symbole}" rendered="#{categorie.verifPromo(produit)}"/> <br/>
-                                <h:outputText style="text-decoration: line-through;" value="#{produit.prixunitaire}#{msg.symbole}" rendered="#{categorie.verifPromo(produit)}"/> <br/>
-                                <h:commandButton class="button" value="#{msg.shop_more}" action="#{selectProd.selectProduit(produit.idproduit)}" />  <br/>                                 
-                             </h:form>
-                        </article>
+            <ui:define name="content">               
+                    <h2><h:outputText value="#{msg.title_allcat}"  class="#{categorie.setHide()}"/></h2>   
+                <div class="menucat">
+                      <c:forEach items="#{categorie.catList()}" var="cat">                       
+                              <li>
+                                   <h:form>
+                                        <h:commandLink value="#{categorie.getTradCategorie(cat.idcategorie).libelle}" action="#{categorie.selectCategorie(cat.idcategorie)}">
+                                        </h:commandLink>  
+                                   </h:form>
+                               </li> 
+                                               
+                      </c:forEach>  
+                </div>  
+                      
+                      <c:forEach items="#{categorie.listProduit}" var="produit">
+                            <article>  
+                                <h:form>
+                                    <h:outputText value="#{produit.marque}" /> 
+                                    <h:outputText class="label" value="#{msg.new}" rendered="#{produit.nouveautee =='true'}" />
+                                    
+                                    <p class="cadre">
+                                        <h:graphicImage class="thumbsimg" value="#{produit.image}" /><br/>
+                                    </p>
+                                    
+
+                                    <!--promo-->
+                                    <h:outputText class="promo" value="-#{produit.idpromo.pourcentage}%" rendered="#{categorie.verifPromo(produit)}" /><br/>                                
+                                    <h:outputText value="#{produit.prixunitaire}#{msg.symbole}" rendered="#{categorie.verifPromo(produit)=='false'}" />      
+                                    <h:outputText style="color:red;" value="#{categorie.calculPrix(produit)}#{msg.symbole}" rendered="#{categorie.verifPromo(produit)}"/> <br/>
+                                    <h:outputText style="text-decoration: line-through;" value="#{produit.prixunitaire}#{msg.symbole}" rendered="#{categorie.verifPromo(produit)}"/> <br/>
+                                    <h:commandButton class="button" value="#{msg.shop_more}" action="#{selectProd.selectProduit(produit.idproduit)}" />  <br/>                                 
+                                 </h:form>
+                            </article>
                     </c:forEach>  
-                 </c:forEach> 
+ 
+                
             </ui:define>
 
 
